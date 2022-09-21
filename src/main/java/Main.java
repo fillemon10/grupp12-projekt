@@ -9,5 +9,7 @@ public class Main {
         System.out.println("filip ändrar");
         System.out.println("fjdks !");
         System.out.println("fjdks !");
+        System.out.println("hejdå");
+        System.out.println("filipe ändrar");
     }
 }
