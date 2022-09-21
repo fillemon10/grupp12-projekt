@@ -12,7 +12,7 @@ public class CSVReader {
     private String[][] recipes;
 
     public CSVReader() throws FileNotFoundException {
-        com.opencsv.CSVReader reader = new com.opencsv.CSVReader(new BufferedReader(new FileReader("recipes.csv"))); {
+        com.opencsv.CSVReader reader = new com.opencsv.CSVReader(new BufferedReader(new FileReader("recipe.csv"))); {
             List<String[]> lines;
             try {
                 lines = reader.readAll();
