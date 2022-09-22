@@ -12,6 +12,7 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClick() throws FileNotFoundException {
         CSVReader csvReader = new CSVReader();
-        welcomeText.setText(csvReader.getRecipes()[1][0]);
+        String recipe = csvReader.getRecipe(1,0); //model
+        welcomeText.setText(recipe); //view
     }
 }

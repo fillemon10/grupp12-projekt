@@ -24,7 +24,8 @@ public class CSVReader {
             recipes = lines.toArray(new String[lines.size()][]);
         }
     }
-    public String[][] getRecipes() {
-        return recipes;
+    public String getRecipe(int x, int y) {
+
+        return recipes[y][x];
     }
 }
