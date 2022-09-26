@@ -5,14 +5,14 @@ import javafx.scene.control.Label;
 
 import java.io.FileNotFoundException;
 
-public class HelloController {
+public class Controller {
     @FXML
     private Label welcomeText;
 
     @FXML
     protected void onHelloButtonClick() throws FileNotFoundException {
         CSVReader csvReader = new CSVReader();
-        String recipe = csvReader.getRecipe(1,0); //model
-        welcomeText.setText(recipe); //view
+        //String recipe = csvReader.getRecipe(1,0); //modifierar modellen
+        //welcomeText.setText(recipe); //uppdaterar viewn
     }
 }
