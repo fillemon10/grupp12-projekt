@@ -11,7 +11,6 @@ public class Controller {
 
     @FXML
     protected void onHelloButtonClick() throws FileNotFoundException {
-        CSVReader csvReader = new CSVReader();
         //String recipe = csvReader.getRecipe(1,0); //modifierar modellen
         //welcomeText.setText(recipe); //uppdaterar viewn
     }
