@@ -14,11 +14,11 @@ public class Ingredient {
 
     }
 
-    int getID() {
+    public int getID() {
         return ID;
     }
 
-    String name() {
+    public String getName() {
         return name;
     }
 }

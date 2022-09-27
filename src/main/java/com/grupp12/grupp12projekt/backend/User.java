@@ -1,6 +1,6 @@
 package com.grupp12.grupp12projekt.backend;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class User {
 
@@ -8,24 +8,39 @@ public class User {
     private String username;
     private String password;
     private int storageID;
-    private List<Recipe> favorites;
+    private ArrayList<Recipe> favorites;
 
-    public User(int ID, String username, String password, int StorageID, List<Recipe> favorites)
+    public User(int ID, String username, String password, int storageID, ArrayList<Recipe> favorites)
     {
         this.ID = ID;
         this.username = username;
         this.password = password;
+        this.storageID = storageID;
+        this.favorites = favorites;
     }
 
-    String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-     String getPassword() {
+    //Behålla som package privat för "security reasons"?
+    String getPassword() {
         return password;
     }
 
-    int getStorageID() {
+    public int getStorageID() {
         return storageID;
+    }
+
+    public ArrayList<Recipe> getFavorites() {
+        return favorites;
+    }
+
+    public void addRecipeToFavorite(Recipe recipe) {
+        favorites.add(recipe);
+    }
+
+    public void removeRecipeFromFavorites(Recipe recipe){
+        favorites.remove(recipe);
     }
 }

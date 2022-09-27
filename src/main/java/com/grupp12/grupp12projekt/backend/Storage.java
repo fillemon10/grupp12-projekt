@@ -1,16 +1,17 @@
 package com.grupp12.grupp12projekt.backend;
 
-import java.util.List;
+import java.util.*;
 
 public class Storage {
     private int ID;
     private int storageCode;
     private List<Ingredient> ingredients;
 
-    public Storage(int ID, int storageCode)
+    public Storage(int ID, int storageCode, List<Ingredient> ingredients)
     {
         this.ID = ID;
         this.storageCode = storageCode;
+        this.ingredients = ingredients;
     }
 
     public void addIngredient(Ingredient ingredient){
