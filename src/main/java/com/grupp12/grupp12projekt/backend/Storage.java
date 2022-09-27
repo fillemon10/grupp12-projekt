@@ -7,7 +7,7 @@ public class Storage {
     private int storageCode;
     private List<Ingredient> ingredients;
 
-    public Storage(int ID, int storageCode, ArrayList<Ingredient> ingredients)
+    public Storage(int ID, int storageCode, List<Ingredient> ingredients)
     {
         this.ID = ID;
         this.storageCode = storageCode;

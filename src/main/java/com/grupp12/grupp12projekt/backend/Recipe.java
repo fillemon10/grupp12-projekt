@@ -16,11 +16,15 @@ public class Recipe {
     public Recipe(int ID, String name, List<Ingredient> ingredients, String rating) {
         this.ID = ID;
         this.name = name;
-        this.ingredients = new ArrayList<Ingredient>();
+        this.ingredients = ingredients;
         this.rating = rating;
         //this.img = img
         //this.instructions = instructions
         //this.time = time
+    }
+
+    public List<Ingredient> getContents(){
+        return ingredients;
     }
 
 }

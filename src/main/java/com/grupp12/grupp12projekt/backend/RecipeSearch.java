@@ -1,13 +1,5 @@
 package com.grupp12.grupp12projekt.backend;
 
-
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +7,8 @@ public class RecipeSearch {
     private List<Recipe> listOfFilteredRecipes[];
     private List<Recipe> allRecipes;
 
-    public RecipeSearch() throws FileNotFoundException {
-
-        this.allRecipes = getAllRecipes();
-    }
-
-    private List<Recipe> getAllRecipes() throws FileNotFoundException {
-        return null;
-    }
 
     protected void prioritizeRecipes(){
-
 
     }
 
@@ -33,18 +16,38 @@ public class RecipeSearch {
 
     }
 
-    private List<Recipe> ReadRecipesFromFile() throws IOException, CsvException {
-        List<Recipe> recipes = new ArrayList<Recipe>();
-        CSVReader reader = new CSVReader(new BufferedReader(new FileReader("src/main/resources/recipes.csv")));
-        List<String[]> rows = reader.readAll();
-        for (String[] row : rows) {
-            List<Ingredient> ingredients = new ArrayList<Ingredient>();
-            Recipe recipe = new Recipe(0, "", ingredients , "");
-            recipes.add(recipe);
-        }
+    public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage){
+        List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
-        return recipes;
+        for (Ingredient recipeIngredient: recipe.getContents()){
+            for (Ingredient storageIngredient: storage.getContents()){
+                 if (recipeIngredient.getID() == storageIngredient.getID()){
+                     matchingIngredients.add(recipeIngredient);
+                     break;
+                 }
+            }
+        }
+        return matchingIngredients;
     }
+
+
+//    public List<Recipe> ReadRecipesFromFile() throws IOException, CsvException {
+//        List<Recipe> recipes = new ArrayList<Recipe>();
+//        CSVReader reader = new CSVReader(new BufferedReader(new FileReader("src/main/resources/recipe.csv")));
+//        List<String[]> rows = reader.readAll();
+//
+//        List<Ingredient> ingredients = new ArrayList<Ingredient>();
+//        for (int i = 5; i < rows.get(0).length; i++) {
+//            ingredients.add(new Ingredient(0, rows.get(0)[i]));
+//        }
+//
+//        for (String[] row : rows) {
+//            Recipe recipe = new Recipe(0, "", ingredients , "");
+//            recipes.add(recipe);
+//        }
+//
+//        return recipes;
+//    }
 
 
 }

@@ -10,10 +10,11 @@ import static org.junit.Assert.assertTrue;
 public class StorageTest {
     ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
     Storage myStorage = new Storage(124, 1234, ingredients);
+    Ingredient butter = new Ingredient(123, "Butter");
+    Ingredient milk = new Ingredient(123, "Milk");
 
     @Test
     public void addIngredientToStorage() {
-        Ingredient butter = new Ingredient(123, "Butter");
         myStorage.addIngredient(butter);
 
         assertTrue(myStorage.getContents().contains(butter));
@@ -21,13 +22,10 @@ public class StorageTest {
 
     @Test
     public void removeIngredientFromStorage() {
-        Ingredient butter = new Ingredient(123, "Butter");
-        Ingredient milk = new Ingredient(123, "Milk");
         myStorage.addIngredient(butter);
         myStorage.addIngredient(milk);
         myStorage.removeIngredient(butter);
 
         assertFalse(myStorage.getContents().contains(butter));
-
     }
 }

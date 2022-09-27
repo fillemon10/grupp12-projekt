@@ -18,7 +18,7 @@ public class Ingredient {
         return ID;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 }
