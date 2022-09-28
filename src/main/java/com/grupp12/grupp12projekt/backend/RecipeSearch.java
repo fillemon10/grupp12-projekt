@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeSearch {
-    private List<Recipe> listOfFilteredRecipes[];
-    private List<Recipe> allRecipes;
+    //private List<Recipe> listOfFilteredRecipes[];
+    //private List<Recipe> allRecipes;
 
 
     protected void prioritizeRecipes(){
@@ -30,6 +30,18 @@ public class RecipeSearch {
         return matchingIngredients;
     }
 
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
+        List<Ingredient> nonMatchingIngredients = new ArrayList<Ingredient>();
+        for (Ingredient recipeIngredient: recipe.getContents()) {
+            for (Ingredient storageIngredient: storage.getContents()) {
+                if(recipeIngredient.getID() != storageIngredient.getID()){
+                    nonMatchingIngredients.add(recipeIngredient);
+                }
+            }
+
+        }
+        return nonMatchingIngredients;
+    }
 
 //    public List<Recipe> ReadRecipesFromFile() throws IOException, CsvException {
 //        List<Recipe> recipes = new ArrayList<Recipe>();
