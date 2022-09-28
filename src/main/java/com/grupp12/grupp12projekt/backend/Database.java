@@ -7,7 +7,8 @@ public class Database {
     private static final Database instance = new Database();
 
     private Database() {
-        //Privat konstruktor
+        //Private constructor
+        allRecipes = new ArrayList<>();
     }
 
     public static Database getInstance() {
@@ -18,7 +19,7 @@ public class Database {
         return allRecipes;
     }
 
-    void addRecipe(Recipe recipe) {
+    public void addRecipe(Recipe recipe) {
         allRecipes.add(recipe);
     }
 }
