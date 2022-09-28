@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Database {
     ArrayList<Recipe> allRecipes;
-    private static final Database instance = new Database();
+    private static Database instance;
 
     private Database() {
         //Private constructor
@@ -12,10 +12,13 @@ public class Database {
     }
 
     public static Database getInstance() {
+        if (instance == null) {
+            instance = new Database();
+        }
         return Database.instance;
     }
 
-    ArrayList<Recipe> getAllRecipes() {
+    public ArrayList<Recipe> getAllRecipes() {
         return allRecipes;
     }
 
