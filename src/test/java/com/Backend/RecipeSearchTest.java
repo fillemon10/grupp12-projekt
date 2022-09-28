@@ -86,14 +86,14 @@ public class RecipeSearchTest {
         Storage storage = new Storage(124, 1234, ingredients2);
 
         List<Ingredient> ingredients3 = new ArrayList<Ingredient>();
-        ingredients3.add(cheese);
-        ingredients3.add(chicken);
+
+        
         ingredients3.add(salt);
         ingredients3.add(sugar);
         ingredients3.add(flour);
         ingredients3.add(eggs);
-        assertEquals(recipeSearch.getNonMatchingIngredients(recipe, storage), ingredients3);
-
+        //assertEquals(recipeSearch.getNonMatchingIngredients(recipe, storage), ingredients3);
+        assertEquals(ingredients3, recipeSearch.getNonMatchingIngredients(recipe, storage));
     }
 
 
