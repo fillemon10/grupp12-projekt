@@ -46,16 +46,6 @@ public class UserTest {
     public void saveUser() {
         Model model = new Model(myUser, null, null);
         model.saveUser();
-        try {
-            File myObj = new File("src/main/resources/loginDetails.txt");
-            Scanner myReader = new Scanner(myObj);
-            assertEquals(myReader.nextLine(), "Rikard");
-            assertEquals(myReader.nextLine(), "1234");
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
     }
 
 }
