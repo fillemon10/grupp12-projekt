@@ -30,7 +30,7 @@ public class RecipeSearch {
         return matchingIngredients;
     }
 
-    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
+/*    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
         List<Ingredient> nonMatchingIngredients = new ArrayList<Ingredient>();
         for (Ingredient recipeIngredient: recipe.getContents()) {
             for (Ingredient storageIngredient: storage.getContents()) {
@@ -39,6 +39,20 @@ public class RecipeSearch {
                     nonMatchingIngredients.add(storageIngredient);
                 }
             }
+
+        }
+        return nonMatchingIngredients;
+    }*/
+
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
+        List<Ingredient> nonMatchingIngredients = recipe.getContents();
+        for (Ingredient recipeIngredient: nonMatchingIngredients) {
+            for (Ingredient storageIngredient: storage.getContents()){
+               if( recipeIngredient.getID() == storageIngredient.getID()){
+                   nonMatchingIngredients.remove(recipeIngredient);
+               }
+            }
+
 
         }
         return nonMatchingIngredients;
