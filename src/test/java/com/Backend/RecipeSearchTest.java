@@ -1,29 +1,29 @@
-import com.grupp12.grupp12projekt.backend.Ingredient;
-import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.backend.RecipeSearch;
-import com.grupp12.grupp12projekt.backend.Storage;
+import com.grupp12.grupp12projekt.backend.*;
 import org.junit.Test;
 
 
+import javax.xml.crypto.Data;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RecipeSearchTest {
+    RecipeSearch recipeSearch = new RecipeSearch();
 
-    @Test
-    public void getMatchingIngredientsTest() {
-        RecipeSearch recipeSearch = new RecipeSearch();
-        
-        Ingredient butter = new Ingredient(1, "Butter");
-        Ingredient milk = new Ingredient(2, "Milk");
-        Ingredient salt = new Ingredient(3, "Salt");
-        Ingredient sugar = new Ingredient(4, "Sugar");
-        Ingredient flour = new Ingredient(5, "Flour");
-        Ingredient eggs = new Ingredient(6, "Eggs");
+    Ingredient butter = new Ingredient(1, "Butter");
+    Ingredient milk = new Ingredient(2, "Milk");
+    Ingredient salt = new Ingredient(3, "Salt");
+    Ingredient sugar = new Ingredient(4, "Sugar");
+    Ingredient flour = new Ingredient(5, "Flour");
+    Ingredient eggs = new Ingredient(6, "Eggs");
+    Ingredient water = new Ingredient(0, "Water");
+    Ingredient bakingSoda = new Ingredient(9, "Baking soda");
+
+    Recipe makePancakes(){
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
         ingredients.add(butter);
         ingredients.add(milk);
@@ -31,7 +31,31 @@ public class RecipeSearchTest {
         ingredients.add(sugar);
         ingredients.add(flour);
         ingredients.add(eggs);
-        Recipe recipe = new Recipe(123, "Pancakes", ingredients, "7");
+        return new Recipe(123, "Pancakes", ingredients, "7");
+    }
+
+    Recipe makeStickBread(){
+        List<Ingredient> stickBreadIngredients = new ArrayList<Ingredient>();
+        stickBreadIngredients.add(flour);
+        stickBreadIngredients.add(water);
+        stickBreadIngredients.add(bakingSoda);
+
+        return new Recipe(938, "Stick bread", stickBreadIngredients, "1");
+    }
+
+    public void setUpTestDatabase() {
+        //Set up Database with pancakes and stick bread as recipes
+        Database instance = Database.getInstance();
+        Recipe pancakes = makePancakes();
+        Recipe stickBread = makeStickBread();
+
+        instance.addRecipe(pancakes);
+        instance.addRecipe(stickBread);
+    }
+
+    @Test
+    public void getMatchingIngredientsTest() {
+        Recipe recipe = makePancakes();
 
         List<Ingredient> ingredients2 = new ArrayList<Ingredient>();
 
@@ -43,7 +67,6 @@ public class RecipeSearchTest {
         ingredients2.add(cheese);
         ingredients2.add(chicken);
 
-
         Storage storage = new Storage(123, 1234, ingredients2);
 
         List<Ingredient> ingredients3 = new ArrayList<Ingredient>();
@@ -53,6 +76,37 @@ public class RecipeSearchTest {
 
     }
 
+    @Test
+    public void recipeContainsTest() {
+        Recipe pancakes = makePancakes();
 
+        Ingredient flour = new Ingredient(5, "Flour");
+        Ingredient jam = new Ingredient(9123, "Jam");
 
+        assertTrue(recipeSearch.recipeContains(pancakes, flour));
+        assertFalse(recipeSearch.recipeContains(pancakes, jam));
+    }
+
+    @Test
+    public void filterByIngredientTest() {
+        setUpTestDatabase();
+        Recipe stickBread = makeStickBread();
+        Recipe pancakes = makePancakes();
+
+        List<Recipe> filteredRecipes = recipeSearch.filterByIngredient(water);
+
+        //Check if filteredRecipes contains recipe
+        boolean containsStickBread = false;
+        boolean containsPancakes = false;
+        for (Recipe recipe :
+                filteredRecipes) {
+            if(recipe.getID() == stickBread.getID())
+                containsStickBread = true;
+            if(recipe.getID() == pancakes.getID())
+                containsPancakes = true;
+        }
+
+        assertTrue(containsStickBread);
+        assertFalse(containsPancakes);
+    }
 }

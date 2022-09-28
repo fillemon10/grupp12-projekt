@@ -2,6 +2,7 @@ package com.grupp12.grupp12projekt;
 
 import com.grupp12.grupp12projekt.backend.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
@@ -19,5 +20,9 @@ public class Model {
 
     List<Ingredient> getMatchingIngredients(Recipe recipe){
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
+    }
+
+    ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
+        return recipeSearch.filterByIngredient(ingredient);
     }
 }
