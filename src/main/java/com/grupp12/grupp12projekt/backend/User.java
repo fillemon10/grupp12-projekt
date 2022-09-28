@@ -24,7 +24,7 @@ public class User {
     }
 
     //Behålla som package privat för "security reasons"?
-    String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -43,4 +43,6 @@ public class User {
     public void removeRecipeFromFavorites(Recipe recipe){
         favorites.remove(recipe);
     }
+
+
 }

@@ -2,6 +2,8 @@ package com.grupp12.grupp12projekt;
 
 import com.grupp12.grupp12projekt.backend.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class Model {
@@ -20,4 +22,15 @@ public class Model {
     List<Ingredient> getMatchingIngredients(Recipe recipe){
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
+
+    public void saveUser(){
+        try {
+            FileWriter myWriter = new FileWriter("src/main/resources/loginDetails.txt");
+            myWriter.write(currentUser.getUsername() + "\n" + currentUser.getPassword());
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
