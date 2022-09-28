@@ -34,8 +34,9 @@ public class RecipeSearch {
         List<Ingredient> nonMatchingIngredients = new ArrayList<Ingredient>();
         for (Ingredient recipeIngredient: recipe.getContents()) {
             for (Ingredient storageIngredient: storage.getContents()) {
-                if(recipeIngredient.getID() != storageIngredient.getID()){
+                if((recipeIngredient.getID() != storageIngredient.getID()) && !(nonMatchingIngredients.contains(recipeIngredient))){
                     nonMatchingIngredients.add(recipeIngredient);
+                    nonMatchingIngredients.add(storageIngredient);
                 }
             }
 
