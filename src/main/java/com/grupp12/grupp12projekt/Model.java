@@ -2,6 +2,7 @@ package com.grupp12.grupp12projekt;
 
 import com.grupp12.grupp12projekt.backend.*;
 
+import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -60,4 +61,8 @@ public class Model {
         }
     }
 
+
+    ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
+        return recipeSearch.filterByIngredient(ingredient);
+    }
 }
