@@ -4,6 +4,8 @@ module com.grupp12.grupp12projekt {
     requires com.opencsv;
     requires junit;
     requires org.testng;
+    requires spring.jdbc;
+    requires java.sql;
 
 
     opens com.grupp12.grupp12projekt to javafx.fxml;

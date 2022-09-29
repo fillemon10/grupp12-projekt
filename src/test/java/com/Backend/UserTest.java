@@ -1,13 +1,16 @@
+import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.User;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class UserTest {
     ArrayList<Recipe> favorites = new ArrayList<>();
@@ -37,6 +40,12 @@ public class UserTest {
         myUser.removeRecipeFromFavorites(recipe);
 
         assertFalse(myUser.getFavorites().contains(recipe));
+    }
+
+    @Test
+    public void saveUser() {
+        Model model = new Model(myUser, null, null);
+        model.saveUser();
     }
 
 }
