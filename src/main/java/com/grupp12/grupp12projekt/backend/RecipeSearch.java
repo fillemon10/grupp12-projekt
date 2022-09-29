@@ -40,6 +40,7 @@ public class RecipeSearch {
                 }
             }
         }
+        System.out.println("hej");
 
         matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients)*100;
         return (int) matchingPercentage;
