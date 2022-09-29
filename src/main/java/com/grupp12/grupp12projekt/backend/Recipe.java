@@ -27,4 +27,7 @@ public class Recipe {
         return ingredients;
     }
 
+    public int getID(){
+        return ID;
+    }
 }

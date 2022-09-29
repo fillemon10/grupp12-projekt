@@ -1,19 +1,28 @@
 package com.grupp12.grupp12projekt.backend;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeSearch {
-    private List<Recipe> listOfFilteredRecipes[];
-    private List<Recipe> allRecipes;
+    //private List<Recipe> listOfFilteredRecipes[];
+    //private List<Recipe> allRecipes;
 
 
-    protected void prioritizeRecipes(){
+    protected void prioritizeRecipes() {
 
     }
 
-    protected void filterByIngredient(Ingredient ingredient){
+    public ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
+        ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+        ArrayList<Recipe> filteredRecipes = new ArrayList<>();
 
+        for (Recipe recipe : allRecipes) {
+            if (recipeContains(recipe, ingredient))
+                filteredRecipes.add(recipe);
+        }
+
+        return filteredRecipes;
     }
 
     public double getMatchingPercentage(List<Ingredient> storageIngredients, List<Ingredient> recipeIngredients){
@@ -38,20 +47,40 @@ public class RecipeSearch {
     }
 
 
-    public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage){
+    public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
-        for (Ingredient recipeIngredient: recipe.getContents()){
-            for (Ingredient storageIngredient: storage.getContents()){
-                 if (recipeIngredient.getID() == storageIngredient.getID()){
-                     matchingIngredients.add(recipeIngredient);
-                     break;
-                 }
-            }
+        for (Ingredient storageIngredient : storage.getContents()) {
+            if (recipeContains(recipe, storageIngredient))
+                matchingIngredients.add(storageIngredient);
         }
+
         return matchingIngredients;
     }
 
+    public boolean recipeContains(Recipe recipe, Ingredient ingredient) {
+        for (Ingredient recipeIngredient : recipe.getContents()) {
+            if (recipeIngredient.getID() == ingredient.getID())
+                return true;
+        }
+        return false;
+    }
+
+
+
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
+        List<Ingredient> nonMatchingIngredients = new ArrayList<>();
+        nonMatchingIngredients.addAll(recipe.getContents());
+        for (Ingredient recipeIngredient: recipe.getContents()) {
+            for (Ingredient storageIngredient: storage.getContents()){
+               if( recipeIngredient.getID() == storageIngredient.getID()){
+                   nonMatchingIngredients.remove(recipeIngredient);
+                   break;
+               }
+            }
+        }
+        return nonMatchingIngredients;
+    }
 
 //    public List<Recipe> ReadRecipesFromFile() throws IOException, CsvException {
 //        List<Recipe> recipes = new ArrayList<Recipe>();
