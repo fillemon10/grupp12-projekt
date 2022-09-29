@@ -25,6 +25,28 @@ public class RecipeSearch {
         return filteredRecipes;
     }
 
+    public double getMatchingPercentage(List<Ingredient> storageIngredients, List<Ingredient> recipeIngredients){
+
+        double numberOfTotalIngredients = recipeIngredients.size();
+        double numberOfMatchingIngredients = 0;
+        double matchingPercentage;
+
+        for (Ingredient recipeIngredient: recipeIngredients){
+            for(Ingredient storageIngredient: storageIngredients){
+                if (storageIngredient.getName() == recipeIngredient.getName()){
+
+                    numberOfMatchingIngredients += 1;
+
+                }
+            }
+        }
+
+        matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients)*100;
+        return (int) matchingPercentage;
+
+    }
+
+
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
