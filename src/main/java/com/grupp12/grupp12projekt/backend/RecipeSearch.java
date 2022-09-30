@@ -1,17 +1,34 @@
 package com.grupp12.grupp12projekt.backend;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class RecipeSearch {
-    //private List<Recipe> listOfFilteredRecipes[];
-    //private List<Recipe> allRecipes;
+public class RecipeSearch  {
 
 
-    protected void prioritizeRecipes() {
 
+    public ArrayList<Recipe>  prioritize(){
+         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+         Collections.sort(allRecipes, new Comparator<Recipe>() {
+            @Override
+            public int compare(Recipe c1, Recipe c2) {
+                return Double.compare(c1.getMatchingprocentage(), c2.getMatchingprocentage());
+
+            }
+
+        } );
+
+         return allRecipes;
     }
+
+
+
+
+
+
+
+
+
 
     public ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
@@ -20,10 +37,13 @@ public class RecipeSearch {
         for (Recipe recipe : allRecipes) {
             if (recipeContains(recipe, ingredient))
                 filteredRecipes.add(recipe);
-        }
 
+
+        }
         return filteredRecipes;
     }
+
+
 
     public double getMatchingPercentage(List<Ingredient> storageIngredients, List<Ingredient> recipeIngredients){
 
@@ -41,10 +61,47 @@ public class RecipeSearch {
             }
         }
 
+
         matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients)*100;
-        return (int) matchingPercentage;
+         return (int) matchingPercentage;
+         
+
+
 
     }
+
+    public void getMatchingPercentag(List<Ingredient> storageIngredients, Recipe recipe){
+        List<Ingredient> recipeIngredients = recipe.getIngredients();
+
+
+
+
+        double numberOfTotalIngredients = recipeIngredients.size();
+        double numberOfMatchingIngredients = 0;
+        double matchingPercentage;
+
+        for (Ingredient recipeIngredient: recipeIngredients){
+            for(Ingredient storageIngredient: storageIngredients){
+                if (storageIngredient.getName() == recipeIngredient.getName()){
+
+                    numberOfMatchingIngredients += 1;
+
+                }
+            }
+        }
+
+        recipe.setMatchingprocentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
+
+
+
+
+    }
+
+
+
+
+
+
 
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {

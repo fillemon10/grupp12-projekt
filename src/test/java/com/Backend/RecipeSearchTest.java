@@ -54,6 +54,34 @@ public class RecipeSearchTest {
     }
 
     @Test
+    public void getMatchingPercentageTest() {
+        RecipeSearch recipeSearch = new RecipeSearch();
+
+        Ingredient butter = new Ingredient(1, "Butter");
+        Ingredient milk = new Ingredient(2, "Milk");
+        Ingredient salt = new Ingredient(3, "Salt");
+        Ingredient sugar = new Ingredient(4, "Sugar");
+        Ingredient flour = new Ingredient(5, "Flour");
+        List<Ingredient> recipeIngredients = new ArrayList<Ingredient>();
+        recipeIngredients.add(butter);
+        recipeIngredients.add(milk);
+        recipeIngredients.add(salt);
+        List<Ingredient> storageIngredients = new ArrayList<Ingredient>();
+        storageIngredients.add(salt);
+        storageIngredients.add(sugar);
+        storageIngredients.add(flour);
+
+        int expectedPercentage = 33;
+
+        assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipeIngredients), expectedPercentage);
+
+
+
+    }
+
+
+
+    @Test
     public void getMatchingIngredientsTest() {
         Recipe recipe = makePancakes();
 
@@ -87,7 +115,7 @@ public class RecipeSearchTest {
         assertFalse(recipeSearch.recipeContains(pancakes, jam));
     }
 
-    @Test
+    /*@Test
     public void filterByIngredientTest() {
         setUpTestDatabase();
         Recipe stickBread = makeStickBread();
