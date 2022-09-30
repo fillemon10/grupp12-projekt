@@ -24,7 +24,7 @@ public class RecipeSearchTest {
     Ingredient bakingSoda = new Ingredient(9, "Baking soda");
 
     Recipe makePancakes(){
-        List<Ingredient> ingredients = new ArrayList<Ingredient>();
+        List<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(butter);
         ingredients.add(milk);
         ingredients.add(salt);
@@ -35,7 +35,7 @@ public class RecipeSearchTest {
     }
 
     Recipe makeStickBread(){
-        List<Ingredient> stickBreadIngredients = new ArrayList<Ingredient>();
+        List<Ingredient> stickBreadIngredients = new ArrayList<>();
         stickBreadIngredients.add(flour);
         stickBreadIngredients.add(water);
         stickBreadIngredients.add(bakingSoda);
@@ -95,6 +95,22 @@ public class RecipeSearchTest {
 
         List<Recipe> filteredRecipes = recipeSearch.filterByIngredient(water);
 
+        //Check if filteredRecipes contains recipe
+        boolean containsStickBread = false;
+        boolean containsPancakes = false;
+        for (Recipe recipe :
+                filteredRecipes) {
+            if(recipe.getID() == stickBread.getID())
+                containsStickBread = true;
+            if(recipe.getID() == pancakes.getID())
+                containsPancakes = true;
+        }
+
+        assertTrue(containsStickBread);
+        assertFalse(containsPancakes);
+    }
+
+    @Test
     public void getNonMatchingIngredientsTest(){
         RecipeSearch recipeSearch = new RecipeSearch();
 
@@ -159,22 +175,5 @@ public class RecipeSearchTest {
 
         assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipeIngredients), expectedPercentage);
 
-
-
-    }
-
-        //Check if filteredRecipes contains recipe
-        boolean containsStickBread = false;
-        boolean containsPancakes = false;
-        for (Recipe recipe :
-                filteredRecipes) {
-            if(recipe.getID() == stickBread.getID())
-                containsStickBread = true;
-            if(recipe.getID() == pancakes.getID())
-                containsPancakes = true;
-        }
-
-        assertTrue(containsStickBread);
-        assertFalse(containsPancakes);
     }
 }
