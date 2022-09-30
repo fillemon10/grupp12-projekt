@@ -5,6 +5,31 @@ import java.util.*;
 
 public class RecipeSearch  {
 
+
+
+    public ArrayList<Recipe>  prioritize(){
+         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+         Collections.sort(allRecipes, new Comparator<Recipe>() {
+            @Override
+            public int compare(Recipe c1, Recipe c2) {
+                return Double.compare(c1.getMatchingprocentage(), c2.getMatchingprocentage());
+
+            }
+
+        } );
+
+         return allRecipes;
+    }
+
+
+
+
+
+
+
+
+
+
     public ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
@@ -66,6 +91,9 @@ public class RecipeSearch  {
         }
 
         recipe.setMatchingprocentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
+
+
+
 
     }
 
