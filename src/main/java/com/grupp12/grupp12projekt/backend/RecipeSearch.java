@@ -1,17 +1,9 @@
 package com.grupp12.grupp12projekt.backend;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class RecipeSearch {
-    //private List<Recipe> listOfFilteredRecipes[];
-    //private List<Recipe> allRecipes;
-
-
-    protected void prioritizeRecipes() {
-
-    }
+public class RecipeSearch  {
 
     public ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
@@ -20,10 +12,13 @@ public class RecipeSearch {
         for (Recipe recipe : allRecipes) {
             if (recipeContains(recipe, ingredient))
                 filteredRecipes.add(recipe);
-        }
 
+
+        }
         return filteredRecipes;
     }
+
+
 
     public double getMatchingPercentage(List<Ingredient> storageIngredients, List<Ingredient> recipeIngredients){
 
@@ -40,12 +35,45 @@ public class RecipeSearch {
                 }
             }
         }
-        System.out.println("hej");
+
 
         matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients)*100;
-        return (int) matchingPercentage;
+         return (int) matchingPercentage;
+         
+
+
 
     }
+
+    public void getMatchingPercentag(List<Ingredient> storageIngredients, Recipe recipe){
+        List<Ingredient> recipeIngredients = recipe.getIngredients();
+
+
+
+
+        double numberOfTotalIngredients = recipeIngredients.size();
+        double numberOfMatchingIngredients = 0;
+        double matchingPercentage;
+
+        for (Ingredient recipeIngredient: recipeIngredients){
+            for(Ingredient storageIngredient: storageIngredients){
+                if (storageIngredient.getName() == recipeIngredient.getName()){
+
+                    numberOfMatchingIngredients += 1;
+
+                }
+            }
+        }
+
+        recipe.setMatchingprocentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
+
+    }
+
+
+
+
+
+
 
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
