@@ -1,6 +1,5 @@
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.backend.Storage;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 public class RecipeTest {
 
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
-    private Ingredient butter = new Ingredient(123, "Butter");
-    private Ingredient milk = new Ingredient(123, "Milk");
+    private Ingredient butter = new Ingredient(1, "Butter");
+    private Ingredient milk = new Ingredient(2, "Milk");
 
 
 
@@ -23,7 +22,7 @@ public class RecipeTest {
         ingredients.add(milk);
         Recipe recipe = new Recipe(123, "Butter and milk", ingredients, "7");
 
-        assertTrue(recipe.getContents().contains(butter));
+        assertTrue(recipe.containsIngredient(butter));
 
     }
 
@@ -33,9 +32,9 @@ public class RecipeTest {
         ingredients.add(milk);
         Recipe recipe = new Recipe(123, "Butter and milk", ingredients, "7");
 
-        Ingredient salt = new Ingredient(123, "Salt");
+        Ingredient salt = new Ingredient(3, "Salt");
 
-        assertFalse(recipe.getContents().contains(salt));
+        assertFalse(recipe.containsIngredient(salt));
     }
 
 }

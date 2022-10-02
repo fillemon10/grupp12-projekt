@@ -30,15 +30,13 @@ public class RecipeSearch  {
 
 
 
-    public ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
-        ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
-        ArrayList<Recipe> filteredRecipes = new ArrayList<>();
+    public List<Recipe> filterByIngredient(Ingredient ingredient) {
+        List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+        List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
-            if (recipeContains(recipe, ingredient))
+            if (recipe.containsIngredient(ingredient))
                 filteredRecipes.add(recipe);
-
-
         }
         return filteredRecipes;
     }
@@ -108,20 +106,20 @@ public class RecipeSearch  {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
         for (Ingredient storageIngredient : storage.getContents()) {
-            if (recipeContains(recipe, storageIngredient))
+            if (recipe.containsIngredient(storageIngredient))
                 matchingIngredients.add(storageIngredient);
         }
 
         return matchingIngredients;
     }
 
-    public boolean recipeContains(Recipe recipe, Ingredient ingredient) {
+/*    public boolean recipeContains(Recipe recipe, Ingredient ingredient) {
         for (Ingredient recipeIngredient : recipe.getContents()) {
             if (recipeIngredient.getID() == ingredient.getID())
                 return true;
         }
         return false;
-    }
+    }*/
 
 
 
