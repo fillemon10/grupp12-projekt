@@ -36,7 +36,6 @@ public class RecipeSearch  {
     }
 
 
-
     public double getMatchingPercentage(List<Ingredient> storageIngredients, Recipe recipe){
         List<Ingredient> recipeIngredients = recipe.getContents();
 

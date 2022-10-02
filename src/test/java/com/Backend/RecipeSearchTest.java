@@ -76,7 +76,6 @@ public class RecipeSearchTest {
 
         assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipe), expectedPercentage);
 
-
     }
 
 

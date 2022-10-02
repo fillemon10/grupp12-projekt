@@ -12,7 +12,6 @@ public class Recipe {
     private String name;
     private List<Ingredient> ingredients;
     private String rating;
-
     public double matchingPercentage = 0;
 
     public double getMatchingPercentage() {
