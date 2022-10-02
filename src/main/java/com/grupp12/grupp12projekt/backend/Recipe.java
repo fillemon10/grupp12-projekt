@@ -13,14 +13,14 @@ public class Recipe {
     private List<Ingredient> ingredients;
     private String rating;
 
-    public double matchingprocentage = 0;
+    public double matchingPercentage = 0;
 
-    public double getMatchingprocentage() {
-        return matchingprocentage;
+    public double getMatchingPercentage() {
+        return matchingPercentage;
     }
 
-    public void setMatchingprocentage(double matchingprocentage) {
-        this.matchingprocentage = matchingprocentage;
+    public void setMatchingPercentage(double matchingPercentage) {
+        this.matchingPercentage = matchingPercentage;
     }
 
 

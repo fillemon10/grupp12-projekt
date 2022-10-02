@@ -12,7 +12,7 @@ public class RecipeSearch  {
          Collections.sort(allRecipes, new Comparator<Recipe>() {
             @Override
             public int compare(Recipe c1, Recipe c2) {
-                return Double.compare(c1.getMatchingprocentage(), c2.getMatchingprocentage());
+                return Double.compare(c1.getMatchingPercentage(), c2.getMatchingPercentage());
 
             }
 
@@ -83,7 +83,7 @@ public class RecipeSearch  {
             }
         }
 
-        recipe.setMatchingprocentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
+        recipe.setMatchingPercentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
 
 
 
