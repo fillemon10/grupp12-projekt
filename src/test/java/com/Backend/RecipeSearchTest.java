@@ -23,7 +23,7 @@ public class RecipeSearchTest {
     Ingredient water = new Ingredient(0, "Water");
     Ingredient bakingSoda = new Ingredient(9, "Baking soda");
 
-    Recipe makePancakes(){
+    Recipe makePancakes() {
         List<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(butter);
         ingredients.add(milk);
@@ -34,7 +34,7 @@ public class RecipeSearchTest {
         return new Recipe(123, "Pancakes", ingredients, "7");
     }
 
-    Recipe makeStickBread(){
+    Recipe makeStickBread() {
         List<Ingredient> stickBreadIngredients = new ArrayList<>();
         stickBreadIngredients.add(flour);
         stickBreadIngredients.add(water);
@@ -66,6 +66,7 @@ public class RecipeSearchTest {
         recipeIngredients.add(butter);
         recipeIngredients.add(milk);
         recipeIngredients.add(salt);
+        Recipe recipe = new Recipe(1, "butter, mil and salt", recipeIngredients, "7");
         List<Ingredient> storageIngredients = new ArrayList<Ingredient>();
         storageIngredients.add(salt);
         storageIngredients.add(sugar);
@@ -73,12 +74,10 @@ public class RecipeSearchTest {
 
         int expectedPercentage = 33;
 
-        assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipeIngredients), expectedPercentage);
-
+        assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipe), expectedPercentage);
 
 
     }
-
 
 
     @Test
@@ -114,6 +113,7 @@ public class RecipeSearchTest {
         assertTrue(recipeSearch.recipeContains(pancakes, flour));
         assertFalse(recipeSearch.recipeContains(pancakes, jam));
     }
+
 
     /*@Test
     public void filterByIngredientTest() {
@@ -204,4 +204,8 @@ public class RecipeSearchTest {
         assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipeIngredients), expectedPercentage);
 
     }
+}
+
+     */
+
 }

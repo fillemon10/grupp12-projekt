@@ -13,6 +13,8 @@ public class Recipe {
     private List<Ingredient> ingredients;
     private String rating;
 
+    public double matchingprocentage = 0;
+
     public double getMatchingprocentage() {
         return matchingprocentage;
     }
@@ -21,12 +23,7 @@ public class Recipe {
         this.matchingprocentage = matchingprocentage;
     }
 
-    public double matchingprocentage = 0;
 
-
-    public List<Ingredient> getIngredients() {
-        return ingredients;
-    }
 
     public Recipe(int ID, String name, List<Ingredient> ingredients, String rating) {
         this.ID = ID;
