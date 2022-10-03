@@ -29,39 +29,6 @@ public class Model {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
 
-    public void saveUser(){
-        try {
-            FileWriter myWriter = new FileWriter("src/main/resources/loginDetails.txt");
-            myWriter.write(currentUser.getUsername() + "\n" + currentUser.getPassword());
-            myWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public User loadUserFromFile(){
-        try {
-            File myObj = new File("src/main/resources/loginDetails.txt");
-            Scanner myReader = new Scanner(myObj);
-            String username = myReader.nextLine();
-            String password = myReader.nextLine();
-            myReader.close();
-            return new User(0, username, password, 0, null);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public void login(){
-        User user = loadUserFromFile();
-        if(user != null){
-            //user = database.findUser(user);
-            currentUser = user;
-        }
-    }
-
-
     ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
         return recipeSearch.filterByIngredient(ingredient);
     }
