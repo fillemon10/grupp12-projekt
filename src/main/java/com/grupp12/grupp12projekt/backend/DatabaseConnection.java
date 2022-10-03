@@ -1,23 +1,30 @@
 package com.grupp12.grupp12projekt.backend;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
+import io.jsondb.JsonDBTemplate;
+import io.jsondb.crypto.Default1Cipher;
+import io.jsondb.crypto.ICipher;
+
+import java.security.GeneralSecurityException;
 
 public class DatabaseConnection {
-    private static Connection connection = null;
-    private static final String url = "jdbc:mysql://localhost:3306/db";
-    private static final String user = "root";
-    private static final String password = "root";
+    private static JsonDBTemplate con = null;
 
-    public static Connection getConnection() {
-        if (connection == null) {
-            try {
-                connection = DriverManager.getConnection(url, user, password);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    static {
+        //Actual location on disk for database files, process should have read-write permissions to this folder
+        String dbFilesLocation = "src/main/resources/jsonDatabase";
+
+        //Java package name where POJO's are present
+        String baseScanPackage = "com.grupp12.grupp12projekt.backend";
+
+        try {
+            ICipher cipher = new Default1Cipher("1r8+24pibarAWgS85/Heeg==");
+            JsonDBTemplate con = new JsonDBTemplate(dbFilesLocation, baseScanPackage, cipher);
+        } catch (GeneralSecurityException e) {
+            throw new RuntimeException(e);
         }
-        return connection;
+    }
+    public static JsonDBTemplate getConnection() {
+        return con;
     }
 }

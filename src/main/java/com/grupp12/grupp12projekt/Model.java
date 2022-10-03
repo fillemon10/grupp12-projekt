@@ -17,7 +17,9 @@ public class Model {
     private Storage storage;
     private RecipeSearch recipeSearch;
 
-    private Database database;
+    private static UserDataAccess userDataAccess = new UserDataAccess();
+
+
 
     public Model(User currentUser, Storage storage, RecipeSearch recipeSearch){
         this.currentUser = currentUser;

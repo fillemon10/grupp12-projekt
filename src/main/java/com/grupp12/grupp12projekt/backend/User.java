@@ -1,11 +1,16 @@
 package com.grupp12.grupp12projekt.backend;
 
+import io.jsondb.annotation.Id;
+import io.jsondb.annotation.Secret;
+
 import java.util.ArrayList;
 
 public class User {
 
+    @Id
     private int ID;
     private String username;
+    @Secret
     private String password;
     private int storageID;
     private ArrayList<Recipe> favorites;
@@ -23,11 +28,13 @@ public class User {
         return username;
     }
 
-    //Behålla som package privat för "security reasons"?
     public String getPassword() {
         return password;
     }
 
+    public int getID() {
+        return ID;
+    }
     public int getStorageID() {
         return storageID;
     }

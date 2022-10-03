@@ -2,6 +2,7 @@ import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.User;
+import com.grupp12.grupp12projekt.backend.UserDataAccess;
 import org.junit.Test;
 
 import java.io.File;
@@ -44,8 +45,14 @@ public class UserTest {
 
     @Test
     public void saveUser() {
-        Model model = new Model(myUser, null, null);
-        model.saveUser();
+        UserDataAccess userDataAccess = new UserDataAccess();
+        userDataAccess.save(myUser);
+
+        try {
+            assertTrue(data.contains("Rikard"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }
