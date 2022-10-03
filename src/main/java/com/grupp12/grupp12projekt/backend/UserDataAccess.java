@@ -21,7 +21,7 @@ public class UserDataAccess implements IDataAccess<User> {
 
     @Override
     public void save(User t) {
-        con.save(t, User.class);
+        con.insert(t);
     }
 
     @Override
