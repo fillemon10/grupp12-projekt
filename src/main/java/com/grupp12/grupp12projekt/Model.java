@@ -62,7 +62,7 @@ public class Model {
     }
 
 
-    ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
+    List<Recipe> filterByIngredient(Ingredient ingredient) {
         return recipeSearch.filterByIngredient(ingredient);
     }
 }
