@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 public class UserTest {
     ArrayList<Recipe> favorites = new ArrayList<>();
-    User myUser = new User(1234, "Rikard", "1234", 1234, favorites);
+    User myUser = new User();
     Ingredient butter = new Ingredient(123, "Butter");
     Ingredient milk = new Ingredient(123, "Milk");
     List<Ingredient> ingredients = new ArrayList<Ingredient>();
@@ -46,13 +46,12 @@ public class UserTest {
     @Test
     public void saveUser() {
         UserDataAccess userDataAccess = new UserDataAccess();
+        myUser.setUsername("TestUser");
+        myUser.setPassword("123");
+        myUser.setStorageID(123);
+        myUser.setFavorites(favorites);
         userDataAccess.save(myUser);
-
-        try {
-            assertTrue(data.contains("Rikard"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        assertTrue(userDataAccess.get(myUser.getID()).equals(myUser));
     }
 
 }
