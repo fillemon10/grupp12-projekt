@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.RecipeDetailView">
+   <children>
+      <Text layoutX="157.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients" />
+      <Text layoutX="1019.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instructions" />
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1340.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VectorcloseDetail.png" />
+         </image>
+      </ImageView>
+      <TextArea layoutX="932.0" layoutY="119.0" prefHeight="390.0" prefWidth="440.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." wrapText="true" />
+      <ScrollPane fx:id="lsitOfIngredients" layoutX="27.0" layoutY="119.0" prefHeight="390.0" prefWidth="440.0" />
+      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="500.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VectorcloseDetail.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="recipeName" layoutX="586.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipe Name" />
+      <ImageView fitHeight="80.0" fitWidth="380.0" layoutX="67.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Frame%201deatilButtons.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="380.0" layoutX="905.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Frame%201deatilButtons.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="380.0" layoutX="448.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Frame%201deatilButtons.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
