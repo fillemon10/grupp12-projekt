@@ -2,13 +2,11 @@ package com.grupp12.grupp12projekt.backend;
 
 import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
-import io.jsondb.annotation.Secret;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Document(collection = "users", schemaVersion= "1.0")
-public class User {
+public class old_User {
 
     @Id
     private int ID;
@@ -16,6 +14,15 @@ public class User {
     private String password;
     private int storageID;
     private ArrayList<Recipe> favorites;
+
+//    public User(int ID, String username, String password, int storageID, ArrayList<Recipe> favorites)
+//    {
+//        this.ID = ID;
+//        this.username = username;
+//        this.password = password;
+//        this.storageID = storageID;
+//        this.favorites = favorites;
+//    }
 
     public String getUsername() {
         return username;
@@ -44,10 +51,21 @@ public class User {
     public void setStorageID(int storageID) {
         this.storageID = storageID;
     }
+
     public ArrayList<Recipe> getFavorites() {
         return favorites;
     }
     public void setFavorites(ArrayList<Recipe> favorites) {
         this.favorites = favorites;
     }
+
+    public void addRecipeToFavorite(Recipe recipe) {
+        favorites.add(recipe);
+    }
+
+    public void removeRecipeFromFavorites(Recipe recipe){
+        favorites.remove(recipe);
+    }
+
+
 }

@@ -1,14 +1,10 @@
 package com.grupp12.grupp12projekt;
 
 import com.grupp12.grupp12projekt.backend.*;
+import com.grupp12.grupp12projekt.backend.dataAccess.UserDataAccess;
 
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,8 +12,6 @@ public class Model {
     private User currentUser;
     private Storage storage;
     private RecipeSearch recipeSearch;
-
-    private static UserDataAccess userDataAccess = new UserDataAccess();
 
 
 
