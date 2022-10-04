@@ -12,7 +12,7 @@ public class RecipeSearch  {
          Collections.sort(allRecipes, new Comparator<Recipe>() {
             @Override
             public int compare(Recipe c1, Recipe c2) {
-                return Double.compare(c1.getMatchingprocentage(), c2.getMatchingprocentage());
+                return Double.compare(c1.getMatchingPercentage(), c2.getMatchingPercentage());
 
             }
 
@@ -20,16 +20,7 @@ public class RecipeSearch  {
 
          return allRecipes;
     }
-
-
-
-
-
-
-
-
-
-
+    
     public List<Recipe> filterByIngredient(Ingredient ingredient) {
         List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
         List<Recipe> filteredRecipes = new ArrayList<>();
@@ -42,8 +33,8 @@ public class RecipeSearch  {
     }
 
 
-
-    public double getMatchingPercentage(List<Ingredient> storageIngredients, List<Ingredient> recipeIngredients){
+    public double getMatchingPercentage(List<Ingredient> storageIngredients, Recipe recipe){
+        List<Ingredient> recipeIngredients = recipe.getContents();
 
         double numberOfTotalIngredients = recipeIngredients.size();
         double numberOfMatchingIngredients = 0;
@@ -62,18 +53,12 @@ public class RecipeSearch  {
 
         matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients)*100;
          return (int) matchingPercentage;
-         
-
-
 
     }
 
     public void getMatchingPercentag(List<Ingredient> storageIngredients, Recipe recipe){
-        List<Ingredient> recipeIngredients = recipe.getIngredients();
-
-
-
-
+        List<Ingredient> recipeIngredients = recipe.getContents();
+        
         double numberOfTotalIngredients = recipeIngredients.size();
         double numberOfMatchingIngredients = 0;
         double matchingPercentage;
@@ -88,19 +73,9 @@ public class RecipeSearch  {
             }
         }
 
-        recipe.setMatchingprocentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
-
-
-
+        recipe.setMatchingPercentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
 
     }
-
-
-
-
-
-
-
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
