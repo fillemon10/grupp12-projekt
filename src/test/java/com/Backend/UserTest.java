@@ -2,7 +2,7 @@ import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.User;
 import com.grupp12.grupp12projekt.backend.dataAccess.JsonDBUserDataAccess;
-import com.grupp12.grupp12projekt.backend.dataAccess.UserDataAccess;
+import com.grupp12.grupp12projekt.backend.dataAccess.IDataAccess;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class UserTest {
 
     @Test
     public void getUser() {
-        UserDataAccess userDataAccess = new JsonDBUserDataAccess();
+        IDataAccess<User> userDataAccess = new JsonDBUserDataAccess();
         User userToAdd = new User();
         userToAdd.setId(1);
         userToAdd.setUsername("TestUser");
@@ -51,13 +51,13 @@ public class UserTest {
         ArrayList<Recipe> favorites = new ArrayList<Recipe>();
         userToAdd.setFavorites(favorites);
         try {
-            if (userDataAccess.getUserByID(userToAdd.getId()) == null) {
-                userDataAccess.addUser(userToAdd);
+            if (userDataAccess.getByID(userToAdd.getId()) == null) {
+                userDataAccess.add(userToAdd);
             }
         } catch (Exception e) {
-            userDataAccess.addUser(userToAdd);
+            userDataAccess.add(userToAdd);
         }
-        User userToFind = userDataAccess.getUserByID(1);
+        User userToFind = userDataAccess.getByID(1);
         assertEquals("TestUser", userToFind.getUsername());
     }
 

@@ -9,7 +9,6 @@ import io.jsondb.crypto.ICipher;
 public class JsonDBConnection {
     private static JsonDBTemplate con = null;
 
-
     static {
         //Actual location on disk for database files, process should have read-write permissions to this folder
         String dbFilesLocation = "src/main/resources/com/grupp12/grupp12projekt/jsonDatabase";

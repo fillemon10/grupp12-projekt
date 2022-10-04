@@ -1,7 +1,6 @@
 package com.grupp12.grupp12projekt;
 
 import com.grupp12.grupp12projekt.backend.*;
-import com.grupp12.grupp12projekt.backend.dataAccess.UserDataAccess;
 
 import java.util.ArrayList;
 import java.util.List;
