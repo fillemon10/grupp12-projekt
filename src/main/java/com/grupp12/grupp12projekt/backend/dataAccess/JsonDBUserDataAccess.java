@@ -12,8 +12,9 @@ public class JsonDBUserDataAccess implements UserDataAccess {
     private List<User> users = new ArrayList<>();
 
     @Override
-    public User getUser(long id) {
-        return connection.findById(id, User.class);
+    public User getUserByID(long id) {
+        String jxQuery = String.format("/.[id='%s']", id);
+        return connection.find(jxQuery, User.class).get(0);
     }
 
     @Override

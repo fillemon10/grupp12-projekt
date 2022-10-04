@@ -11,8 +11,9 @@ import java.util.List;
 public class User {
 
     @Id
-    private int ID;
+    private int id;
     private String username;
+    @Secret
     private String password;
     private int storageID;
     private ArrayList<Recipe> favorites;
@@ -30,14 +31,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
-
     public int getStorageID() {
         return storageID;
     }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public interface UserDataAccess  {
-    public User getUser(long id);
+    public User getUserByID(long id);
     public List<User> getAllUsers();
 
     public void addUser(User user);

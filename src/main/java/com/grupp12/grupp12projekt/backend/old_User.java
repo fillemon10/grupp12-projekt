@@ -5,10 +5,8 @@ import io.jsondb.annotation.Id;
 
 import java.util.ArrayList;
 
-@Document(collection = "users", schemaVersion= "1.0")
 public class old_User {
 
-    @Id
     private int ID;
     private String username;
     private String password;
