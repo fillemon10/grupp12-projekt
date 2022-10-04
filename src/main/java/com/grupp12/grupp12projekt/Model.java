@@ -61,8 +61,11 @@ public class Model {
         }
     }
 
+    public List<Ingredient> findIngredients(String s) {
+        return recipeSearch.findIngredients(s);
+    }
 
-    List<Recipe> filterByIngredient(Ingredient ingredient) {
+    public List<Recipe> filterByIngredient(Ingredient ingredient) {
         return recipeSearch.filterByIngredient(ingredient);
     }
 }

@@ -20,6 +20,22 @@ public class RecipeSearch  {
 
          return allRecipes;
     }
+
+    public List<Ingredient> findIngredients(String s) {
+        String lowS = s.toLowerCase();
+        ArrayList<Ingredient> result = new ArrayList();
+        Iterator var4 = Database.getInstance().getAllIngredients().iterator();
+
+        while(var4.hasNext()) {
+            Ingredient i = (Ingredient)var4.next();
+            String productName = i.getName().toLowerCase();
+            if (productName.indexOf(lowS) > -1) {
+                result.add(i);
+            }
+        }
+
+        return result;
+    }
     
     public List<Recipe> filterByIngredient(Ingredient ingredient) {
         List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
