@@ -43,7 +43,7 @@ public class RecipeListItemController{
             throw new RuntimeException(exception);
         }
 
-        recipeImage.setImage();
+
         recipeName.setText(recipe.getName());
         recipeIngredientPercentageMessage.setText("Du har " + recipeSearch.getMatchingPercentage(storage, recipe) + "% av ingredienserna.");
 
