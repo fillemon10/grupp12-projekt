@@ -29,6 +29,10 @@ public class Model {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
 
+    double getMatchingPrecentage(Recipe recipe){
+        return recipeSearch.getMatchingPercentage(storage.getContents(), recipe);
+    }
+
     public void saveUser(){
         try {
             FileWriter myWriter = new FileWriter("src/main/resources/loginDetails.txt");

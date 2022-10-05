@@ -45,5 +45,9 @@ public class Recipe {
         return ID;
     }
 
+    public String getName() {
+        return name;
+    }
+
 
 }
