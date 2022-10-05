@@ -102,19 +102,16 @@ public class RecipeSearchTest {
 
     }
 
-    @Test
+/*    @Test
     public void recipeContainsTest() {
         Recipe pancakes = makePancakes();
-
         Ingredient flour = new Ingredient(5, "Flour");
         Ingredient jam = new Ingredient(9123, "Jam");
-
         assertTrue(recipeSearch.recipeContains(pancakes, flour));
         assertFalse(recipeSearch.recipeContains(pancakes, jam));
-    }
+    }*/
 
-
-    /*@Test
+    @Test
     public void filterByIngredientTest() {
         setUpTestDatabase();
         Recipe stickBread = makeStickBread();
@@ -180,7 +177,7 @@ public class RecipeSearchTest {
         assertEquals(ingredients3, recipeSearch.getNonMatchingIngredients(recipe, storage));
     }
 
-    @Test
+/*    @Test
     public void getMatchingPercentageTest() {
         RecipeSearch recipeSearch = new RecipeSearch();
 
@@ -202,7 +199,7 @@ public class RecipeSearchTest {
 
         assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipeIngredients), expectedPercentage);
 
-    }
+    }*/
 }
 
      */

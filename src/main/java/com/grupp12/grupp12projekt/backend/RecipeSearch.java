@@ -20,17 +20,14 @@ public class RecipeSearch  {
 
          return allRecipes;
     }
-
-
-    public ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
-        ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
-        ArrayList<Recipe> filteredRecipes = new ArrayList<>();
+    
+    public List<Recipe> filterByIngredient(Ingredient ingredient) {
+        List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+        List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
-            if (recipeContains(recipe, ingredient))
+            if (recipe.containsIngredient(ingredient))
                 filteredRecipes.add(recipe);
-
-
         }
         return filteredRecipes;
     }
@@ -56,18 +53,12 @@ public class RecipeSearch  {
 
         matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients)*100;
          return (int) matchingPercentage;
-         
-
-
 
     }
 
     public void getMatchingPercentag(List<Ingredient> storageIngredients, Recipe recipe){
         List<Ingredient> recipeIngredients = recipe.getContents();
-
-
-
-
+        
         double numberOfTotalIngredients = recipeIngredients.size();
         double numberOfMatchingIngredients = 0;
         double matchingPercentage;
@@ -84,36 +75,26 @@ public class RecipeSearch  {
 
         recipe.setMatchingPercentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
 
-
-
-
     }
-
-
-
-
-
-
-
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
         for (Ingredient storageIngredient : storage.getContents()) {
-            if (recipeContains(recipe, storageIngredient))
+            if (recipe.containsIngredient(storageIngredient))
                 matchingIngredients.add(storageIngredient);
         }
 
         return matchingIngredients;
     }
 
-    public boolean recipeContains(Recipe recipe, Ingredient ingredient) {
+/*    public boolean recipeContains(Recipe recipe, Ingredient ingredient) {
         for (Ingredient recipeIngredient : recipe.getContents()) {
             if (recipeIngredient.getID() == ingredient.getID())
                 return true;
         }
         return false;
-    }
+    }*/
 
 
 
