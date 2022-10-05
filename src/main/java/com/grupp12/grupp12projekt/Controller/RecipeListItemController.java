@@ -1,6 +1,4 @@
-package com.grupp12.grupp12projekt.Views;
-
-
+package com.grupp12.grupp12projekt.Controller;
 
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.RecipeSearch;
@@ -10,11 +8,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class RecipeListItemView extends AnchorPane {
+public class RecipeListItemController{
+    Recipe recipe;
+    Storage storage;
+    RecipeSearch recipeSearch;
+
+
 
     @FXML
     ImageView recipeImage;
@@ -26,8 +28,11 @@ public class RecipeListItemView extends AnchorPane {
     ProgressBar percentageBar;
 
 
+    public RecipeListItemController(Recipe recipe, Storage storage, RecipeSearch recipeSearch) {
+        this.recipe = recipe;
+        this.storage = storage;
+        this.recipeSearch = recipeSearch;
 
-    public RecipeListItemView(Recipe recipe, Storage storage, RecipeSearch recipeSearch){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("recipelistitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -38,16 +43,11 @@ public class RecipeListItemView extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        recipeImage.setImage();
         recipeName.setText(recipe.getName());
         recipeIngredientPercentageMessage.setText("Du har " + recipeSearch.getMatchingPercentage(storage, recipe) + "% av ingredienserna.");
 
 
+
     }
-
-
-
-
-
-
-
 }

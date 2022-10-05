@@ -25,15 +25,6 @@ public class HomePageView extends VBox {
     }
 
     private HomePageView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("com.grupp12.grupp12projekt/home-page.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
     }
 
     @FXML

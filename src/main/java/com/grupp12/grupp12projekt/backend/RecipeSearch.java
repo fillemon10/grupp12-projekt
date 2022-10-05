@@ -1,6 +1,5 @@
 package com.grupp12.grupp12projekt.backend;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class RecipeSearch  {
@@ -23,16 +22,19 @@ public class RecipeSearch  {
 
     public List<Ingredient> findIngredients(String s) {
         String lowS = s.toLowerCase();
-        ArrayList<Ingredient> result = new ArrayList();
+        List<Ingredient> result = new ArrayList();
         Iterator var4 = Database.getInstance().getAllIngredients().iterator();
 
-        while(var4.hasNext()) {
-            Ingredient i = (Ingredient)var4.next();
+        while (var4.hasNext()) {
+            Ingredient i = (Ingredient) var4.next();
             String productName = i.getName().toLowerCase();
             if (productName.indexOf(lowS) > -1) {
                 result.add(i);
             }
         }
+
+        return result;
+    }
 
     public List<Recipe> filterByIngredient(Ingredient ingredient) {
         List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
@@ -66,7 +68,7 @@ public class RecipeSearch  {
 
 
         matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients);
-         return matchingPercentage;
+        return matchingPercentage;
 
     }
 
