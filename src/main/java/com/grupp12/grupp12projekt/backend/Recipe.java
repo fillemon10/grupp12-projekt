@@ -1,9 +1,5 @@
 package com.grupp12.grupp12projekt.backend;
 
-import javafx.scene.image.Image;
-
-import java.net.IDN;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,5 +41,12 @@ public class Recipe {
         return ID;
     }
 
-
+    public boolean containsIngredient(Ingredient ingredient) {
+        for (Ingredient recipeIngredient :
+                ingredients) {
+            if (recipeIngredient.getID() == ingredient.getID())
+                return true;
+        }
+        return false;
+    }
 }
