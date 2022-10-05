@@ -23,13 +23,6 @@ public class RecipeSearch  {
 
 
 
-
-
-
-
-
-
-
     public ArrayList<Recipe> filterByIngredient(Ingredient ingredient) {
         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
@@ -70,7 +63,7 @@ public class RecipeSearch  {
 
     }
 
-    public void getMatchingPercentag(List<Ingredient> storageIngredients, Recipe recipe){
+    public void getMatchingProcentage(List<Ingredient> storageIngredients, Recipe recipe){
         List<Ingredient> recipeIngredients = recipe.getIngredients();
 
 
