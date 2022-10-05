@@ -34,7 +34,6 @@ public class Model {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
 
-
     public double getMatchingPercentage(Recipe recipe) {
         return recipeSearch.getMatchingPercentage(storage, recipe);
     }
