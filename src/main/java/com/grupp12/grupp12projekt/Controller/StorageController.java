@@ -1,4 +1,5 @@
 package com.grupp12.grupp12projekt.Controller;
 
-public class StorageController {
+public class StorageController implements IController {
+
 }
