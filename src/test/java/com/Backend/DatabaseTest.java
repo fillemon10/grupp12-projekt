@@ -36,12 +36,26 @@ public class DatabaseTest {
         return new Recipe(938, "Stick bread", stickBreadIngredients, "1");
     }
 
-    boolean databaseContains(Recipe recipe, Database db) {
+    boolean databaseContainsRecipe(Recipe recipe, Database db) {
         boolean contains = false;
 
         for (Recipe r :
                 db.getAllRecipes()) {
             if (r == recipe) {
+                contains = true;
+                break;
+            }
+        }
+
+        return contains;
+    }
+
+    boolean databaseContainsIngredient(Ingredient ingredient, Database db) {
+        boolean contains = false;
+
+        for (Ingredient i :
+                db.getAllIngredients()) {
+            if (i == ingredient) {
                 contains = true;
                 break;
             }
@@ -64,14 +78,14 @@ public class DatabaseTest {
         Recipe pancakes = makePancakes();
         Recipe stickBread = makeStickBread();
         db.addRecipe(pancakes);
-        boolean containsPancakes = databaseContains(pancakes, db);
-        boolean containsStickBread = databaseContains(stickBread, db);
+        boolean containsPancakes = databaseContainsRecipe(pancakes, db);
+        boolean containsStickBread = databaseContainsRecipe(stickBread, db);
 
         assertTrue(containsPancakes);
         assertFalse(containsStickBread);
 
         db.addRecipe(stickBread);
-        containsStickBread = databaseContains(stickBread, db);
+        containsStickBread = databaseContainsRecipe(stickBread, db);
 
         assertTrue(containsStickBread);
     }
@@ -88,5 +102,39 @@ public class DatabaseTest {
         db2.addRecipe(stickBread);
 
         assertEquals(db.getAllRecipes(), db2.getAllRecipes());
+    }
+
+    @Test
+    public void addIngredientTest() {
+        Database instance = Database.getInstance();
+        instance.addIngredient(butter);
+
+        boolean containsButter = databaseContainsIngredient(butter, instance);
+        boolean containsWater = databaseContainsIngredient(water, instance);
+
+        assertTrue(containsButter);
+        assertFalse(containsWater);
+
+        instance.addIngredient(water);
+        containsWater = databaseContainsIngredient(water, instance);
+
+        assertTrue(containsWater);
+    }
+
+    @Test
+    public void getAllIngredientsTest() {
+        Database db = Database.getInstance();
+        Database db2 = Database.getInstance();
+
+        db.addIngredient(flour);
+        db2.addIngredient(bakingSoda);
+
+        assertEquals(db.getAllRecipes(), db2.getAllRecipes());
+
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(flour);
+        ingredients.add(bakingSoda);
+
+        assertEquals(db.getAllIngredients(), ingredients);
     }
 }

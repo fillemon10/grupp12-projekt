@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1400.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.Views.RecipeDetailView">
+   <children>
+      <Label layoutX="157.0" layoutY="44.0" text="Ingredients" />
+      <Label layoutX="1019.0" layoutY="44.0" text="Instructions" />
+      <ImageView fx:id="closeButton" fitHeight="40.0" fitWidth="40.0" layoutX="1340.0" layoutY="20.0" onMouseClicked="#onClickCloseButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Icons/VectorcloseDetail.png" />
+         </image>
+      </ImageView>
+      <TextArea layoutX="932.0" layoutY="119.0" prefHeight="390.0" prefWidth="440.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." wrapText="true" />
+      <ScrollPane fx:id="listOfIngredients" layoutX="27.0" layoutY="119.0" prefHeight="390.0" prefWidth="440.0" />
+      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="500.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Icons/VectorcloseDetail.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="586.0" layoutY="489.0" text="RecipeName" />
+      <ImageView fitHeight="80.0" fitWidth="380.0" layoutX="51.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Icons/deatilButtons.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="380.0" layoutX="949.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Icons/deatilButtons.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="380.0" layoutX="500.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Icons/deatilButtons.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="226.0" layoutY="598.0" text="Add missing items to shopping list" />
+      <Label fx:id="amountMatchingIngredients" layoutX="623.0" layoutY="578.0" text="You have _ of _ items" />
+      <Label layoutX="1123.0" layoutY="598.0" text="I have previously made this recipe " />
+      <ProgressBar fx:id="progressBar" layoutX="581.0" layoutY="605.0" prefWidth="200.0" progress="0.0" />
+   </children>
+</AnchorPane>
