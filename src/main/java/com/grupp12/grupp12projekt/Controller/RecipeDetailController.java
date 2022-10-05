@@ -1,5 +1,6 @@
-package com.grupp12.grupp12projekt;
+package com.grupp12.grupp12projekt.Controller;
 
+import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 

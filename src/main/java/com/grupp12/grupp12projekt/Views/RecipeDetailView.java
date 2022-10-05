@@ -1,7 +1,7 @@
-package com.grupp12.grupp12projekt;
+package com.grupp12.grupp12projekt.Views;
 
+import RecipeDetailController;
 import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.backend.RecipeSearch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
