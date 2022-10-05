@@ -7,23 +7,21 @@ public class Storage {
     private int storageCode;
     private List<Ingredient> ingredients;
 
-    public Storage(int ID, int storageCode, List<Ingredient> ingredients)
-    {
+    public Storage(int ID, int storageCode, List<Ingredient> ingredients) {
         this.ID = ID;
         this.storageCode = storageCode;
         this.ingredients = ingredients;
     }
 
-    public void addIngredient(Ingredient ingredient){
+    public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
 
-
-    public void removeIngredient(Ingredient ingredient){
+    public void removeIngredient(Ingredient ingredient) {
         ingredients.remove(ingredient);
     }
 
-    public List<Ingredient> getContents(){
+    public List<Ingredient> getContents() {
         return ingredients;
     }
 

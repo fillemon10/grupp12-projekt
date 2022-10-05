@@ -36,4 +36,9 @@ public class HomePageView extends VBox {
         }
     }
 
+    @FXML
+    public void onSearchButtonClicked() {
+        String searchFieldText = searchField.getText();
+
+    }
 }

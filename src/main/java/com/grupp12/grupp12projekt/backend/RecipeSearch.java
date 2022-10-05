@@ -50,8 +50,8 @@ public class RecipeSearch  {
 
 
     public double getMatchingPercentage(Storage storage, Recipe recipe){
+        List<Ingredient> recipeIngredients = recipe.getContents();
         List<Ingredient> storageIngredients = storage.getContents();
-        List<Ingredient> recipeIngredients = recipe.getContents();
 
         double numberOfTotalIngredients = recipeIngredients.size();
         double numberOfMatchingIngredients = 0;
@@ -68,29 +68,8 @@ public class RecipeSearch  {
         }
 
 
-        matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients)*100;
-         return (int) matchingPercentage;
-
-    }
-
-    public void getMatchingPercentag(List<Ingredient> storageIngredients, Recipe recipe){
-        List<Ingredient> recipeIngredients = recipe.getContents();
-        
-        double numberOfTotalIngredients = recipeIngredients.size();
-        double numberOfMatchingIngredients = 0;
-        double matchingPercentage;
-
-        for (Ingredient recipeIngredient: recipeIngredients){
-            for(Ingredient storageIngredient: storageIngredients){
-                if (storageIngredient.getName() == recipeIngredient.getName()){
-
-                    numberOfMatchingIngredients += 1;
-
-                }
-            }
-        }
-
-        recipe.setMatchingPercentage((numberOfMatchingIngredients/numberOfTotalIngredients)*100);
+        matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients);
+         return matchingPercentage;
 
     }
 
