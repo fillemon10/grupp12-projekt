@@ -34,9 +34,6 @@ public class RecipeSearch  {
             }
         }
 
-        return result;
-    }
-    
     public List<Recipe> filterByIngredient(Ingredient ingredient) {
         List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
         List<Recipe> filteredRecipes = new ArrayList<>();
