@@ -135,6 +135,40 @@ public class RecipeSearchTest {
     }
 
     @Test
+    public void findIngredientsTest() {
+        RecipeSearch recipeSearch = new RecipeSearch();
+
+        Database instance = Database.getInstance();
+        instance.addIngredient(butter);
+        instance.addIngredient(milk);
+        instance.addIngredient(salt);
+        instance.addIngredient(sugar);
+        instance.addIngredient(flour);
+        instance.addIngredient(eggs);
+        instance.addIngredient(water);
+        instance.addIngredient(bakingSoda);
+
+        List<Ingredient> ingredients = recipeSearch.findIngredients("er");
+
+        boolean containsButter = false;
+        boolean containsWater = false;
+        boolean containsEggs = false;
+        for (Ingredient i :
+                ingredients) {
+            if(i.getID() == butter.getID())
+                containsButter = true;
+            if(i.getID() == water.getID())
+                containsWater = true;
+            if(i.getID() == eggs.getID())
+                containsEggs = true;
+        }
+
+        assertTrue(containsButter);
+        assertTrue(containsWater);
+        assertFalse(containsEggs);
+    }
+
+    @Test
     public void getNonMatchingIngredientsTest(){
         RecipeSearch recipeSearch = new RecipeSearch();
 
@@ -200,8 +234,4 @@ public class RecipeSearchTest {
         assertEquals(recipeSearch.getMatchingPercentage(storageIngredients, recipeIngredients), expectedPercentage);
 
     }*/
-}
-
-     */
-
 }

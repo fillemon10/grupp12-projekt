@@ -15,9 +15,12 @@ public class HomePage extends VBox {
     @FXML
     private TextField searchField;
 
-    private static HomePage instance = new HomePage();
+    private static HomePage instance;
 
     public static HomePage getInstance() {
+        if (instance == null)
+            instance = new HomePage();
+
         return instance;
     }
 
