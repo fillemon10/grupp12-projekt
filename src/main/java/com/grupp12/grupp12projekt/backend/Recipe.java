@@ -41,6 +41,10 @@ public class Recipe {
         return ID;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean containsIngredient(Ingredient ingredient) {
         for (Ingredient recipeIngredient :
                 ingredients) {

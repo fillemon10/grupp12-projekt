@@ -25,6 +25,11 @@ public class Model {
     }
 
 
+    double getMatchingPrecentage(Recipe recipe){
+        return recipeSearch.getMatchingPercentage(storage.getContents(), recipe);
+    }
+
+
     List<Recipe> filterByIngredient(Ingredient ingredient) {
         return recipeSearch.filterByIngredient(ingredient);
     }
