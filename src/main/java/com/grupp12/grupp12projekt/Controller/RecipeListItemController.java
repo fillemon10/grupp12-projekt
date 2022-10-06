@@ -46,6 +46,8 @@ public class RecipeListItemController{
 
         recipeName.setText(recipe.getName());
         recipeIngredientPercentageMessage.setText("Du har " + recipeSearch.getMatchingPercentage(storage, recipe) + "% av ingredienserna.");
+        percentageBar.setProgress((recipeSearch.getMatchingPercentage(storage, recipe)/100));
+
 
 
 
