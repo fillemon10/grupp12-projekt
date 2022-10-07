@@ -6,15 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NavigationbarController implements IController, Initializable {
+public class NavigationController implements IController, Initializable {
     private Model model;
-    private static NavigationbarController instance;
+    private static NavigationController instance;
 
     @FXML
     private ScrollPane contentScrollPane;
@@ -27,13 +26,13 @@ public class NavigationbarController implements IController, Initializable {
     @FXML
     private Label shoppingListButton;
 
-    private NavigationbarController() {
+    private NavigationController() {
         model = Model.getInstance();
     }
 
-    public static NavigationbarController getInstance() {
+    public static NavigationController getInstance() {
         if (instance == null)
-            instance = new NavigationbarController();
+            instance = new NavigationController();
 
         return instance;
     }
@@ -56,7 +55,7 @@ public class NavigationbarController implements IController, Initializable {
     }
 
     private void setRecipeSearchPage() {
-        Region r = HomePageController.getInstance();
+        Region r = FindRecipesController.getInstance();
         contentScrollPane.setContent(r);
     }
 
