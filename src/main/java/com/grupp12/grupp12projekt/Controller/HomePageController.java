@@ -28,10 +28,10 @@ public class HomePageController extends VBox implements IController {
         return instance;
     }
 
-    private void HomePageController() {
+    private HomePageController() {
         model = Model.getInstance();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("com.grupp12.grupp12projekt/home-page.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("home-page.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

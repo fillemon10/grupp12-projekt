@@ -5,36 +5,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="982.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.Controller.StorageController">
+<fx:root fx:id="rootPane" prefHeight="450.0" prefWidth="780.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.5" prefHeight="982.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <SplitPane dividerPositions="0.5" prefHeight="450.0" prefWidth="780.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="97.0" prefWidth="962.0" text="Filter" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="962.0" text="Filter" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="960.0">
                <children>
-                  <SplitPane dividerPositions="0.5" prefHeight="98.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <SplitPane dividerPositions="0.5" prefHeight="50.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="982.0" prefWidth="247.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="98.0" prefWidth="480.0" text="My Storage" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-4.0">
+                              <Label alignment="CENTER" prefHeight="98.0" prefWidth="480.0" text="My Storage" textAlignment="CENTER" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
-                                    <Font size="36.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="98.0" prefWidth="480.0" text="All Products" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-4.0">
+                              <Label alignment="CENTER" prefHeight="47.0" prefWidth="189.0" text="All Products" textAlignment="CENTER" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
-                                    <Font size="36.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
                            </children>
@@ -46,4 +46,4 @@
         </items>
       </SplitPane>
    </children>
-</AnchorPane>
+</fx:root>
