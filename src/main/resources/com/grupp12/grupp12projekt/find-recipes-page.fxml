@@ -58,7 +58,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="searchButton" fitHeight="30.0" fitWidth="30.0" layoutX="200.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.333333333333343">
+                  <ImageView fx:id="searchButton" fitHeight="30.0" fitWidth="30.0" layoutX="200.0" layoutY="70.0" onMouseClicked="#onSearchButtonClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.333333333333343">
                      <image>
                         <Image url="@Icons/search_FILL0_wght400_GRAD0_opsz48.png" />
                      </image>
@@ -67,7 +67,7 @@
         </AnchorPane>
       <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="450.0" prefWidth="457.0">
         <children>
-          <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Sökresultat" textAlignment="CENTER" wrapText="false" />
+          <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Search results" textAlignment="CENTER" wrapText="false" />
               <ScrollPane layoutX="99.0" layoutY="50.0" prefHeight="400.0" prefWidth="516.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
         </children>
       </AnchorPane>
