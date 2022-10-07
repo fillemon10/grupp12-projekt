@@ -11,8 +11,8 @@ public class App2good2go extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipeDetailView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

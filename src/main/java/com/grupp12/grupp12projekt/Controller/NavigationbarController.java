@@ -6,8 +6,8 @@ public class NavigationbarController implements IController {
 
     private Model model;
 
-    @Override
-    public void initialize() {
+
+    public void NavigationbarController() {
         model = Model.getInstance();
 
     }
