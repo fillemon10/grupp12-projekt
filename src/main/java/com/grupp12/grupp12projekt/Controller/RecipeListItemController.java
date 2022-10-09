@@ -1,5 +1,7 @@
 package com.grupp12.grupp12projekt.Controller;
 
+import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.RecipeSearch;
 import com.grupp12.grupp12projekt.backend.Storage;
@@ -8,13 +10,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RecipeListItemController{
+public class RecipeListItemController extends AnchorPane implements IController{
     Recipe recipe;
     Storage storage;
     RecipeSearch recipeSearch;
+
+    List<Recipe> recipes;
+
+    Ingredient ingredient;
+
+
 
 
 
@@ -43,13 +54,29 @@ public class RecipeListItemController{
             throw new RuntimeException(exception);
         }
 
+    }
 
-        recipeName.setText(recipe.getName());
-        recipeIngredientPercentageMessage.setText("Du har " + recipeSearch.getMatchingPercentage(storage, recipe) + "% av ingredienserna.");
-        percentageBar.setProgress((recipeSearch.getMatchingPercentage(storage, recipe)/100));
+    public void setUpRecipes(){
+        for(Recipe rec : recipes){
+            AnchorPane ap = new AnchorPane(new RecipeListItemController(rec, storage, recipeSearch));
+            recipeName.setText(rec.getName());
+            recipeIngredientPercentageMessage.setText("Du har " + recipeSearch.getMatchingPercentage(storage, rec) + "% av ingredienserna.");
+            percentageBar.setProgress((recipeSearch.getMatchingPercentage(storage, rec)/100));
 
+        }
+
+    }
+
+
+
+    public void initialize() {
+
+        setUpRecipes();
 
 
 
     }
+
+
+
 }
