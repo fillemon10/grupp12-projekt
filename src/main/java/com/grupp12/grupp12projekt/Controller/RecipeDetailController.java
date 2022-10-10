@@ -28,8 +28,7 @@ public class RecipeDetailController implements IController {
     @FXML
     private ImageView closeButton;
 
-    @FXML
-    public void RecipeDetailController(Recipe recipe) {
+    public RecipeDetailController(Recipe recipe) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("recipeDetailView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

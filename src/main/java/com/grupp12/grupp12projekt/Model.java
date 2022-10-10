@@ -2,19 +2,24 @@ package com.grupp12.grupp12projekt;
 
 import com.grupp12.grupp12projekt.backend.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class Model {
+public class Model implements Observable {
     private User currentUser;
     private Storage storage;
-    private RecipeSearch recipeSearch;
+    private static RecipeSearch recipeSearch;
     private static Model instance;
+    private List<Recipe> recipes;
+    private List<Observer> observers = new ArrayList<>();
 
     public static Model getInstance() {
         if (instance == null)
             instance = new Model();
+        if (recipeSearch == null)
+            recipeSearch = new RecipeSearch();
         return instance;
     }
 
@@ -42,7 +47,22 @@ public class Model {
         return recipeSearch.findIngredients(s);
     }
 
-    public List<Recipe> filterByIngredient(Ingredient ingredient) {
-        return recipeSearch.filterByIngredient(ingredient);
+    public void filterByIngredient(Ingredient ingredient) {
+        recipes = recipeSearch.filterByIngredient(ingredient);
+        notifyObservers();
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        this.observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        this.observers.remove(o);
+    }
+
+    public void notifyObservers() {
+        this.observers.forEach(x -> x.onNotify(this));
     }
 }

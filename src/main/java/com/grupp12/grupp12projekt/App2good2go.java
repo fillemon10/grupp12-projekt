@@ -1,5 +1,6 @@
 package com.grupp12.grupp12projekt;
 
+import com.grupp12.grupp12projekt.Controller.NavigationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,9 +12,10 @@ public class App2good2go extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipeDetailView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("root-page.fxml"));
+        fxmlLoader.setController(NavigationController.getInstance());
+        Scene scene = new Scene(fxmlLoader.load(), 780 ,500);
+        stage.setTitle("2good2go");
         stage.setScene(scene);
         stage.show();
     }
