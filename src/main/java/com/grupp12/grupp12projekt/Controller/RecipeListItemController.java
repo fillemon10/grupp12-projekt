@@ -44,7 +44,7 @@ public class RecipeListItemController extends AnchorPane implements IController{
         this.storage = storage;
         this.recipeSearch = recipeSearch;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("recipelistitem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("src/main/resources/com/grupp12/grupp12projekt/recipelistitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
