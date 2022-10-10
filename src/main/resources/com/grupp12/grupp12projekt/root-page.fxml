@@ -7,41 +7,55 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane>
          <children>
-            <BorderPane prefHeight="500.0" prefWidth="780.0">
-               <top>
-                  <AnchorPane prefHeight="50.0" prefWidth="780.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="lightBox" onMouseClicked="#closeDetailView" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
+               <children>
+                  <AnchorPane fx:id="detailView" layoutX="70.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #000000;" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="500.0" prefWidth="780.0">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label fx:id="storageButton" layoutX="131.0" layoutY="11.0" text="Storage">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="recipeSearchButton" layoutX="233.0" layoutY="11.0" text="Find Recipes">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="favoritesButton" layoutX="390.0" layoutY="11.0" text="Favorites">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="shoppingListButton" layoutX="500.0" layoutY="11.0" text="Shopping List">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
+                        <BorderPane prefHeight="500.0" prefWidth="780.0">
+                           <top>
+                              <AnchorPane prefHeight="50.0" prefWidth="780.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="storageButton" layoutX="131.0" layoutY="11.0" text="Storage">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recipeSearchButton" layoutX="233.0" layoutY="11.0" text="Find Recipes">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="favoritesButton" layoutX="390.0" layoutY="11.0" text="Favorites">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="shoppingListButton" layoutX="500.0" layoutY="11.0" text="Shopping List">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </top>
+                           <left>
+                              <ScrollPane fx:id="contentScrollPane" fitToWidth="true" prefHeight="200.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+                           </left>
+                        </BorderPane>
                      </children>
-                  </AnchorPane>
-               </top>
-               <left>
-                  <ScrollPane fx:id="contentScrollPane" fitToWidth="true" prefHeight="200.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
-               </left>
-            </BorderPane>
+                  </StackPane>
+               </children>
+            </AnchorPane>
          </children>
       </StackPane>
    </children>

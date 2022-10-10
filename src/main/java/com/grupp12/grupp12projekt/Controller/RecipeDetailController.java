@@ -47,7 +47,7 @@ public class RecipeDetailController implements IController {
     }
 
     public void onClickCloseButton(Event event) {
-        //close recipeDetail
+        //navigationContoller.closeDetailView();
     }
 
 }
