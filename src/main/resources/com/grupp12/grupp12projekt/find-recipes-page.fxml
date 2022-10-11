@@ -32,10 +32,10 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -48,17 +48,13 @@
       <items>
         <AnchorPane prefHeight="450.0" prefWidth="315.0">
           <children>
+                  <ComboBox fx:id="searchComboBox" editable="true" layoutX="14.0" layoutY="64.0" onKeyPressed="#buttonPressed" prefHeight="30.0" prefWidth="185.0" promptText="Search..." AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="50.0" />
             <Label layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Filter" textAlignment="CENTER" wrapText="false" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
               <font>
                 <Font size="20.0" fx:id="x1" />
               </font>
             </Label>
-                  <TextField fx:id="searchField" layoutX="20.0" layoutY="67.0" prefHeight="30.0" prefWidth="361.0" promptText="Sök..." AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <ImageView fx:id="searchButton" fitHeight="30.0" fitWidth="30.0" layoutX="200.0" layoutY="70.0" onMouseClicked="#onSearchButtonClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.333333333333343">
+                  <ImageView fx:id="searchButton" fitHeight="25.0" fitWidth="25.0" layoutX="180.0" layoutY="64.0" onMouseClicked="#onSearchButtonClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="53.0">
                      <image>
                         <Image url="@Icons/search_FILL0_wght400_GRAD0_opsz48.png" />
                      </image>
@@ -67,7 +63,7 @@
         </AnchorPane>
       <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="450.0" prefWidth="457.0">
         <children>
-          <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Search results" textAlignment="CENTER" wrapText="false" />
+          <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Search results" textAlignment="CENTER" wrapText="false" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
               <ScrollPane layoutX="99.0" layoutY="50.0" prefHeight="400.0" prefWidth="516.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
         </children>
       </AnchorPane>

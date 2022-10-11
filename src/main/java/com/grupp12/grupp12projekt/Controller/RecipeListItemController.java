@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeListItemController extends AnchorPane implements IController{
+public class RecipeListItemController extends AnchorPane implements IController {
     Recipe recipe;
     Storage storage;
     RecipeSearch recipeSearch;
@@ -24,9 +24,6 @@ public class RecipeListItemController extends AnchorPane implements IController{
     List<Recipe> recipes;
 
     Ingredient ingredient;
-
-
-
 
 
     @FXML
@@ -56,17 +53,16 @@ public class RecipeListItemController extends AnchorPane implements IController{
 
     }
 
-    public void setUpRecipes(){
-        for(Recipe rec : recipes){
+    public void setUpRecipes() {
+        for (Recipe rec : recipes) {
             AnchorPane ap = new AnchorPane(new RecipeListItemController(rec, storage, recipeSearch));
             recipeName.setText(rec.getName());
             recipeIngredientPercentageMessage.setText("Du har " + recipeSearch.getMatchingPercentage(storage, rec) + "% av ingredienserna.");
-            percentageBar.setProgress((recipeSearch.getMatchingPercentage(storage, rec)/100));
+            percentageBar.setProgress((recipeSearch.getMatchingPercentage(storage, rec) / 100));
 
         }
 
     }
-
 
 
     public void initialize() {
@@ -74,9 +70,7 @@ public class RecipeListItemController extends AnchorPane implements IController{
         setUpRecipes();
 
 
-
     }
-
 
 
 }
