@@ -1,6 +1,5 @@
 package com.grupp12.grupp12projekt.Controller;
 
-import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.RecipeSearch;
@@ -13,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeListItemController extends AnchorPane implements IController {

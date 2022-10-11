@@ -1,4 +1,7 @@
-import com.grupp12.grupp12projekt.backend.*;
+package com.Backend;
+
+import com.grupp12.grupp12projekt.backend.Ingredient;
+import com.grupp12.grupp12projekt.backend.Recipe;
 import org.junit.Test;
 
 import java.util.ArrayList;

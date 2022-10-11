@@ -1,7 +1,6 @@
 package com.grupp12.grupp12projekt.Controller;
 
 import com.grupp12.grupp12projekt.Model;
-import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -12,7 +11,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
-import java.util.List;
 
 public class RecipeDetailController implements IController {
     private Model model;

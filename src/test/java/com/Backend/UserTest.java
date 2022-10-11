@@ -1,15 +1,17 @@
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.User;
-import com.grupp12.grupp12projekt.backend.dataAccess.JsonDBUserDataAccess;
+import com.grupp12.grupp12projekt.backend.dataAccess.UserJsonDA;
 import com.grupp12.grupp12projekt.backend.dataAccess.IDataAccess;
 import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Long.parseLong;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     User myUser = new User();
@@ -42,7 +44,7 @@ public class UserTest {
 
     @Test
     public void getUser() {
-        IDataAccess<User> userDataAccess = new JsonDBUserDataAccess();
+        IDataAccess<User> userDataAccess = new UserJsonDA();
         User userToAdd = new User();
         userToAdd.setId(1);
         userToAdd.setUsername("TestUser");
@@ -51,13 +53,13 @@ public class UserTest {
         ArrayList<Recipe> favorites = new ArrayList<Recipe>();
         userToAdd.setFavorites(favorites);
         try {
-            if (userDataAccess.getByID(userToAdd.getId()) == null) {
+            if (userDataAccess.getById(userToAdd.getId()) == null) {
                 userDataAccess.add(userToAdd);
             }
         } catch (Exception e) {
             userDataAccess.add(userToAdd);
         }
-        User userToFind = userDataAccess.getByID(1);
+        User userToFind = userDataAccess.getById(1);
         assertEquals("TestUser", userToFind.getUsername());
     }
 

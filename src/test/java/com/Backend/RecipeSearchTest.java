@@ -1,9 +1,10 @@
 import com.grupp12.grupp12projekt.backend.*;
+import com.grupp12.grupp12projekt.backend.Ingredient;
+import com.grupp12.grupp12projekt.backend.Recipe;
+import com.grupp12.grupp12projekt.backend.Storage;
 import org.junit.Test;
 
 
-import javax.xml.crypto.Data;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,9 +126,9 @@ public class RecipeSearchTest {
         boolean containsPancakes = false;
         for (Recipe recipe :
                 filteredRecipes) {
-            if(recipe.getID() == stickBread.getID())
+            if(recipe.getId() == stickBread.getId())
                 containsStickBread = true;
-            if(recipe.getID() == pancakes.getID())
+            if(recipe.getId() == pancakes.getId())
                 containsPancakes = true;
         }
 

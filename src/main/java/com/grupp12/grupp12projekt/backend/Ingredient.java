@@ -1,19 +1,20 @@
 package com.grupp12.grupp12projekt.backend;
 
+import io.jsondb.annotation.Document;
+import io.jsondb.annotation.Id;
+
+@Document(collection = "ingredients", schemaVersion = "1.0")
 public class Ingredient {
-    private int ID;
+    @Id
+    private int id;
     private String name;
 
-    public Ingredient(int ID, String name){
-        this.ID = ID;
-        this.name = name;
-    }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int ID) {
+        this.id = id;
     }
     public String getName() {
         return name;
