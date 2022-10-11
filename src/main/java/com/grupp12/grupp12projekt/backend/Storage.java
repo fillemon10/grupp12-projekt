@@ -3,12 +3,12 @@ package com.grupp12.grupp12projekt.backend;
 import java.util.*;
 
 public class Storage {
-    private int ID;
+    private int id;
     private int storageCode;
     private List<Ingredient> ingredients;
 
-    public Storage(int ID, int storageCode, List<Ingredient> ingredients) {
-        this.ID = ID;
+    public Storage(int id, int storageCode, List<Ingredient> ingredients) {
+        this.id = id;
         this.storageCode = storageCode;
         this.ingredients = ingredients;
     }
