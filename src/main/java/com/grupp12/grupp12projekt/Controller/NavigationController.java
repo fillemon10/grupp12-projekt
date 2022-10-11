@@ -60,6 +60,7 @@ public class NavigationController implements IController, Initializable {
     @FXML
     private void closeDetailView(Event event){
         lightBox.toBack();
+        lightBox.setVisible(false);
     }
 
     private void setRecipeSearchPage() {
