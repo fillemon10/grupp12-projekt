@@ -1,15 +1,14 @@
+package com.Backend;
+
 import com.grupp12.grupp12projekt.backend.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 import javax.xml.crypto.Data;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RecipeSearchTest {
     RecipeSearch recipeSearch = new RecipeSearch();

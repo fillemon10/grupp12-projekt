@@ -10,10 +10,6 @@ import static org.junit.Assert.assertEquals;
 public class Model implements Observable {
     private User currentUser;
 
-    public Storage getStorage() {
-        return storage;
-    }
-
     private Storage storage;
     private static RecipeSearch recipeSearch;
     private static Model instance;
@@ -30,7 +26,7 @@ public class Model implements Observable {
     private Model() {
         //In order to test GUI before real database is connected
         makeDefaultDatabase();
-        this.storage = new Storage(1,1, new ArrayList<Ingredient>());
+
         if (recipeSearch == null)
             recipeSearch = new RecipeSearch();
     }
@@ -43,11 +39,9 @@ public class Model implements Observable {
         this.storage = storage;
     }
 
-    public List<Ingredient> getStorageContent(){
-        return this.storage.getContents();
+    public Storage getStorage() {
+        return storage;
     }
-
-
     public void setRecipeSearch(RecipeSearch recipeSearch) {
         this.recipeSearch = recipeSearch;
     }
@@ -57,7 +51,46 @@ public class Model implements Observable {
     }
 
     public double getMatchingPercentage(Recipe recipe) {
-        return recipeSearch.getMatchingPercentage(storage, recipe);
+        Ingredient butter = new Ingredient(1, "Butter");
+        Ingredient eggs = new Ingredient(6, "Eggs");
+        List<Ingredient> storageIngredients = new ArrayList<>();
+        storageIngredients.add(butter);
+        storageIngredients.add(eggs);
+        Storage storage1 = new Storage(1, 2, storageIngredients);
+
+
+        return recipeSearch.getMatchingPercentage(storage1, recipe);
+    }
+
+    public List<Recipe> getRecipes() {
+        Ingredient butter = new Ingredient(1, "Butter");
+        Ingredient salt = new Ingredient(3, "Salt");
+        Ingredient sugar = new Ingredient(4, "Sugar");
+        Ingredient flour = new Ingredient(5, "Flour");
+        Ingredient eggs = new Ingredient(6, "Eggs");
+        Ingredient water = new Ingredient(0, "Water");
+        Ingredient bakingSoda = new Ingredient(9, "Baking soda");
+        List<Ingredient> ingredienser1 = new ArrayList<>();
+        List<Ingredient> ingredienser2 = new ArrayList<>();
+        ingredienser1.add(butter);
+        ingredienser1.add(salt);
+        ingredienser1.add(flour);
+        ingredienser1.add(eggs);
+        ingredienser2.add(butter);
+        ingredienser2.add(sugar);
+        ingredienser2.add(water);
+        ingredienser2.add(bakingSoda);
+
+        List<Recipe> receptLista = new ArrayList<>();
+        Recipe recept1 = new Recipe(1, "recept1", ingredienser1,"7");
+        Recipe recept2 = new Recipe(2, "recept2", ingredienser2,"6");
+        Recipe recept3 = new Recipe(1, "recept3", ingredienser1,"8");
+        receptLista.add(recept1);
+        receptLista.add(recept2);
+        receptLista.add(recept3);
+
+
+        return receptLista;
     }
 
     public List<Ingredient> findIngredients(String s) {
