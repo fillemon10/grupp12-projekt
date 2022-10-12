@@ -33,6 +33,7 @@ public class FindRecipesController extends VBox implements IController, Observer
     @FXML
     private FlowPane recipeCardFlowPane;
 
+    @FXML
     private ComboBox<String> searchComboBox;
 
     private static FindRecipesController instance;
@@ -146,7 +147,6 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     @Override
     public void onNotify(Object observable) {
-
     }
 
 }
