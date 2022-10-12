@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.Controller.RecipeListItemController">
+<AnchorPane prefHeight="400.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="90.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="135.0" layoutY="254.0" text="Receptnamn">
+      <Label fx:id="recipeName" layoutX="135.0" layoutY="254.0" text="Receptnamn">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ProgressBar layoutX="91.0" layoutY="345.0" prefWidth="200.0" progress="0.78" />
-      <Label layoutX="112.0" layoutY="308.0" text="Du har 75% av ingredienserna">
+      <ProgressBar fx:id="percentageBar" layoutX="91.0" layoutY="345.0" prefWidth="200.0" progress="0.78" />
+      <Label fx:id="recipeIngredientPercentageMessage" layoutX="112.0" layoutY="308.0" text="Du har 75% av ingredienserna">
          <font>
             <Font size="13.0" />
          </font>
