@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -48,6 +47,7 @@
                   <ScrollPane fx:id="contentScrollPane" fitToWidth="true" prefHeight="200.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
+            <AnchorPane fx:id="logInPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" />
          </children>
       </StackPane>
    </children>

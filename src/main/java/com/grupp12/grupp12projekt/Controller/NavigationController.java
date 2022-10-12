@@ -28,6 +28,8 @@ public class NavigationController implements IController, Initializable {
     private Label shoppingListButton;
     @FXML
     private AnchorPane lightBox;
+    @FXML
+    private AnchorPane logInPane;
 
     private NavigationController() {
         model = Model.getInstance();
@@ -44,6 +46,9 @@ public class NavigationController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
+        logInPane.getChildren().add();
+
+
         //setStoragePage();
     }
 
