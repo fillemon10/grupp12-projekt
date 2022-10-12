@@ -147,7 +147,6 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     @Override
     public void onNotify(Object observable) {
-
     }
 
 }
