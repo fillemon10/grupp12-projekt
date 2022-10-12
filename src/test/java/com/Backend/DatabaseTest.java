@@ -1,5 +1,7 @@
+package com.Backend;
+
 import com.grupp12.grupp12projekt.backend.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

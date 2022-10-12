@@ -48,7 +48,7 @@
       <items>
         <AnchorPane prefHeight="450.0" prefWidth="315.0">
           <children>
-                  <ComboBox fx:id="searchComboBox" editable="true" layoutX="14.0" layoutY="64.0" onKeyPressed="#buttonPressed" prefHeight="30.0" prefWidth="185.0" promptText="Search..." AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="50.0" />
+                  <ComboBox fx:id="searchComboBox" editable="true" layoutX="14.0" layoutY="64.0" prefHeight="30.0" prefWidth="185.0" promptText="Search..." AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="50.0" />
             <Label layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Filter" textAlignment="CENTER" wrapText="false" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
               <font>
                 <Font size="20.0" fx:id="x1" />

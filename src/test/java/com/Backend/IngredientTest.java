@@ -1,6 +1,8 @@
+package com.Backend;
+
 import com.grupp12.grupp12projekt.backend.Ingredient;
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class IngredientTest {
