@@ -9,6 +9,11 @@ import static org.junit.Assert.assertEquals;
 
 public class Model implements Observable {
     private User currentUser;
+
+    public Storage getStorage() {
+        return storage;
+    }
+
     private Storage storage;
     private static RecipeSearch recipeSearch;
     private static Model instance;
@@ -25,7 +30,7 @@ public class Model implements Observable {
     private Model() {
         //In order to test GUI before real database is connected
         makeDefaultDatabase();
-
+        this.storage = new Storage(1,1, new ArrayList<Ingredient>());
         if (recipeSearch == null)
             recipeSearch = new RecipeSearch();
     }
@@ -37,6 +42,11 @@ public class Model implements Observable {
     public void setStorage(Storage storage) {
         this.storage = storage;
     }
+
+    public List<Ingredient> getStorageContent(){
+        return this.storage.getContents();
+    }
+
 
     public void setRecipeSearch(RecipeSearch recipeSearch) {
         this.recipeSearch = recipeSearch;

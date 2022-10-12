@@ -11,6 +11,7 @@ public class Storage {
         this.ID = ID;
         this.storageCode = storageCode;
         this.ingredients = ingredients;
+        this.addIngredient(new Ingredient(1, "fisk"));
     }
 
     public void addIngredient(Ingredient ingredient) {
