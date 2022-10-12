@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.LogIn">
+<AnchorPane prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.Controller.LogInController">
    <children>
       <StackPane prefHeight="500.0" prefWidth="780.0">
          <children>
@@ -21,7 +21,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="441.0" layoutY="17.0" text="Login">
+                  <Label layoutX="441.0" layoutY="17.0" onMouseClicked="#clickedOnLogInPage" text="Login">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -46,9 +46,9 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="signIn" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
+            <AnchorPane fx:id="logIn" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Label layoutX="283.0" layoutY="17.0" text="Sign up">
+                  <Label layoutX="283.0" layoutY="17.0" onMouseClicked="#clickedOnSignUpPage" text="Sign up">
                      <font>
                         <Font size="20.0" />
                      </font>

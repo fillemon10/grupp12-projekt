@@ -1,14 +1,18 @@
 package com.grupp12.grupp12projekt.Controller;
 
+import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -46,10 +50,20 @@ public class NavigationController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
-        logInPane.getChildren().add();
+        setLogInPage();
 
 
         //setStoragePage();
+    }
+
+    private void setLogInPage() {
+        AnchorPane pane = null;
+        try {
+            pane = FXMLLoader.load(App2good2go.class.getResource("logIn.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        logInPane.getChildren().setAll(pane);
     }
 
     @FXML
