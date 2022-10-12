@@ -33,7 +33,7 @@ public class Recipe {
         //this.time = time
     }
 
-    public List<Ingredient> getContents(){
+    public List<Ingredient> getIngredients(){
         return ingredients;
     }
 
