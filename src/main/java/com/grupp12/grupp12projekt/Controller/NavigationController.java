@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
 import java.net.URL;
@@ -28,6 +29,8 @@ public class NavigationController implements IController, Initializable {
     private Label favoritesButton;
     @FXML
     private Label shoppingListButton;
+    @FXML
+    private AnchorPane lightBox;
 
     private NavigationController() {
         model = Model.getInstance();
@@ -57,6 +60,12 @@ public class NavigationController implements IController, Initializable {
         setRecipeSearchPage();
     }
 
+    @FXML
+    private void closeDetailView(Event event){
+        lightBox.toBack();
+        lightBox.setVisible(false);
+    }
+
     private void setRecipeSearchPage() {
         FindRecipesController fcController = FindRecipesController.getInstance();
         fcController.initialize();
@@ -76,4 +85,6 @@ public class NavigationController implements IController, Initializable {
         Region r = StorageController.getInstance();
         contentScrollPane.setContent(r);
     }
+
+
 }

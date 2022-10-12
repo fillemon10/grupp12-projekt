@@ -2,10 +2,9 @@ package com.Backend;
 
 import com.grupp12.grupp12projekt.backend.Authentication;
 import com.grupp12.grupp12projekt.backend.User;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
 
 public class AuthenticationTest {
     @Test

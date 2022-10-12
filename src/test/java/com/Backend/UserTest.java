@@ -1,15 +1,17 @@
+package com.Backend;
+
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.User;
 import com.grupp12.grupp12projekt.backend.dataAccess.JsonDBUserDataAccess;
 import com.grupp12.grupp12projekt.backend.dataAccess.IDataAccess;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Long.parseLong;
-import static org.junit.Assert.*;
 
 public class UserTest {
     User myUser = new User();
