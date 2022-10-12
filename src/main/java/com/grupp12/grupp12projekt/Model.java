@@ -42,6 +42,10 @@ public class Model implements Observable {
     public Storage getStorage() {
         return storage;
     }
+
+    public List<Ingredient> getStorageContent(){
+        return this.storage.getContents();
+    }
     public void setRecipeSearch(RecipeSearch recipeSearch) {
         this.recipeSearch = recipeSearch;
     }
