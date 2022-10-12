@@ -68,7 +68,7 @@ public class NavigationController implements IController, Initializable {
 
     private void setRecipeSearchPage() {
         FindRecipesController fcController = FindRecipesController.getInstance();
-        fcController.initialize();
+        //fcController.initialize();
         Region r = fcController;
         contentScrollPane.setContent(r);
 
