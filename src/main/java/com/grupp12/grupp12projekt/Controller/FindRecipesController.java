@@ -4,16 +4,22 @@ import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.Observer;
 import com.grupp12.grupp12projekt.backend.Ingredient;
+import com.grupp12.grupp12projekt.backend.Recipe;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.net.URL;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +31,8 @@ public class FindRecipesController extends VBox implements IController, Observer
     @FXML
     private ImageView searchButton;
     @FXML
+    private FlowPane recipeCardFlowPane;
+
     private ComboBox<String> searchComboBox;
 
     private static FindRecipesController instance;
@@ -33,6 +41,24 @@ public class FindRecipesController extends VBox implements IController, Observer
         if (instance == null) instance = new FindRecipesController();
 
         return instance;
+    }
+
+    public void setUpRecipes(Model model){
+        this.model = model;
+        URL receptkorturl = App2good2go.class.getResource("recipelistitem.fxml");
+        recipeCardFlowPane.getChildren().clear();
+        for(Recipe rec : model.getRecipes()){
+           RecipeListItemController recipelistitemcontroller = new RecipeListItemController(rec, model.getStorage());
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader(receptkorturl);
+                fxmlLoader.setController(recipelistitemcontroller);
+                AnchorPane cardAnchor = fxmlLoader.load();
+                recipeCardFlowPane.getChildren().add(cardAnchor);
+            }
+            catch (IOException exception) {
+                throw new RuntimeException(exception);
+            }
+    }
     }
 
     private FindRecipesController() {
@@ -61,6 +87,7 @@ public class FindRecipesController extends VBox implements IController, Observer
 
         searchComboBox.setOnAction(e -> searchComboAction());
         //searchComboBox.addEventFilter(Event.ANY, e -> System.out.println(e));
+        setUpRecipes(this.model);
     }
 
     @FXML

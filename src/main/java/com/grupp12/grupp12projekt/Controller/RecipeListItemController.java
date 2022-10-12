@@ -1,5 +1,6 @@
 package com.grupp12.grupp12projekt.Controller;
 
+import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
@@ -13,17 +14,28 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeListItemController extends AnchorPane implements IController {
-    Recipe recipe;
-    Storage storage;
-    RecipeSearch recipeSearch;
+public class RecipeListItemController extends AnchorPane implements IController{
 
-    List<Recipe> recipes;
+    private Model model = Model.getInstance();
+    private Recipe recipe;
+    private Storage storage;
+    private RecipeSearch recipeSearch;
 
-    Ingredient ingredient;
+
+
+    private List<Recipe> recipes;
+
+    private Ingredient ingredient;
+
+
+
+
+
 
 
     @FXML
@@ -36,41 +48,38 @@ public class RecipeListItemController extends AnchorPane implements IController 
     ProgressBar percentageBar;
 
 
-    public RecipeListItemController(Recipe recipe, Storage storage, RecipeSearch recipeSearch) {
+    public RecipeListItemController(Recipe recipe, Storage storage) {
         this.recipe = recipe;
         this.storage = storage;
-        this.recipeSearch = recipeSearch;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("src/main/resources/com/grupp12/grupp12projekt/recipelistitem.fxml"));
-        fxmlLoader.setRoot(this);
+/*
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipelistitem.fxml"));
         fxmlLoader.setController(this);
 
         try {
             fxmlLoader.load();
+
         } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }
-
-    }
-
-    public void setUpRecipes() {
-        for (Recipe rec : recipes) {
-            AnchorPane ap = new AnchorPane(new RecipeListItemController(rec, storage, recipeSearch));
-            recipeName.setText(rec.getName());
-            recipeIngredientPercentageMessage.setText("Du har " + recipeSearch.getMatchingPercentage(storage, rec) + "% av ingredienserna.");
-            percentageBar.setProgress((recipeSearch.getMatchingPercentage(storage, rec) / 100));
-
-        }
+        }*/
 
     }
 
 
+
+
+
+    @FXML
     public void initialize() {
 
-        setUpRecipes();
+        this.recipeName.setText(this.recipe.getName());
+        this.recipeIngredientPercentageMessage.setText("Du har " + model.getMatchingPercentage(recipe)*100 + "% av ingredienserna");
+        this.percentageBar.setProgress(model.getMatchingPercentage(recipe));
+
 
 
     }
+
 
 
 }

@@ -18,6 +18,9 @@ public class NavigationController implements IController, Initializable {
 
     @FXML
     private ScrollPane contentScrollPane;
+
+    @FXML
+    private ScrollPane recipesPane;
     @FXML
     private Label storageButton;
     @FXML
@@ -64,8 +67,18 @@ public class NavigationController implements IController, Initializable {
     }
 
     private void setRecipeSearchPage() {
-        Region r = FindRecipesController.getInstance();
+        FindRecipesController fcController = FindRecipesController.getInstance();
+        fcController.initialize();
+        Region r = fcController;
         contentScrollPane.setContent(r);
+
+
+
+
+
+
+
+
     }
 
     private void setStoragePage() {
