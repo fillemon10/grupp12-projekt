@@ -1,13 +1,17 @@
 package com.grupp12.grupp12projekt.backend;
 
+import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
+import com.grupp12.grupp12projekt.backend.dataAccess.RecipeIngredientJunction;
+
 import java.util.*;
 
 public class RecipeSearch  {
 
 
+    private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
 
-    public ArrayList<Recipe> prioritize(){
-         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+    public List<Recipe> prioritize(){
+         List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
          Collections.sort(allRecipes, new Comparator<Recipe>() {
             @Override
             public int compare(Recipe c1, Recipe c2) {
@@ -20,24 +24,24 @@ public class RecipeSearch  {
          return allRecipes;
     }
 
-    public List<Ingredient> findIngredients(String s) {
-        String lowS = s.toLowerCase();
-        List<Ingredient> result = new ArrayList();
-        Iterator var4 = Database.getInstance().getAllIngredients().iterator();
-
-        while (var4.hasNext()) {
-            Ingredient i = (Ingredient) var4.next();
-            String productName = i.getName().toLowerCase();
-            if (productName.indexOf(lowS) > -1) {
-                result.add(i);
-            }
-        }
-
-        return result;
-    }
+//    public List<Ingredient> findIngredients(String s) {
+//        String lowS = s.toLowerCase();
+//        List<Ingredient> result = new ArrayList();
+//        Iterator var4 = Database.getInstance().getAllIngredients().iterator();
+//
+//        while (var4.hasNext()) {
+//            Ingredient i = (Ingredient) var4.next();
+//            String productName = i.getName().toLowerCase();
+//            if (productName.indexOf(lowS) > -1) {
+//                result.add(i);
+//            }
+//        }
+//
+//        return result;
+//    }
 
     public List<Recipe> filterByIngredient(Ingredient ingredient) {
-        List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+        List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
         List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
@@ -93,5 +97,16 @@ public class RecipeSearch  {
             }
         }
         return nonMatchingIngredients;
+    }
+
+    public Recipe setIngredientsFromDatabase(Recipe recipe){
+        List<RecipeIngredientJunction> ingredientsFromDatabase;
+        ingredientsFromDatabase = dataAccessFacade.getAllByRecipeId(recipe.getId());
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (RecipeIngredientJunction recipeIngredientJunction: ingredientsFromDatabase){
+            ingredients.add(dataAccessFacade.getIngredientById(recipeIngredientJunction.getI()));
+        }
+        recipe.setIngredients(ingredients);
+        return recipe;
     }
 }

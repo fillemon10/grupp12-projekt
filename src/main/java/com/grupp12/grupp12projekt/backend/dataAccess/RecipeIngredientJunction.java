@@ -21,5 +21,17 @@ public class RecipeIngredientJunction {
     public void setR(int r) {
         this.r = r;
     }
+    public int getIngredientId() {
+        return i;
+    }
+    public int getRecipeId() {
+        return r;
+    }
+    public void setIngredientId(int i) {
+        this.i = i;
+    }
+    public void setRecipeId(int r) {
+        this.r = r;
+    }
 
 }

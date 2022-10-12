@@ -9,8 +9,6 @@ import com.grupp12.grupp12projekt.backend.User;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class Model implements Observable {
     private User currentUser;
     private Storage storage;
@@ -54,15 +52,17 @@ public class Model implements Observable {
         return recipeSearch.getMatchingPercentage(storage, recipe);
     }
 
-    public List<Ingredient> findIngredients(String s) {
-        return recipeSearch.findIngredients(s);
-    }
+//    public List<Ingredient> findIngredients(String s) {
+//        return recipeSearch.findIngredients(s);
+//    }
 
     public void filterByIngredient(Ingredient ingredient) {
         //TODO make methods void for Observer pattern
         recipes = recipeSearch.filterByIngredient(ingredient);
         notifyObservers();
     }
+
+
 
     @Override
     public void addObserver(Observer o) {

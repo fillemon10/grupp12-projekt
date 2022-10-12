@@ -22,21 +22,6 @@ public class Recipe {
         this.matchingPercentage = matchingPercentage;
     }
 
-
-
-    public Recipe(int id, String name, List<Ingredient> ingredients, String rating) {
-        this.id = id;
-        this.name = name;
-        this.ingredients = ingredients;
-        this.rating = rating;
-
-
-
-        //this.img = img
-        //this.instructions = instructions
-        //this.time = time
-    }
-
     public List<Ingredient> getContents(){
         return ingredients;
     }

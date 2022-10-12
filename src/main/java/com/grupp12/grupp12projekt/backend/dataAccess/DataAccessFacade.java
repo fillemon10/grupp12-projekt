@@ -1,5 +1,7 @@
 package com.grupp12.grupp12projekt.backend.dataAccess;
 
+import com.grupp12.grupp12projekt.backend.Ingredient;
+import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.List;
@@ -51,4 +53,13 @@ public class DataAccessFacade {
     public List<RecipeIngredientJunction> getAllByIngredientId(int ingredientId) {
         return recipeIngredientJunctionDataAccess.getByIngredientId(ingredientId);
     }
+
+    public Ingredient getIngredientById(int id) {
+        return ingredientDataAccess.getById(id);
+    }
+
+    public List<Recipe> getAllRecipes() {
+        return recipeDataAccess.getAll();
+    }
+
 }

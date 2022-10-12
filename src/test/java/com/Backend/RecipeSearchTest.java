@@ -2,7 +2,8 @@ import com.grupp12.grupp12projekt.backend.*;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.Storage;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 
 import java.util.ArrayList;
@@ -33,6 +34,14 @@ public class RecipeSearchTest {
         ingredients.add(flour);
         ingredients.add(eggs);
         return new Recipe(123, "Pancakes", ingredients, "7");
+    }
+
+    @Test
+    public void getIngredientsFromDatabaseTest(){
+        Recipe turkey = new Recipe();
+        RecipeSearch recipeSearch = new RecipeSearch();
+        recipeSearch.setIngredientsFromDatabase(turkey);
+        assertTrue(turkey.getIngredients().size() > 0);
     }
 
     Recipe makeStickBread() {
@@ -102,6 +111,19 @@ public class RecipeSearchTest {
         ingredients3.add(milk);
         assertEquals(recipeSearch.getMatchingIngredients(recipe, storage), ingredients3);
 
+    }
+
+    @Test
+    public void getIngredientsToRecipeTest() {
+        Recipe recipe = makePancakes();
+        List<Ingredient> ingredients = new ArrayList<Ingredient>();
+        ingredients.add(butter);
+        ingredients.add(milk);
+        ingredients.add(salt);
+        ingredients.add(sugar);
+        ingredients.add(flour);
+        ingredients.add(eggs);
+        assertEquals(recipeSearch.getIngredientsToRecipe(recipe), ingredients);
     }
 
 /*    @Test

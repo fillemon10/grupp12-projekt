@@ -1,11 +1,15 @@
+package com.Backend;
 
 import com.grupp12.grupp12projekt.backend.Ingredient;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class IngredientTest {
-    Ingredient ingredient = new Ingredient(123, "Flour");
+    Ingredient ingredient = new Ingredient();
+    ingredient.setName("Test");
+    ingredient.setId(123);
 
     @Test
     public void getNameTest() {
@@ -14,6 +18,6 @@ public class IngredientTest {
 
     @Test
     public void getIDTest() {
-        assertEquals(ingredient.getID(), 123);
+        assertEquals(ingredient.getId(), 123);
     }
 }
