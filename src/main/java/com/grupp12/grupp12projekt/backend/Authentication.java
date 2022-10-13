@@ -12,4 +12,8 @@ public class Authentication {
         }
         return null;
     }
+
+    public void registerUser(String username, String password) {
+        dataAccessFacade.addUserToDatabase(username, password);
+    }
 }

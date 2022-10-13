@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RecipeJsonDA implements IDataAccess<Recipe> {
 
-    private JsonDBTemplate connection = new ConnectionJson().getConnection();
+    private JsonDBTemplate connection = ConnectionJson.getConnection();
     private List<User> recipes = new ArrayList<>();
     @Override
     public Recipe getById(long id) {

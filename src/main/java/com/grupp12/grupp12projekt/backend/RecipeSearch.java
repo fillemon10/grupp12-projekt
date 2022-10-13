@@ -3,7 +3,10 @@ package com.grupp12.grupp12projekt.backend;
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
 import com.grupp12.grupp12projekt.backend.dataAccess.RecipeIngredientJunction;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class RecipeSearch  {
 
@@ -24,21 +27,16 @@ public class RecipeSearch  {
          return allRecipes;
     }
 
-//    public List<Ingredient> findIngredients(String s) {
-//        String lowS = s.toLowerCase();
-//        List<Ingredient> result = new ArrayList();
-//        Iterator var4 = Database.getInstance().getAllIngredients().iterator();
-//
-//        while (var4.hasNext()) {
-//            Ingredient i = (Ingredient) var4.next();
-//            String productName = i.getName().toLowerCase();
-//            if (productName.indexOf(lowS) > -1) {
-//                result.add(i);
-//            }
-//        }
-//
-//        return result;
-//    }
+    public List<Ingredient> findIngredients(String search){
+        List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
+        List<Ingredient> foundIngredients = new ArrayList<>();
+        for (Ingredient ingredient : allIngredients) {
+            if (ingredient.getName().toLowerCase().contains(search.toLowerCase())) {
+                foundIngredients.add(ingredient);
+            }
+        }
+        return foundIngredients;
+    }
 
     public List<Recipe> filterByIngredient(Ingredient ingredient) {
         List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
@@ -107,6 +105,11 @@ public class RecipeSearch  {
             ingredients.add(dataAccessFacade.getIngredientById(recipeIngredientJunction.getI()));
         }
         recipe.setIngredients(ingredients);
+        return recipe;
+    }
+
+    public Recipe getRecipeById(int id){
+        Recipe recipe = dataAccessFacade.getRecipeById(id);
         return recipe;
     }
 }

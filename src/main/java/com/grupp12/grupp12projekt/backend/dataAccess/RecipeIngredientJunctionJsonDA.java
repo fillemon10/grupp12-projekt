@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeIngredientJunctionJsonDA implements IDataAccess<RecipeIngredientJunction> {
-    private JsonDBTemplate connection = new ConnectionJson().getConnection();
+    private JsonDBTemplate connection = ConnectionJson.getConnection();
     private List<RecipeIngredientJunction> junctionList = new ArrayList<>();
     @Override
     public RecipeIngredientJunction getById(long id) {

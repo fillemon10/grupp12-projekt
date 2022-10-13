@@ -68,7 +68,7 @@ public class FindRecipesController extends VBox implements IController, Observer
         String searchFieldText = "" + searchComboBox.getValue();
 /*        if(searchComboBox.getValue() == null)
             searchFieldText = "er";*/
-        List<Ingredient> ingredients = model.;
+        List<Ingredient> ingredients = model.findIngredients(searchFieldText);
         populateSearchField(ingredients);
     }
 

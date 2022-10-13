@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UserJsonDA implements IDataAccess<User> {
 
-    private JsonDBTemplate connection = new ConnectionJson().getConnection();
+    private JsonDBTemplate connection = ConnectionJson.getConnection();
     private List<User> users = new ArrayList<>();
 
     @Override

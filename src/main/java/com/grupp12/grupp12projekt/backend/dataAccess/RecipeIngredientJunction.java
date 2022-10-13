@@ -6,6 +6,7 @@ import io.jsondb.annotation.Id;
 @Document(collection = "recipeIngredientJunction", schemaVersion = "1.0")
 public class RecipeIngredientJunction {
     @Id
+    private int id;
     private int r;
     private int i;
 
@@ -20,6 +21,12 @@ public class RecipeIngredientJunction {
     }
     public void setR(int r) {
         this.r = r;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
     }
     public int getIngredientId() {
         return i;
