@@ -53,7 +53,8 @@ public class NavigationController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
-        setLogInPage();
+        //setLogInPage();
+        logInPane.toBack();
 
     }
 
