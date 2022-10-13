@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.Controller.LogInController">
@@ -43,6 +44,7 @@
                         <Image url="@Icons/Buttonlogin.png" />
                      </image>
                   </ImageView>
+                  <Rectangle fill="#00000040" height="60.0" onMouseClicked="#clickedOnSignUpPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="signUp" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
@@ -75,6 +77,7 @@
                         <Image url="@Icons/Buttonsignup.png" />
                      </image>
                   </ImageView>
+                  <Rectangle fill="#00000040" height="60.0" layoutX="390.0" onMouseClicked="#clickedOnLogInPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" />
                </children>
             </AnchorPane>
          </children>
