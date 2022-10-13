@@ -53,8 +53,8 @@ public class NavigationController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
-        //setLogInPage();
-        logInPane.toBack();
+        setLogInPage();
+
 
     }
 
@@ -83,7 +83,7 @@ public class NavigationController implements IController, Initializable {
     }
 
     @FXML
-    private void closeDetailView(){
+    public void closeDetailView(){
         lightBox.toBack();
         lightBox.setVisible(false);
     }

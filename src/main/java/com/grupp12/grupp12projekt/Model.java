@@ -169,7 +169,7 @@ public class Model implements Observable {
     }
 
     public void createNewUser(String signUpUname, String signUpPword) {
-        //authentication.registerUser(signUpUname, signUpPword);
+        authentication.registerUser(signUpUname, signUpPword);
         logInUser(signUpUname, signUpPword);
     }
 

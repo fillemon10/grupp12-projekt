@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class RecipeDetailController implements IController {
+    private NavigationController navigationController;
     private Model model;
 
     @FXML
@@ -46,6 +47,7 @@ public class RecipeDetailController implements IController {
         }
 
         this.model = Model.getInstance();
+        this.navigationController = navigationController.getInstance();
 
         recipeName.setText(recipe.getName());
         amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getContents().size() + "ingredients.");
@@ -66,7 +68,7 @@ public class RecipeDetailController implements IController {
     }
 
     public void onClickCloseButton() {
-        //navigationContoller.closeDetailView();
+        navigationController.closeDetailView();
     }
 
 }
