@@ -52,8 +52,6 @@ public class NavigationController implements IController, Initializable {
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
         setLogInPage();
 
-
-        //setStoragePage();
     }
 
     private void setLogInPage() {
@@ -64,6 +62,10 @@ public class NavigationController implements IController, Initializable {
             e.printStackTrace();
         }
         logInPane.getChildren().setAll(pane);
+    }
+    public void logInOrSignUp(){
+        logInPane.toBack();
+        logInPane.setVisible(false);
     }
 
     @FXML

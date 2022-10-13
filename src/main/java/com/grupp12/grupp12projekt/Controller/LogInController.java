@@ -5,34 +5,51 @@ import com.grupp12.grupp12projekt.Model;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 public class LogInController extends AnchorPane {
 
-    public LogInController() {
+    @FXML
+    private AnchorPane logIn;
+    @FXML
+    private AnchorPane signUp;
+    @FXML
+    private TextField logInUname;
+    @FXML
+    private TextField logInPword;
+    @FXML
+    private TextField signUpUname;
+    @FXML
+    private TextField signUpPword;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("logIn.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
 
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+    private NavigationController navigationController;
+    private Model model;
+
+    public LogInController(){
+        navigationController= navigationController.getInstance();
+        model = model.getInstance();
     }
-@FXML
-    public void clickedOnSignUpPage(Event event){
 
+@FXML
+    public void clickedOnSignUpPage(){
+        signUp.toFront();
 }
     @FXML
-    public void clickedOnLogInPage(Event event){
-
+    public void clickedOnLogInPage(){
+        logIn.toFront();
     }
 @FXML
-    public void signUp(){}
+    public void clickedOnSignUp(){
+        model.createNewUser(signUpUname.getText(), signUpPword.getText());
+        navigationController.logInOrSignUp();
+}
     @FXML
-    public void logIn(){}
+    public void clickedOnLogIn(){
+        model.logInUser(logInUname.getText(), logInPword.getText());
+        navigationController.logInOrSignUp();
+    }
 }
