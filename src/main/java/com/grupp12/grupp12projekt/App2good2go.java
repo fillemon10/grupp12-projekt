@@ -1,6 +1,6 @@
 package com.grupp12.grupp12projekt;
 
-import com.grupp12.grupp12projekt.Controller.NavigationController;
+import com.grupp12.grupp12projekt.controllers.NavigationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.Controller;
+package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -43,8 +43,7 @@ public class NavigationController implements IController, Initializable {
     }
 
     public static NavigationController getInstance() {
-        if (instance == null)
-            instance = new NavigationController();
+        if (instance == null) instance = new NavigationController();
 
         return instance;
     }
@@ -55,7 +54,6 @@ public class NavigationController implements IController, Initializable {
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
         //setLogInPage();
         logInPane.toBack();
-
     }
 
     private void setLogInPage() {
@@ -67,7 +65,8 @@ public class NavigationController implements IController, Initializable {
         }
         logInPane.getChildren().setAll(pane);
     }
-    public void logInOrSignUp(){
+
+    public void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
     }
@@ -83,7 +82,7 @@ public class NavigationController implements IController, Initializable {
     }
 
     @FXML
-    private void closeDetailView(Event event){
+    private void closeDetailView(Event event) {
         lightBox.toBack();
         lightBox.setVisible(false);
     }

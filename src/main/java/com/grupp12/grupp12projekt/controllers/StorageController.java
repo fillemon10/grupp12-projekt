@@ -1,15 +1,13 @@
-package com.grupp12.grupp12projekt.Controller;
+package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
-import com.grupp12.grupp12projekt.backend.Recipe;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Region;
 
 import java.io.IOException;
 import java.net.URL;
