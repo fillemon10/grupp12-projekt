@@ -33,6 +33,7 @@ public class FindRecipesController extends VBox implements IController, Observer
     @FXML
     private FlowPane recipeCardFlowPane;
 
+    @FXML
     private ComboBox<String> searchComboBox;
 
     private static FindRecipesController instance;
@@ -121,11 +122,12 @@ public class FindRecipesController extends VBox implements IController, Observer
             searchComboBox.getItems().add(i.getName());
         }
 
+        searchComboBox.show();
         //Does not work for some reason
-        if (!filteredIngredients.isEmpty()) {
+/*        if (!filteredIngredients.isEmpty()) {
             String firstIngredient = filteredIngredients.get(0).getName();
-            searchComboBox.getEditor().setText(firstIngredient);
-        }
+            searchComboBox.getEditor().setText("Milk");
+        }*/
 
         //searchComboBox.setPromptText(filteredIngredients.get(0).getName());
         //searchComboBox.getSelectionModel().selectFirst();
@@ -145,7 +147,6 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     @Override
     public void onNotify(Object observable) {
-
     }
 
 }

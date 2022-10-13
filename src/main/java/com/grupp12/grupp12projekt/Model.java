@@ -18,6 +18,7 @@ public class Model implements Observable {
 
     private List<Recipe> recipes;
     private List<Observer> observers = new ArrayList<>();
+    private Authentication authentication;
 
     public static Model getInstance() {
         if (instance == null)
@@ -162,5 +163,14 @@ public class Model implements Observable {
         instance.addIngredient(eggs);
         instance.addIngredient(water);
         instance.addIngredient(bakingSoda);
+    }
+
+    public void createNewUser(String signUpUname, String signUpPword) {
+        //authentication.registerUser(signUpUname, signUpPword);
+        logInUser(signUpUname, signUpPword);
+    }
+
+    public void logInUser(String logInUname, String logInPword) {
+        authentication.loginUser(logInUname, logInPword);
     }
 }

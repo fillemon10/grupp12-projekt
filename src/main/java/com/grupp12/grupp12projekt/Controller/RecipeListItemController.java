@@ -76,8 +76,6 @@ public class RecipeListItemController extends AnchorPane implements IController{
         this.recipeIngredientPercentageMessage.setText("Du har " + model.getMatchingPercentage(recipe)*100 + "% av ingredienserna");
         this.percentageBar.setProgress(model.getMatchingPercentage(recipe));
 
-
-
     }
 
 
