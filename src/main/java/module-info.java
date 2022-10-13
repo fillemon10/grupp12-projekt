@@ -2,7 +2,6 @@ module com.grupp12.grupp12projekt {
     requires javafx.controls;
     requires javafx.fxml;
     requires junit;
-    requires org.testng;
     requires jsondb.core;
 
 
