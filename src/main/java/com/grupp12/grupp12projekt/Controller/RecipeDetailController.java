@@ -11,6 +11,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +20,7 @@ public class RecipeDetailController implements IController {
     private Model model;
 
     @FXML
-    private ScrollPane listOfIngredients;
+    private FlowPane listOfIngredients;
     @FXML
     private Label recipeName;
     @FXML
@@ -53,13 +54,18 @@ public class RecipeDetailController implements IController {
     }
 
     private void setListOfIngredients(Recipe recipe) {
-        for (Ingredient ingredient:recipe.getContents()) {
-            text = text.setText(ingredient.getName());
-            listOfIngredients.setContent(text);
+        listOfIngredients.getChildren().clear();
+        listOfIngredients.getChildren().add(new Label("what you have:"));
+        for (Ingredient ingredient: model.getMatchingIngredients(recipe)) {
+            listOfIngredients.getChildren().add(new Label(ingredient.getName()));
+        }
+        listOfIngredients.getChildren().add(new Label("what you DONT have:"));
+        for (Ingredient ingredient: model.getNonMatchingIngredients(recipe)) {
+            listOfIngredients.getChildren().add(new Label(ingredient.getName()));
         }
     }
 
-    public void onClickCloseButton(Event event) {
+    public void onClickCloseButton() {
         //navigationContoller.closeDetailView();
     }
 

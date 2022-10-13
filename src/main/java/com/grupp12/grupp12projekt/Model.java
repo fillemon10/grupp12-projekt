@@ -52,6 +52,9 @@ public class Model implements Observable {
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe){
+        return recipeSearch.getNonMatchingIngredients(recipe, this.storage);
+    }
 
     public double getMatchingPercentage(Recipe recipe) {
         Ingredient butter = new Ingredient(1, "Butter");
