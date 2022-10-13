@@ -4,9 +4,6 @@ import com.grupp12.grupp12projekt.backend.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
-import javax.xml.crypto.Data;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +69,7 @@ public class RecipeSearchTest {
         storageIngredients.add(flour);
         Storage storage = new Storage(1, 2, storageIngredients);
 
-        int expectedPercentage = 33;
+        double expectedPercentage = 1.0/3;
 
         assertEquals(recipeSearch.getMatchingPercentage(storage, recipe), expectedPercentage);
 

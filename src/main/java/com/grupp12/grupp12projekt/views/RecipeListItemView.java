@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.Views;
+package com.grupp12.grupp12projekt.views;
 
 
 
