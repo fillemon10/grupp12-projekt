@@ -10,13 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeListItemController extends AnchorPane implements IController{
@@ -25,6 +21,7 @@ public class RecipeListItemController extends AnchorPane implements IController{
     private Recipe recipe;
     private Storage storage;
     private RecipeSearch recipeSearch;
+
 
 
 
