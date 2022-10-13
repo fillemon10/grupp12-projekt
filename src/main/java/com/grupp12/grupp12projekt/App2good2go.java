@@ -21,7 +21,7 @@ public class App2good2go extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        App2good2go.launch();
     }
 }
 

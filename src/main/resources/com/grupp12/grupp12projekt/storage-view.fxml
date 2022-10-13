@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="rootPane" prefHeight="450.0" prefWidth="780.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="rootPane" prefHeight="450.0" prefWidth="780.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.5" prefHeight="450.0" prefWidth="780.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <items>
@@ -16,9 +20,20 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <HBox layoutX="44.0" layoutY="58.0" prefHeight="100.0" prefWidth="281.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="191.0" text="My Storage" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="196.0" text="All products" />
+                     </children>
+                  </HBox>
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="960.0">
                <children>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+                     <content>
+                        <FlowPane fx:id="mystorgaeflowpane" prefHeight="388.0" prefWidth="370.0" />
+                     </content>
+                  </ScrollPane>
                   <SplitPane dividerPositions="0.5" prefHeight="50.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="982.0" prefWidth="247.0">
@@ -41,8 +56,8 @@
                         </AnchorPane>
                     </items>
                   </SplitPane>
-                <AnchorPane layoutY="98.0" minHeight="0.0" minWidth="0.0" prefHeight="891.0" prefWidth="960.0" />
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
         </items>
       </SplitPane>
    </children>

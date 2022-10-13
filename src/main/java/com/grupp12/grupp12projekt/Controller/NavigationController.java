@@ -53,7 +53,8 @@ public class NavigationController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
-        setLogInPage();
+        //setLogInPage();
+        logInPane.toBack();
 
     }
 
@@ -88,17 +89,8 @@ public class NavigationController implements IController, Initializable {
     }
 
     private void setRecipeSearchPage() {
-        FindRecipesController fcController = FindRecipesController.getInstance();
-        Region r = fcController;
+        Region r = FindRecipesController.getInstance();
         contentScrollPane.setContent(r);
-
-
-
-
-
-
-
-
     }
 
     private void setStoragePage() {

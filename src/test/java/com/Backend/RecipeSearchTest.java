@@ -78,6 +78,63 @@ public class RecipeSearchTest {
 
     }
 
+    @Test
+    public void PrioritizeTest(){
+        RecipeSearch recipeSearch = new RecipeSearch();
+        Ingredient butter = new Ingredient(1, "Butter");
+        Ingredient milk = new Ingredient(2, "Milk");
+        Ingredient salt = new Ingredient(3, "Salt");
+        Ingredient sugar = new Ingredient(4, "Sugar");
+        Ingredient flour = new Ingredient(5, "Flour");
+        Ingredient cream = new Ingredient(8, "cream");
+        Ingredient tomato = new Ingredient(9, "tomato");
+        Ingredient cucumber = new Ingredient(10, "cucumber");
+        Ingredient chicken = new Ingredient(11, "chicken");
+        Ingredient fish = new Ingredient(12, "fish");
+        List<Ingredient> recipe1 = new ArrayList<Ingredient>();
+
+        recipe1.add(butter);
+        recipe1.add(sugar);
+        recipe1.add(salt);
+        recipe1.add(tomato);
+        recipe1.add(fish);
+        recipe1.add(chicken);
+        recipe1.add(cucumber);
+        Recipe recipeone = new Recipe(1,"2", recipe1, "3");
+        List<Ingredient> recipe2 = new ArrayList<Ingredient>();
+        recipe2.add(butter);
+        recipe2.add(sugar);
+        recipe2.add(salt);
+        recipe2.add(tomato);
+        recipe2.add(fish);
+        recipe2.add(chicken);
+        recipe2.add(cucumber);
+        recipe2.add(cream);
+        Recipe recipetwo = new Recipe(2, "3", recipe2, "4");
+        List<Ingredient> recipe3 = new ArrayList<Ingredient>();
+        recipe3.add(butter);
+        recipe3.add(sugar);
+        recipe3.add(salt);
+        Recipe recipethree = new Recipe(3, "1", recipe3, "7");
+        List<Ingredient> Storageingridients = new ArrayList<Ingredient>();
+        List<Recipe> allrecipes = new ArrayList<Recipe>();
+        allrecipes.add(recipeone);
+        allrecipes.add(recipetwo);
+        allrecipes.add(recipethree);
+
+        Storageingridients.add(butter);
+        Storageingridients.add(sugar);
+        Storageingridients.add(salt);
+        Storage storage = new Storage(5,2,Storageingridients);
+       //recipeSearch.prioritize(storage,allrecipes);
+
+
+
+
+
+
+    }
+
 
     @Test
     public void getMatchingIngredientsTest() {
