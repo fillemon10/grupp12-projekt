@@ -24,11 +24,4 @@ public class App2good2go extends Application {
         App2good2go.launch();
     }
 }
-/*
-}<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.FlowPane?>
-
-
-<FlowPane fx:id="recipeListFlowPane" prefHeight="366.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
-*/
