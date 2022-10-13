@@ -126,7 +126,7 @@ public class RecipeSearchTest {
         Storageingridients.add(sugar);
         Storageingridients.add(salt);
         Storage storage = new Storage(5,2,Storageingridients);
-        recipeSearch.prioritize(storage,allrecipes);
+       //recipeSearch.prioritize(storage,allrecipes);
 
 
 

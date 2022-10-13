@@ -26,18 +26,14 @@
                         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="196.0" text="All products" />
                      </children>
                   </HBox>
-                  <ScrollPane layoutX="85.0" layoutY="141.0" prefHeight="200.0" prefWidth="200.0">
-                     <content>
-                      <AnchorPane fx:id="myStorgaescrollpane" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <FlowPane fx:id="mystorgaeflowpane" layoutY="-1.0" prefHeight="200.0" prefWidth="200.0" />
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </ScrollPane>
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="960.0">
                <children>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+                     <content>
+                        <FlowPane fx:id="mystorgaeflowpane" prefHeight="388.0" prefWidth="370.0" />
+                     </content>
+                  </ScrollPane>
                   <SplitPane dividerPositions="0.5" prefHeight="50.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="982.0" prefWidth="247.0">

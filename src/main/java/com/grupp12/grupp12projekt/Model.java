@@ -26,6 +26,7 @@ public class Model implements Observable {
     private Model() {
         //In order to test GUI before real database is connected
         makeDefaultDatabase();
+        makeDefaultStorage();
 
         if (recipeSearch == null)
             recipeSearch = new RecipeSearch();
@@ -164,5 +165,25 @@ public class Model implements Observable {
         instance.addIngredient(eggs);
         instance.addIngredient(water);
         instance.addIngredient(bakingSoda);
+    }
+
+    private void makeDefaultStorage() {
+        Ingredient butter = new Ingredient(1, "Butter");
+        Ingredient milk = new Ingredient(2, "Milk");
+        Ingredient salt = new Ingredient(3, "Salt");
+        Ingredient sugar = new Ingredient(4, "Sugar");
+        Ingredient flour = new Ingredient(5, "Flour");
+        Ingredient eggs = new Ingredient(6, "Eggs");
+        Ingredient water = new Ingredient(0, "Water");
+        Ingredient bakingSoda = new Ingredient(9, "Baking soda");
+
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(butter);
+        ingredients.add(milk);
+        ingredients.add(salt);
+        ingredients.add(sugar);
+        ingredients.add(flour);
+        ingredients.add(eggs);
+        storage = new Storage(123, 12345, ingredients);
     }
 }

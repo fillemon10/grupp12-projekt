@@ -5,12 +5,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="100.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.AddedIngridientItemInStorage">
+<AnchorPane prefHeight="60.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="IngridientName" layoutX="57.0" layoutY="41.0" prefHeight="17.0" prefWidth="105.0" text="Label" />
-      <Button layoutX="636.0" layoutY="11.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="0.0" text="Button">
+      <Label fx:id="ingredientName" layoutX="23.0" layoutY="28.0" prefHeight="17.0" prefWidth="105.0" text="Label" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="28.0" />
+      <Button layoutX="301.0" layoutY="22.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="5.0" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.5" AnchorPane.topAnchor="22.0">
          <graphic>
-            <ImageView fitHeight="69.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
    </children>
