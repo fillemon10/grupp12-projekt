@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
@@ -27,6 +28,8 @@ public class RecipeDetailController implements IController {
     private ProgressBar progressBar;
     @FXML
     private ImageView closeButton;
+    @FXML
+    private TextField text;
 
 
 
@@ -46,6 +49,14 @@ public class RecipeDetailController implements IController {
         recipeName.setText(recipe.getName());
         amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getContents().size() + "ingredients.");
         progressBar.setProgress(model.getMatchingPercentage(recipe));
+        setListOfIngredients(recipe);
+    }
+
+    private void setListOfIngredients(Recipe recipe) {
+        for (Ingredient ingredient:recipe.getContents()) {
+            text = text.setText(ingredient.getName());
+            listOfIngredients.setContent(text);
+        }
     }
 
     public void onClickCloseButton(Event event) {
