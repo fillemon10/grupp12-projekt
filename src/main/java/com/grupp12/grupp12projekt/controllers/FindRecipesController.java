@@ -56,8 +56,6 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //searchComboBox.setOnAction(e -> onIngredientItemClicked(ingredients, searchComboBox.getValue()));
-
         //Updates the value of the Combo Box as soon as something is entered
 /*        searchComboBox.getEditor().textProperty().addListener((observableValue, s, t1) -> {
             if (!isIngredient(t1) && !(t1.equals(""))) {
@@ -96,11 +94,6 @@ public class FindRecipesController extends VBox implements IController, Observer
         matchComboValueToIngredients();
     }
 
-/*    @FXML
-    public void buttonPressed(KeyEvent e) {
-        if (e.getCode() == KeyCode.ENTER) matchComboValueToIngredients();
-    }*/
-
     private void searchComboAction() {
         String comboValue = searchComboBox.getValue();
         if (!searchComboBox.getItems().contains(comboValue)) matchComboValueToIngredients();
@@ -123,15 +116,6 @@ public class FindRecipesController extends VBox implements IController, Observer
         }
 
         searchComboBox.show();
-
-        //Does not work for some reason
-/*        if (!filteredIngredients.isEmpty()) {
-            String firstIngredient = filteredIngredients.get(0).getName();
-            searchComboBox.getEditor().setText("Milk");
-        }*/
-
-        //searchComboBox.setPromptText(filteredIngredients.get(0).getName());
-        //searchComboBox.getSelectionModel().selectFirst();
     }
 
     private void onIngredientItemClicked(String ingredient) {

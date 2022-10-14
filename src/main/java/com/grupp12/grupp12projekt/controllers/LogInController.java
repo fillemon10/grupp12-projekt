@@ -24,26 +24,29 @@ public class LogInController extends AnchorPane {
     private NavigationController navigationController;
     private Model model;
 
-    public LogInController(){
-        navigationController= navigationController.getInstance();
+    public LogInController() {
+        navigationController = navigationController.getInstance();
         model = model.getInstance();
     }
 
-@FXML
-    public void clickedOnSignUpPage(){
-        signUp.toFront();
-}
     @FXML
-    public void clickedOnLogInPage(){
+    public void clickedOnSignUpPage() {
+        signUp.toFront();
+    }
+
+    @FXML
+    public void clickedOnLogInPage() {
         logIn.toFront();
     }
-@FXML
-    public void clickedOnSignUp(){
+
+    @FXML
+    public void clickedOnSignUp() {
         model.createNewUser(signUpUname.getText(), signUpPword.getText());
         navigationController.logInOrSignUp();
-}
+    }
+
     @FXML
-    public void clickedOnLogIn(){
+    public void clickedOnLogIn() {
         model.logInUser(logInUname.getText(), logInPword.getText());
         navigationController.logInOrSignUp();
     }
