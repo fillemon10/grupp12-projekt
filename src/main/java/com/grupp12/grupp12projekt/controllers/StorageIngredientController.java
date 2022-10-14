@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StorageIngredientController extends AnchorPane implements IController, Initializable, Observer {
+public class StorageIngredientController extends AnchorPane implements IController, Initializable {
     private StorageController parentcontroller;
     private Ingredient ingredient;
     private Model model;
@@ -47,10 +47,6 @@ public class StorageIngredientController extends AnchorPane implements IControll
 
     }
 
-    @Override
-    public void onNotify(Object observable) {
-        parentcontroller.updateStorageList();
 
 
-    }
 }
