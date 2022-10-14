@@ -2,6 +2,7 @@ package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.Observer;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class StorageController extends AnchorPane implements IController, Initializable {
+public class StorageController extends AnchorPane implements IController, Initializable, Observer {
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -32,6 +33,7 @@ public class StorageController extends AnchorPane implements IController, Initia
 
     private StorageController() {
         this.model = Model.getInstance();
+        model.addObserver(this);
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storage-view.fxml"));
         fxmlLoader.setRoot(this);
@@ -65,5 +67,10 @@ public class StorageController extends AnchorPane implements IController, Initia
                 throw new RuntimeException(exception);
             }
         }
+    }
+
+    @Override
+    public void onNotify() {
+        updateStorageList();
     }
 }
