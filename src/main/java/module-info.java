@@ -3,8 +3,8 @@ module com.grupp12.grupp12projekt {
     requires javafx.fxml;
     requires junit;
     requires jsondb.core;
-
-
+    requires firebase.admin;
+    requires com.google.auth.oauth2;
 
     opens com.grupp12.grupp12projekt to javafx.fxml;
     exports com.grupp12.grupp12projekt;
