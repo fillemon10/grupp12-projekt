@@ -7,6 +7,7 @@ import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class DataAccessFacade {
     private static DataAccessFacade instance;

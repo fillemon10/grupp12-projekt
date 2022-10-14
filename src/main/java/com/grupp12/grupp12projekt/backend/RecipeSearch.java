@@ -2,10 +2,7 @@ package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class RecipeSearch  {
 
@@ -72,6 +69,7 @@ public class RecipeSearch  {
         return matchingPercentage;
 
     }
+
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
@@ -100,5 +98,9 @@ public class RecipeSearch  {
     public Recipe getRecipeById(int id){
         Recipe recipe = dataAccessFacade.getRecipeById(id);
         return recipe;
+    }
+
+    public List<Recipe> getAllRecipes(){
+        return dataAccessFacade.getAllRecipes();
     }
 }
