@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.Controller;
+package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -9,17 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.net.URL;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +27,6 @@ public class FindRecipesController extends VBox implements IController, Observer
     private ImageView searchButton;
     @FXML
     private FlowPane recipeCardFlowPane;
-
     @FXML
     private ComboBox<String> searchComboBox;
 
@@ -44,26 +38,9 @@ public class FindRecipesController extends VBox implements IController, Observer
         return instance;
     }
 
-    public void setUpRecipes(Model model){
-        this.model = model;
-        URL receptkorturl = App2good2go.class.getResource("recipelistitem.fxml");
-        recipeCardFlowPane.getChildren().clear();
-        for(Recipe rec : model.getRecipes()){
-           RecipeListItemController recipelistitemcontroller = new RecipeListItemController(rec, model.getStorage());
-            try{
-                FXMLLoader fxmlLoader = new FXMLLoader(receptkorturl);
-                fxmlLoader.setController(recipelistitemcontroller);
-                AnchorPane cardAnchor = fxmlLoader.load();
-                recipeCardFlowPane.getChildren().add(cardAnchor);
-            }
-            catch (IOException exception) {
-                throw new RuntimeException(exception);
-            }
-    }
-    }
-
     private FindRecipesController() {
         model = Model.getInstance();
+        model.addObserver(this);
         filteredIngredients = new ArrayList<>();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("find-recipes-page.fxml"));
@@ -82,13 +59,36 @@ public class FindRecipesController extends VBox implements IController, Observer
         //searchComboBox.setOnAction(e -> onIngredientItemClicked(ingredients, searchComboBox.getValue()));
 
         //Updates the value of the Combo Box as soon as something is entered
-/*        searchComboBox.getEditor().textProperty().addListener((obs, oldText, newText) -> {
-            searchComboBox.setValue(newText);
+/*        searchComboBox.getEditor().textProperty().addListener((observableValue, s, t1) -> {
+            if (!isIngredient(t1) && !(t1.equals(""))) {
+                matchComboValueToIngredients();
+            }
+        });
+
+        //Selects the Ingredient chosen, but has some bugs
+        searchComboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, s, t1) -> {
+            if (isIngredient(t1)) onIngredientItemClicked(searchComboBox.getSelectionModel().getSelectedItem());
         });*/
 
         searchComboBox.setOnAction(e -> searchComboAction());
-        //searchComboBox.addEventFilter(Event.ANY, e -> System.out.println(e));
         setUpRecipes(this.model);
+    }
+
+    public void setUpRecipes(Model model) {
+        this.model = model;
+        URL receptkorturl = App2good2go.class.getResource("recipelistitem.fxml");
+        recipeCardFlowPane.getChildren().clear();
+        for (Recipe rec : model.getRecipes()) {
+            RecipeListItemController recipelistitemcontroller = new RecipeListItemController(rec, model.getStorage());
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(receptkorturl);
+                fxmlLoader.setController(recipelistitemcontroller);
+                AnchorPane cardAnchor = fxmlLoader.load();
+                recipeCardFlowPane.getChildren().add(cardAnchor);
+            } catch (IOException exception) {
+                throw new RuntimeException(exception);
+            }
+        }
     }
 
     @FXML
@@ -103,15 +103,14 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     private void searchComboAction() {
         String comboValue = searchComboBox.getValue();
-        if (!searchComboBox.getItems().contains(comboValue))
-            matchComboValueToIngredients();
+        if (!searchComboBox.getItems().contains(comboValue)) matchComboValueToIngredients();
         else {
             onIngredientItemClicked(comboValue);
         }
     }
 
     private void matchComboValueToIngredients() {
-        String searchFieldText = searchComboBox.getValue();
+        String searchFieldText = searchComboBox.getEditor().getText();
         filteredIngredients = model.findIngredients(searchFieldText);
         populateSearchField();
     }
@@ -123,11 +122,13 @@ public class FindRecipesController extends VBox implements IController, Observer
             searchComboBox.getItems().add(i.getName());
         }
 
+        searchComboBox.show();
+
         //Does not work for some reason
-        if(!filteredIngredients.isEmpty()) {
+/*        if (!filteredIngredients.isEmpty()) {
             String firstIngredient = filteredIngredients.get(0).getName();
-            searchComboBox.getEditor().setText(firstIngredient);
-        }
+            searchComboBox.getEditor().setText("Milk");
+        }*/
 
         //searchComboBox.setPromptText(filteredIngredients.get(0).getName());
         //searchComboBox.getSelectionModel().selectFirst();
@@ -135,18 +136,33 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     private void onIngredientItemClicked(String ingredient) {
         for (Ingredient i : filteredIngredients) {
-            if (i.getName() == ingredient)
-                filterByIngredient(i);
+            if (i.getName() == ingredient) filterByIngredient(i);
         }
     }
 
     private void filterByIngredient(Ingredient ingredient) {
         model.filterByIngredient(ingredient);
-        System.out.println(ingredient.getName());
     }
 
     @Override
-    public void onNotify(Object observable) {
+    public void onNotify() {
+        for (Recipe r :
+                model.getFilteredRecipes()) {
+            System.out.println(r.getName());
+        }
+    }
+
+    private boolean isIngredient(String s) {
+        boolean isIngredient = false;
+
+        for (Ingredient i : filteredIngredients) {
+            if (i.getName().equals(s)) {
+                isIngredient = true;
+                break;
+            }
+        }
+
+        return isIngredient;
     }
 
 }

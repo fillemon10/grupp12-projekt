@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.Controller;
+package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import javafx.fxml.FXML;

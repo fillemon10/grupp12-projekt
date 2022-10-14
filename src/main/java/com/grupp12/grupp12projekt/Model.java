@@ -14,7 +14,9 @@ public class Model implements Observable {
     private static RecipeSearch recipeSearch;
     private static Model instance;
     private List<Recipe> recipes;
-    private List<Observer> observers = new ArrayList<>();
+
+    private List<Recipe> filteredRecipes;
+    private List<Observer> observers;
     private Authentication authentication;
 
     public static Model getInstance() {
@@ -28,6 +30,8 @@ public class Model implements Observable {
         //In order to test GUI before real database is connected
         makeDefaultDatabase();
         makeDefaultStorage();
+
+        observers = new ArrayList<>();
 
         if (recipeSearch == null)
             recipeSearch = new RecipeSearch();
@@ -108,13 +112,17 @@ public class Model implements Observable {
         return receptLista;
     }
 
+    public List<Recipe> getFilteredRecipes() {
+        return filteredRecipes;
+    }
+
     public List<Ingredient> findIngredients(String s) {
         return recipeSearch.findIngredients(s);
     }
 
     public void filterByIngredient(Ingredient ingredient) {
         //TODO make methods void for Observer pattern
-        recipes = recipeSearch.filterByIngredient(ingredient);
+        filteredRecipes = recipeSearch.filterByIngredient(ingredient);
         notifyObservers();
     }
 
@@ -129,7 +137,7 @@ public class Model implements Observable {
     }
 
     public void notifyObservers() {
-        this.observers.forEach(x -> x.onNotify(this));
+        this.observers.forEach(x -> x.onNotify());
     }
 
     //TEST - remove later

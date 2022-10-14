@@ -1,16 +1,13 @@
-package com.grupp12.grupp12projekt.Controller;
+package com.grupp12.grupp12projekt.controllers;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.Observer;
 import com.grupp12.grupp12projekt.backend.Ingredient;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.fxml.FXMLLoader;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,4 +54,3 @@ public class StorageIngredientController extends AnchorPane implements IControll
 
     }
 }
-
