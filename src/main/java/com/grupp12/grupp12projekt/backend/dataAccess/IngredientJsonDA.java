@@ -18,7 +18,8 @@ public class IngredientJsonDA implements IDataAccess<Ingredient> {
 
     @Override
     public List<Ingredient> getAll() {
-        return null;
+        ingredients = connection.findAll(Ingredient.class);
+        return ingredients;
     }
 
     @Override

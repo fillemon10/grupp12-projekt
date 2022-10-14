@@ -46,30 +46,10 @@ public class UserTest {
     public void getUser() {
         IDataAccess<User> userDataAccess = new UserJsonDA();
         User userToAdd = new User();
-        userToAdd.setId(4);
+        userToAdd.setId(5);
         userToAdd.setUsername("TestUser");
         userToAdd.setPassword("TestPassword");
         userToAdd.setStorageID(1);
-        ArrayList<Recipe> favorites = new ArrayList<Recipe>();
-        Recipe recipe = new Recipe();
-        recipe.setId(1);
-        recipe.setName("TestRecipe");
-        Recipe recipe2 = new Recipe();
-        recipe.setId(2);
-        Ingredient ingredient = new Ingredient();
-        ingredient.setId(1);
-        ingredient.setName("TestIngredient");
-        Ingredient ingredient2 = new Ingredient();
-        ingredient.setId(2);
-        ingredient.setName("test");
-        ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-        ingredients.add(ingredient);
-        ingredients.add(ingredient2);
-        recipe.setIngredients(ingredients);
-        recipe.setName("TestRecipe");
-        favorites.add(recipe);
-        favorites.add(recipe2);
-        userToAdd.setFavorites(favorites);
         try {
             if (userDataAccess.getById(userToAdd.getId()) == null) {
                 userDataAccess.add(userToAdd);

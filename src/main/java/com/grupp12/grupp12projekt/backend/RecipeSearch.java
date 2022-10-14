@@ -2,10 +2,7 @@ package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class RecipeSearch  {
 

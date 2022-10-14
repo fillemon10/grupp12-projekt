@@ -4,6 +4,7 @@ import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
 
 import java.util.List;
+import java.util.Set;
 
 @Document(collection = "recipes", schemaVersion = "1.0")
 public class Recipe {

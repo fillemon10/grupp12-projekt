@@ -10,7 +10,7 @@ import java.util.List;
 public class RecipeJsonDA implements IDataAccess<Recipe> {
 
     private JsonDBTemplate connection = ConnectionJson.getConnection();
-    private List<User> recipes = new ArrayList<>();
+    private List<Recipe> recipes = new ArrayList<>();
     @Override
     public Recipe getById(long id) {
         String jxQuery = String.format("/.[id='%s']", id);
@@ -19,8 +19,8 @@ public class RecipeJsonDA implements IDataAccess<Recipe> {
 
     @Override
     public List<Recipe> getAll() {
-        String jxQuery = String.format("/.[id>'%s']", "0");
-        return connection.find(jxQuery, Recipe.class);
+        recipes = connection.findAll(Recipe.class);
+        return recipes;
     }
 
     @Override
