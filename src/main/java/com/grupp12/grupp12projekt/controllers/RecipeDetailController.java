@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class RecipeDetailController extends AnchorPane implements IController {
     private Model model;
+    private NavigationController navigationController;
 
     @FXML
     private ScrollPane listOfIngredients;
@@ -44,6 +45,7 @@ public class RecipeDetailController extends AnchorPane implements IController {
         }
 
         this.model = Model.getInstance();
+        this.navigationController = NavigationController.getInstance();
 
         recipeName.setText(recipe.getName());
         amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + "ingredients.");
@@ -51,7 +53,12 @@ public class RecipeDetailController extends AnchorPane implements IController {
     }
 
     public void onClickCloseButton(Event event) {
-        //navigationContoller.closeDetailView();
+        this.navigationController.dismissLightbox();
+    }
+
+    @FXML
+    public void mouseTrap(Event event) {
+        event.consume();
     }
 
 }

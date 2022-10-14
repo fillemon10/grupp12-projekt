@@ -83,8 +83,7 @@ public class NavigationController implements IController, Initializable {
 
     @FXML
     private void closeDetailView(Event event) {
-        lightBox.toBack();
-        lightBox.setVisible(false);
+        dismissLightbox();
     }
 
     private void setRecipeSearchPage() {
@@ -100,10 +99,10 @@ public class NavigationController implements IController, Initializable {
     public void displayLightbox(AnchorPane pane) {
         lightBox.getChildren().clear();
         lightBox.getChildren().add(pane);
-        AnchorPane.setBottomAnchor(pane, 0.0);
-        AnchorPane.setLeftAnchor(pane, 0.0);
-        AnchorPane.setRightAnchor(pane, 0.0);
-        AnchorPane.setTopAnchor(pane, 0.0);
+        AnchorPane.setBottomAnchor(pane, 50.0);
+        AnchorPane.setLeftAnchor(pane, 50.0);
+        AnchorPane.setRightAnchor(pane, 50.0);
+        AnchorPane.setTopAnchor(pane, 50.0);
         lightBox.toFront();
         lightBox.setVisible(true);
     }
