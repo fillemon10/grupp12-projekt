@@ -52,6 +52,15 @@ public class Model implements Observable {
         this.recipeSearch = recipeSearch;
     }
 
+    public void deleteStorageIngredient(Ingredient ingredient){
+        this.storage.removeIngredient(ingredient);
+        notifyObservers();
+    }
+
+
+
+
+
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
@@ -187,6 +196,8 @@ public class Model implements Observable {
         ingredients.add(eggs);
         storage = new Storage(123, 12345, ingredients);
     }
+
+
 
     public void createNewUser(String signUpUname, String signUpPword) {
         //authentication.registerUser(signUpUname, signUpPword);
