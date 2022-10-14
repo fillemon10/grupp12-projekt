@@ -3,6 +3,7 @@ package com.Backend;
 import com.grupp12.grupp12projekt.backend.Authentication;
 import com.grupp12.grupp12projekt.backend.User;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 

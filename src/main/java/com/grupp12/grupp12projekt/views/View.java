@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.Views;
+package com.grupp12.grupp12projekt.views;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import javafx.fxml.FXMLLoader;

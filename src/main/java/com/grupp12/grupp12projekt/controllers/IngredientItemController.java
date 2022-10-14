@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.Controller;
+package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import javafx.fxml.FXML;
@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import java.io.IOException;
 
 public class IngredientItemController {
-    Ingredient ingredient;
+    private Ingredient ingredient;
 
 
 

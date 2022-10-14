@@ -50,7 +50,7 @@ public class RecipeSearch  {
 
 
     public double getMatchingPercentage(Storage storage, Recipe recipe){
-        List<Ingredient> recipeIngredients = recipe.getContents();
+        List<Ingredient> recipeIngredients = recipe.getIngredients();
         List<Ingredient> storageIngredients = storage.getContents();
 
         double numberOfTotalIngredients = recipeIngredients.size();
@@ -84,8 +84,8 @@ public class RecipeSearch  {
     }
     public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
         List<Ingredient> nonMatchingIngredients = new ArrayList<>();
-        nonMatchingIngredients.addAll(recipe.getContents());
-        for (Ingredient recipeIngredient: recipe.getContents()) {
+        nonMatchingIngredients.addAll(recipe.getIngredients());
+        for (Ingredient recipeIngredient: recipe.getIngredients()) {
             for (Ingredient storageIngredient: storage.getContents()){
                if( recipeIngredient.getId() == storageIngredient.getId()){
                    nonMatchingIngredients.remove(recipeIngredient);

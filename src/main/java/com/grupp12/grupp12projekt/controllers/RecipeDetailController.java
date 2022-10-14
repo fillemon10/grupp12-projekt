@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.Controller;
+package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Recipe;
@@ -42,7 +42,7 @@ public class RecipeDetailController implements IController {
         this.model = Model.getInstance();
 
         recipeName.setText(recipe.getName());
-        amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getContents().size() + "ingredients.");
+        amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + "ingredients.");
         progressBar.setProgress(model.getMatchingPercentage(recipe));
     }
 
