@@ -1,8 +1,13 @@
 package com.grupp12.grupp12projekt.backend;
 
+import io.jsondb.annotation.Document;
+import io.jsondb.annotation.Id;
+
 import java.util.*;
 
+@Document(collection = "storages", schemaVersion = "1.0")
 public class Storage {
+    @Id
     private int id;
     private int storageCode;
     private List<Ingredient> ingredients;

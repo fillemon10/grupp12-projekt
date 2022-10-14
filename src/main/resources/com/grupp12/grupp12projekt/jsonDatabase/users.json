@@ -1,3 +1,5 @@
 {"schemaVersion":"1.0"}
 {"id":1,"username":"TestUser","password":"UjwU4wY5lK5mIvpCoCCCEn5m/4WWpJUeX+buTos8cTTTww9gsGVOu+8O6Dc=","storageID":1,"favorites":[]}
 {"id":2,"username":"TestUser","password":"24Hd7s0PNoSEISarK7c146sfgEAAP8+8W12bzvTD7SjFP+EUv8P2gPejlVg=","storageID":1,"favorites":[]}
+{"id":3,"username":"TestUser","password":"zA6BOs26w5/qSD/BlxUZ7EQOjZbSFfHk2RCzWLxcvbnCL3PglrXDPGPrOss=","storageID":1,"favorites":[{"id":2,"name":"TestRecipe","ingredients":null,"rating":null,"matchingPercentage":0.0,"contents":null},{"id":0,"name":null,"ingredients":null,"rating":null,"matchingPercentage":0.0,"contents":null}]}
+{"id":4,"username":"TestUser","password":"n7IldyXwWBU0QFJ5pqSG7UYLScpJq2BRrV1rMMtlKZ8CEKRYgJ4RgjMMaqU=","storageID":1,"favorites":[{"id":2,"name":"TestRecipe","ingredients":[{"id":2,"name":"test"},{"id":0,"name":null},{"id":2,"name":"test"},{"id":0,"name":null}],"rating":null,"matchingPercentage":0.0,"contents":[{"id":2,"name":"test"},{"id":0,"name":null},{"id":2,"name":"test"},{"id":0,"name":null}]},{"id":0,"name":null,"ingredients":null,"rating":null,"matchingPercentage":0.0,"contents":null}]}

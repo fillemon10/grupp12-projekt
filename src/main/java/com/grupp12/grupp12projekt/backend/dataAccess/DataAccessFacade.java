@@ -2,8 +2,10 @@ package com.grupp12.grupp12projekt.backend.dataAccess;
 
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
+import com.grupp12.grupp12projekt.backend.Storage;
 import com.grupp12.grupp12projekt.backend.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataAccessFacade {
@@ -12,13 +14,12 @@ public class DataAccessFacade {
     private RecipeJsonDA recipeDataAccess;
     private UserJsonDA userDataAccess;
 
-    private RecipeIngredientJunctionJsonDA recipeIngredientJunctionDataAccess;
-
+    private StorageJsonDA storageDataAccess;
     private DataAccessFacade() {
         ingredientDataAccess = new IngredientJsonDA();
         recipeDataAccess = new RecipeJsonDA();
         userDataAccess = new UserJsonDA();
-        recipeIngredientJunctionDataAccess = new RecipeIngredientJunctionJsonDA();
+        storageDataAccess = new StorageJsonDA();
     }
 
     public static DataAccessFacade getInstance() {
@@ -40,19 +41,14 @@ public class DataAccessFacade {
         return userDataAccess;
     }
 
-    public RecipeIngredientJunctionJsonDA getRecipeIngredientJunctionDataAccess() {
-        return recipeIngredientJunctionDataAccess;
+    public StorageJsonDA getStorageDataAccess() {
+        return storageDataAccess;
     }
+
     public List<User> getAllUsers() {
         return userDataAccess.getAll();
     }
 
-    public List<RecipeIngredientJunction> getAllByRecipeId(int recipeId) {
-        return recipeIngredientJunctionDataAccess.getByRecipeId(recipeId);
-    }
-    public List<RecipeIngredientJunction> getAllByIngredientId(int ingredientId) {
-        return recipeIngredientJunctionDataAccess.getByIngredientId(ingredientId);
-    }
     public Ingredient getIngredientById(int id) {
         return ingredientDataAccess.getById(id);
     }
@@ -60,7 +56,6 @@ public class DataAccessFacade {
     public List<Recipe> getAllRecipes() {
         return recipeDataAccess.getAll();
     }
-
     public List<Ingredient> getAllIngredients() {
         return ingredientDataAccess.getAll();
     }
@@ -73,5 +68,11 @@ public class DataAccessFacade {
         userToAdd.setUsername(username);
         userToAdd.setPassword(password);
         userDataAccess.add(userToAdd);
+    }
+    public void addStorageToDatabase(Storage storage) {
+        storageDataAccess.add(storage);
+    }
+    public Storage getStorageByStorageCode(int storageCode) {
+        return storageDataAccess.getByStorageCode(storageCode);
     }
 }

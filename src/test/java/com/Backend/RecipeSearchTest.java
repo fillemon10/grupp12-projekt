@@ -16,81 +16,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RecipeSearchTest {
-    RecipeSearch recipeSearch = new RecipeSearch();
-//
-////    Ingredient butter = new Ingredient(1, "Butter");
-////    Ingredient milk = new Ingredient(2, "Milk");
-////    Ingredient salt = new Ingredient(3, "Salt");
-////    Ingredient sugar = new Ingredient(4, "Sugar");
-////    Ingredient flour = new Ingredient(5, "Flour");
-////    Ingredient eggs = new Ingredient(6, "Eggs");
-////    Ingredient water = new Ingredient(0, "Water");
-////    Ingredient bakingSoda = new Ingredient(9, "Baking soda");
-//
-////    Recipe makePancakes() {
-////        List<Ingredient> ingredients = new ArrayList<>();
-////        ingredients.add(butter);
-////        ingredients.add(milk);
-////        ingredients.add(salt);
-////        ingredients.add(sugar);
-////        ingredients.add(flour);
-////        ingredients.add(eggs);
-////        return new Recipe(123, "Pancakes", ingredients, "7");
-////    }
-//
-    @Test
-    public void getIngredientsFromDatabaseTest(){
-        RecipeSearch recipeSearch = new RecipeSearch();
+    private RecipeSearch recipeSearch = new RecipeSearch();
 
-        Recipe turkey = recipeSearch.getRecipeById(1);
-        turkey = recipeSearch.setIngredientsFromDatabase(turkey);
-        assertTrue(turkey.getIngredients().size() > 0);
-    }}
-//
-//    Recipe makeStickBread() {
-//        List<Ingredient> stickBreadIngredients = new ArrayList<>();
-//        stickBreadIngredients.add(flour);
-//        stickBreadIngredients.add(water);
-//        stickBreadIngredients.add(bakingSoda);
-//
-//        return new Recipe(938, "Stick bread", stickBreadIngredients, "1");
-//    }
-//
-//    public void setUpTestDatabase() {
-//        //Set up Database with pancakes and stick bread as recipes
-//        Database instance = Database.getInstance();
-//        Recipe pancakes = makePancakes();
-//        Recipe stickBread = makeStickBread();
-//
-//        instance.addRecipe(pancakes);
-//        instance.addRecipe(stickBread);
-//    }
-//
-//    @Test
-//    public void getMatchingPercentageTest() {
-//        RecipeSearch recipeSearch = new RecipeSearch();
-//
-//        Ingredient butter = new Ingredient(1, "Butter");
-//        Ingredient milk = new Ingredient(2, "Milk");
-//        Ingredient salt = new Ingredient(3, "Salt");
-//        Ingredient sugar = new Ingredient(4, "Sugar");
-//        Ingredient flour = new Ingredient(5, "Flour");
-//        List<Ingredient> recipeIngredients = new ArrayList<Ingredient>();
-//        recipeIngredients.add(butter);
-//        recipeIngredients.add(milk);
-//        recipeIngredients.add(salt);
-//        Recipe recipe = new Recipe(1, "butter, mil and salt", recipeIngredients, "7");
-//        List<Ingredient> storageIngredients = new ArrayList<Ingredient>();
-//        storageIngredients.add(salt);
-//        storageIngredients.add(sugar);
-//        storageIngredients.add(flour);
-//        Storage storage = new Storage(1, 2, storageIngredients);
-//
-//        int expectedPercentage = 33;
-//
-//        assertEquals(recipeSearch.getMatchingPercentage(storage, recipe), expectedPercentage);
-//
-//    }
+    @Test
+    public void filterByIngredientTest() {
+        Ingredient turkey = new Ingredient();
+        turkey.setId(324);
+        turkey.setName("turkey");
+        List<Recipe> recipes = recipeSearch.filterByIngredient(turkey);
+        assertTrue(recipes.size() > 0);
+    }
+}
 //
 //
 //    @Test

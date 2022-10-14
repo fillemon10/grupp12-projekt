@@ -8,17 +8,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class IngredientTest {
-//    Ingredient ingredient = new Ingredient();
-//    ingredient.setName("Hej");
-//    ingredient.setId(123);
-//
-//    @Test
-//    public void getNameTest() {
-//        assertEquals(ingredient.getName(), "Flour");
-//    }
-//
-//    @Test
-//    public void getIDTest() {
-//        assertEquals(ingredient.getId(), 123);
-//    }
+    private Ingredient ingredient = new Ingredient();
+
+    @Test
+    public void getNameTest() {
+        ingredient.setName("Test");
+        assertEquals("Test", ingredient.getName());
+    }
+
+    @Test
+    public void getIDTest() {
+        ingredient.setId(1);
+        assertEquals(1, ingredient.getId());
+    }
 }

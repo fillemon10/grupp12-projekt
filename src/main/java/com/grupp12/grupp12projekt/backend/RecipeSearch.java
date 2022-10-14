@@ -1,7 +1,6 @@
 package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
-import com.grupp12.grupp12projekt.backend.dataAccess.RecipeIngredientJunction;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -97,16 +96,6 @@ public class RecipeSearch  {
         return nonMatchingIngredients;
     }
 
-    public Recipe setIngredientsFromDatabase(Recipe recipe){
-        List<RecipeIngredientJunction> ingredientsFromDatabase;
-        ingredientsFromDatabase = dataAccessFacade.getAllByRecipeId(recipe.getId());
-        List<Ingredient> ingredients = new ArrayList<>();
-        for (RecipeIngredientJunction recipeIngredientJunction: ingredientsFromDatabase){
-            ingredients.add(dataAccessFacade.getIngredientById(recipeIngredientJunction.getI()));
-        }
-        recipe.setIngredients(ingredients);
-        return recipe;
-    }
 
     public Recipe getRecipeById(int id){
         Recipe recipe = dataAccessFacade.getRecipeById(id);
