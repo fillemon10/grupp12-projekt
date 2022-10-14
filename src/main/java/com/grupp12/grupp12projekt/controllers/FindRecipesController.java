@@ -142,12 +142,14 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     private void filterByIngredient(Ingredient ingredient) {
         model.filterByIngredient(ingredient);
-        System.out.println(ingredient.getName());
     }
 
     @Override
-    public void onNotify(Object observable) {
-
+    public void onNotify() {
+        for (Recipe r :
+                model.getFilteredRecipes()) {
+            System.out.println(r.getName());
+        }
     }
 
     private boolean isIngredient(String s) {
