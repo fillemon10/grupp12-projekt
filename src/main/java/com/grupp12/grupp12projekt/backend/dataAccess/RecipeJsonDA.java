@@ -19,7 +19,8 @@ public class RecipeJsonDA implements IDataAccess<Recipe> {
 
     @Override
     public List<Recipe> getAll() {
-        return connection.findAll(Recipe.class);
+        String jxQuery = String.format("/.[id>'%s']", "0");
+        return connection.find(jxQuery, Recipe.class);
     }
 
     @Override

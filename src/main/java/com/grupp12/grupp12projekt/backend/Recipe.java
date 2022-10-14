@@ -22,10 +22,6 @@ public class Recipe {
         this.matchingPercentage = matchingPercentage;
     }
 
-    public List<Ingredient> getContents(){
-        return ingredients;
-    }
-
     public int getId() {
         return id;
     }
