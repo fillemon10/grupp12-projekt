@@ -73,7 +73,7 @@ public class Model implements Observable {
     }
 
     public double getMatchingPercentage(Recipe recipe) {
-/*        Ingredient butter = new Ingredient(1, "Butter");
+       /* Ingredient butter = new Ingredient(1, "Butter");
         Ingredient eggs = new Ingredient(6, "Eggs");
         List<Ingredient> storageIngredients = new ArrayList<>();
         storageIngredients.add(butter);
@@ -117,50 +117,7 @@ public class Model implements Observable {
         this.observers.forEach(x -> x.onNotify());
     }
 
-    //TEST - remove later
-//    private void makeDefaultDatabase() {
-//        Ingredient butter = new Ingredient(1, "Butter");
-//        Ingredient milk = new Ingredient(2, "Milk");
-//        Ingredient salt = new Ingredient(3, "Salt");
-//        Ingredient sugar = new Ingredient(4, "Sugar");
-//        Ingredient flour = new Ingredient(5, "Flour");
-//        Ingredient eggs = new Ingredient(6, "Eggs");
-//        Ingredient water = new Ingredient(0, "Water");
-//        Ingredient bakingSoda = new Ingredient(9, "Baking soda");
-//
-//        List<Ingredient> pancakesIngredients = new ArrayList<>();
-//        pancakesIngredients.add(butter);
-//        pancakesIngredients.add(milk);
-//        pancakesIngredients.add(salt);
-//        pancakesIngredients.add(sugar);
-//        pancakesIngredients.add(flour);
-//        pancakesIngredients.add(eggs);
-//        Recipe pancakes = new Recipe(123, "Pancakes", pancakesIngredients, "7");
-//
-//        List<Ingredient> stickBreadIngredients = new ArrayList<>();
-//        stickBreadIngredients.add(flour);
-//        stickBreadIngredients.add(water);
-//        stickBreadIngredients.add(bakingSoda);
-//
-//        Recipe stickBread = new Recipe(938, "Stick bread", stickBreadIngredients, "1");
-//
-//        //Set up Database with pancakes and stick bread as recipes
-//        Database instance = Database.getInstance();
-//
-//        //Add recipes to db
-//        instance.addRecipe(pancakes);
-//        instance.addRecipe(stickBread);
-//
-//        //Add ingredients to db
-//        instance.addIngredient(butter);
-//        instance.addIngredient(milk);
-//        instance.addIngredient(salt);
-//        instance.addIngredient(sugar);
-//        instance.addIngredient(flour);
-//        instance.addIngredient(eggs);
-//        instance.addIngredient(water);
-//        instance.addIngredient(bakingSoda);
-//    }
+
     public void createNewUser(String signUpUname, String signUpPword) {
         authentication.registerUser(signUpUname, signUpPword);
         logInUser(signUpUname, signUpPword);
