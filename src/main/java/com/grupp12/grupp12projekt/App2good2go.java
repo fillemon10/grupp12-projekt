@@ -1,6 +1,6 @@
 package com.grupp12.grupp12projekt;
 
-import com.grupp12.grupp12projekt.Controller.NavigationController;
+import com.grupp12.grupp12projekt.controllers.NavigationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,7 +21,7 @@ public class App2good2go extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        App2good2go.launch();
     }
 }
 
