@@ -1,18 +1,20 @@
 package com.grupp12.grupp12projekt;
 
 import com.grupp12.grupp12projekt.backend.*;
+import com.grupp12.grupp12projekt.backend.Ingredient;
+import com.grupp12.grupp12projekt.backend.Recipe;
+import com.grupp12.grupp12projekt.backend.Storage;
+import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Model implements Observable {
     private User currentUser;
-
     private Storage storage;
     private static RecipeSearch recipeSearch;
     private static Model instance;
     private List<Recipe> recipes;
-
     private List<Recipe> filteredRecipes;
     private List<Observer> observers;
     private Authentication authentication;
@@ -26,8 +28,8 @@ public class Model implements Observable {
     //Empty constructor
     private Model() {
         //In order to test GUI before real database is connected
-        makeDefaultDatabase();
-        makeDefaultStorage();
+        //makeDefaultDatabase();
+        authentication = Authentication.getInstance();
 
         observers = new ArrayList<>();
 
@@ -54,24 +56,32 @@ public class Model implements Observable {
         this.recipeSearch = recipeSearch;
     }
 
+    public void deleteStorageIngredient(Ingredient ingredient){
+        this.storage.removeIngredient(ingredient);
+        notifyObservers();
+    }
+
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe){
+        return recipeSearch.getNonMatchingIngredients(recipe, this.storage);
+    }
 
     public double getMatchingPercentage(Recipe recipe) {
-        Ingredient butter = new Ingredient(1, "Butter");
+       /* Ingredient butter = new Ingredient(1, "Butter");
         Ingredient eggs = new Ingredient(6, "Eggs");
         List<Ingredient> storageIngredients = new ArrayList<>();
         storageIngredients.add(butter);
         storageIngredients.add(eggs);
-        Storage storage1 = new Storage(1, 2, storageIngredients);
+        Storage storage1 = new Storage(1, 2, storageIngredients);*/
 
 
-        return recipeSearch.getMatchingPercentage(storage1, recipe);
+        return recipeSearch.getMatchingPercentage(this.getStorage(), recipe);
     }
 
     public List<Recipe> getRecipes() {
-        return Database.getInstance().getAllRecipes();
+        return recipeSearch.getAllRecipes();
     }
 
     public List<Recipe> getFilteredRecipes() {
@@ -168,11 +178,18 @@ public class Model implements Observable {
     }
 
     public void createNewUser(String signUpUname, String signUpPword) {
-        //authentication.registerUser(signUpUname, signUpPword);
+        authentication.registerUser(signUpUname, signUpPword);
         logInUser(signUpUname, signUpPword);
     }
 
     public void logInUser(String logInUname, String logInPword) {
-        authentication.loginUser(logInUname, logInPword);
+        User user = authentication.loginUser(logInUname, logInPword);
+        if(user != null){
+            currentUser = user;
+        }
+    }
+
+    public User getCurrentUser(){
+        return currentUser;
     }
 }
