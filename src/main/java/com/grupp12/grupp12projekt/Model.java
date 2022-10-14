@@ -29,9 +29,11 @@ public class Model implements Observable {
     private Model() {
         //In order to test GUI before real database is connected
         //makeDefaultDatabase();
+        authentication = Authentication.getInstance();
 
         if (recipeSearch == null)
             recipeSearch = new RecipeSearch();
+
     }
 
     public void setCurrentUser(User user) {
@@ -85,14 +87,6 @@ public class Model implements Observable {
         //TODO make methods void for Observer pattern
         recipes = recipeSearch.filterByIngredient(ingredient);
         notifyObservers();
-    }
-    public void createNewUser(String signUpUname, String signUpPword) {
-        authentication.registerUser(signUpUname, signUpPword);
-        logInUser(signUpUname, signUpPword);
-    }
-
-    public void logInUser(String logInUname, String logInPword) {
-        authentication.loginUser(logInUname, logInPword);
     }
 
     @Override
@@ -150,7 +144,7 @@ public class Model implements Observable {
 //        instance.addIngredient(sugar);
 //        instance.addIngredient(flour);
 //        instance.addIngredient(eggs);
-//        instance.addIngredient(water);
+//         instance.addIngredient(water);
 //        instance.addIngredient(bakingSoda);
 //    }
 

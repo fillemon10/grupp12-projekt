@@ -1,6 +1,7 @@
 package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -66,7 +67,7 @@ public class RecipeDetailController implements IController {
     }
 
     public void onClickCloseButton() {
-        navigationController.closeDetailView();
+        //navigationController.closeDetailView();
     }
 
 }

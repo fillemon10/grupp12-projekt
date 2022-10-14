@@ -39,6 +39,12 @@ public class UserJsonDA implements IDataAccess<User> {
         connection.remove(user, User.class);
     }
 
+    public int getLastId(){
+        User user;
+        users = getAll();
+        user = users.get(users.size() - 1);
+        return user.getId();
+    }
 
 }
 
