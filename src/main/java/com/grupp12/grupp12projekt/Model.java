@@ -29,11 +29,13 @@ public class Model implements Observable {
     private Model() {
         //In order to test GUI before real database is connected
         //makeDefaultDatabase();
+        authentication = Authentication.getInstance();
 
         observers = new ArrayList<>();
 
         if (recipeSearch == null)
             recipeSearch = new RecipeSearch();
+
     }
 
     public void setCurrentUser(User user) {
@@ -67,6 +69,9 @@ public class Model implements Observable {
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe){
+        return recipeSearch.getNonMatchingIngredients(recipe, this.storage);
+    }
 
     public double getMatchingPercentage(Recipe recipe) {
        /* Ingredient butter = new Ingredient(1, "Butter");
@@ -98,14 +103,6 @@ public class Model implements Observable {
         filteredRecipes = recipeSearch.filterByIngredient(ingredient);
         notifyObservers();
     }
-    public void createNewUser(String signUpUname, String signUpPword) {
-        authentication.registerUser(signUpUname, signUpPword);
-        logInUser(signUpUname, signUpPword);
-    }
-
-    public void logInUser(String logInUname, String logInPword) {
-        authentication.loginUser(logInUname, logInPword);
-    }
 
     @Override
     public void addObserver(Observer o) {
@@ -118,6 +115,24 @@ public class Model implements Observable {
     }
 
     public void notifyObservers() {
-        this.observers.forEach(x -> x.onNotify());
+        this.observers.forEach(x -> x.onNotify(this));
+    }
+
+   
+
+    public void createNewUser(String signUpUname, String signUpPword) {
+        authentication.registerUser(signUpUname, signUpPword);
+        logInUser(signUpUname, signUpPword);
+    }
+
+    public void logInUser(String logInUname, String logInPword) {
+        User user = authentication.loginUser(logInUname, logInPword);
+        if(user != null){
+            currentUser = user;
+        }
+    }
+
+    public User getCurrentUser(){
+        return currentUser;
     }
 }

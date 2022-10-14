@@ -65,9 +65,11 @@ public class DataAccessFacade {
         return recipeDataAccess.getById(id);
     }
     public void addUserToDatabase(String username, String password) {
+
         User userToAdd = new User();
         userToAdd.setUsername(username);
         userToAdd.setPassword(password);
+        userToAdd.setId(userDataAccess.getLastId()+1);
         userDataAccess.add(userToAdd);
     }
     public void addStorageToDatabase(Storage storage) {

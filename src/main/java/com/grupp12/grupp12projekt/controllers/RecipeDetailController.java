@@ -1,6 +1,7 @@
 package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -8,15 +9,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 
 public class RecipeDetailController implements IController {
+    private NavigationController navigationController;
     private Model model;
 
     @FXML
-    private ScrollPane listOfIngredients;
+    private FlowPane listOfIngredients;
     @FXML
     private Label recipeName;
     @FXML
@@ -25,6 +29,8 @@ public class RecipeDetailController implements IController {
     private ProgressBar progressBar;
     @FXML
     private ImageView closeButton;
+    @FXML
+    private TextField text;
 
 
 
@@ -40,14 +46,28 @@ public class RecipeDetailController implements IController {
         }
 
         this.model = Model.getInstance();
+        this.navigationController = navigationController.getInstance();
 
         recipeName.setText(recipe.getName());
         amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + "ingredients.");
         progressBar.setProgress(model.getMatchingPercentage(recipe));
+        setListOfIngredients(recipe);
     }
 
-    public void onClickCloseButton(Event event) {
-        //navigationContoller.closeDetailView();
+    private void setListOfIngredients(Recipe recipe) {
+        listOfIngredients.getChildren().clear();
+        listOfIngredients.getChildren().add(new Label("what you have:"));
+        for (Ingredient ingredient: model.getMatchingIngredients(recipe)) {
+            listOfIngredients.getChildren().add(new Label(ingredient.getName()));
+        }
+        listOfIngredients.getChildren().add(new Label("what you DONT have:"));
+        for (Ingredient ingredient: model.getNonMatchingIngredients(recipe)) {
+            listOfIngredients.getChildren().add(new Label(ingredient.getName()));
+        }
+    }
+
+    public void onClickCloseButton() {
+        //navigationController.closeDetailView();
     }
 
 }
