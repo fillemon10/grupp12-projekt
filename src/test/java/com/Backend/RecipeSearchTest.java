@@ -72,9 +72,9 @@ public class RecipeSearchTest {
         storageIngredients.add(flour);
         Storage storage = new Storage(1, 2, storageIngredients);
 
-        int expectedPercentage = 33;
+        double expectedPercentage = 1.0/3.0;
 
-        assertEquals(recipeSearch.getMatchingPercentage(storage, recipe), expectedPercentage);
+        assertEquals(expectedPercentage, recipeSearch.getMatchingPercentage(storage, recipe));
 
     }
 

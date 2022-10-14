@@ -19,7 +19,7 @@ public class UserTest {
     Ingredient milk = new Ingredient(123, "Milk");
     List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
-    @Test
+    /*@Test
     public void addRecipeToFavoritesList() {
         ingredients.add(butter);
         ingredients.add(milk);
@@ -40,7 +40,7 @@ public class UserTest {
         //myUser.removeRecipeFromFavorites(recipe);
 
         assertFalse(myUser.getFavorites().contains(recipe));
-    }
+    } */
 
     @Test
     public void getUser() {
