@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <fx:root fx:id="rootPane" prefHeight="450.0" prefWidth="780.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
@@ -27,37 +29,30 @@
                      </children>
                   </HBox>
                </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="960.0">
+            <StackPane>
                <children>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
-                     <content>
-                        <FlowPane fx:id="mystorgaeflowpane" prefHeight="388.0" prefWidth="370.0" />
-                     </content>
-                  </ScrollPane>
-                  <SplitPane dividerPositions="0.5" prefHeight="50.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="982.0" prefWidth="247.0">
-                           <children>
-                              <Label alignment="CENTER" prefHeight="98.0" prefWidth="480.0" text="My Storage" textAlignment="CENTER" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <Label alignment="CENTER" prefHeight="47.0" prefWidth="189.0" text="All Products" textAlignment="CENTER" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="960.0">
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+                           <content>
+                              <FlowPane fx:id="mystorgaeflowpane" prefHeight="388.0" prefWidth="370.0" />
+                           </content>
+                        </ScrollPane>
+                        <Rectangle arcHeight="5.0" fill="#00000040" height="50.0" layoutX="200.0" stroke="#00000040" strokeType="INSIDE" strokeWidth="0.0" width="185.0" AnchorPane.bottomAnchor="398.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="0.0" />
+                        <Label layoutX="64.0" layoutY="14.0" text="My Storage">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="247.0" layoutY="14.0" text="All Products">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
-            </AnchorPane>
+            </StackPane>
         </items>
       </SplitPane>
    </children>
