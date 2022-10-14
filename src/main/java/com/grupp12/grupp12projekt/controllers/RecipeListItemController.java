@@ -5,14 +5,16 @@ import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.RecipeSearch;
 import com.grupp12.grupp12projekt.backend.Storage;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
 import java.util.List;
 
-public class RecipeListItemController extends AnchorPane implements IController{
+public class RecipeListItemController extends AnchorPane implements IController {
 
     private Model model = Model.getInstance();
     private Recipe recipe;
@@ -20,16 +22,10 @@ public class RecipeListItemController extends AnchorPane implements IController{
     private RecipeSearch recipeSearch;
 
 
-
-
     private List<Recipe> recipes;
 
     private Ingredient ingredient;
-
-
-
-
-
+    private NavigationController navigationController;
 
 
     @FXML
@@ -45,6 +41,8 @@ public class RecipeListItemController extends AnchorPane implements IController{
     public RecipeListItemController(Recipe recipe, Storage storage) {
         this.recipe = recipe;
         this.storage = storage;
+        navigationController = NavigationController.getInstance();
+        this.setOnMouseClicked(this::onClick);
 
 /*
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipelistitem.fxml"));
@@ -59,19 +57,19 @@ public class RecipeListItemController extends AnchorPane implements IController{
 
     }
 
-
-
-
+    @FXML
+    public void onClick(Event event) {
+        navigationController.displayLightbox(new RecipeDetailController(this.recipe));
+    }
 
     @FXML
     public void initialize() {
 
         this.recipeName.setText(this.recipe.getName());
-        this.recipeIngredientPercentageMessage.setText("Du har " + model.getMatchingPercentage(recipe)*100 + "% av ingredienserna");
+        this.recipeIngredientPercentageMessage.setText("Du har " + model.getMatchingPercentage(recipe) * 100 + "% av ingredienserna");
         this.percentageBar.setProgress(model.getMatchingPercentage(recipe));
 
     }
-
 
 
 }

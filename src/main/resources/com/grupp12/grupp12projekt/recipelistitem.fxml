@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="240.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane onMouseClicked="#onClick" prefHeight="300.0" prefWidth="240.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="recipeImage" fitHeight="136.0" fitWidth="149.0" layoutX="52.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>

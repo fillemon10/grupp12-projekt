@@ -97,5 +97,19 @@ public class NavigationController implements IController, Initializable {
         contentScrollPane.setContent(r);
     }
 
+    public void displayLightbox(AnchorPane pane) {
+        lightBox.getChildren().clear();
+        lightBox.getChildren().add(pane);
+        AnchorPane.setBottomAnchor(pane, 0.0);
+        AnchorPane.setLeftAnchor(pane, 0.0);
+        AnchorPane.setRightAnchor(pane, 0.0);
+        AnchorPane.setTopAnchor(pane, 0.0);
+        lightBox.toFront();
+        lightBox.setVisible(true);
+    }
 
+    public void dismissLightbox() {
+        lightBox.toBack();
+        lightBox.setVisible(false);
+    }
 }

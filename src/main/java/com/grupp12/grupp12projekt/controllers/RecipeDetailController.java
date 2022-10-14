@@ -1,5 +1,6 @@
 package com.grupp12.grupp12projekt.controllers;
 
+import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import javafx.event.Event;
@@ -9,10 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class RecipeDetailController implements IController {
+public class RecipeDetailController extends AnchorPane implements IController {
     private Model model;
 
     @FXML
@@ -25,11 +27,13 @@ public class RecipeDetailController implements IController {
     private ProgressBar progressBar;
     @FXML
     private ImageView closeButton;
+    @FXML
+    private AnchorPane rootPane;
 
 
 
     public RecipeDetailController(Recipe recipe) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("recipeDetailView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipeDetailView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
