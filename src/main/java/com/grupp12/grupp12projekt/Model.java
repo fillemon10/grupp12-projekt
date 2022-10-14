@@ -8,7 +8,6 @@ import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Model implements Observable {
     private User currentUser;
@@ -154,6 +153,13 @@ public class Model implements Observable {
     }
 
     public void logInUser(String logInUname, String logInPword) {
-        authentication.loginUser(logInUname, logInPword);
+        User user = authentication.loginUser(logInUname, logInPword);
+        if(user != null){
+            currentUser = user;
+        }
+    }
+
+    public User getCurrentUser(){
+        return currentUser;
     }
 }

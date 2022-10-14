@@ -19,7 +19,8 @@ public class UserJsonDA implements IDataAccess<User> {
 
     @Override
     public List<User> getAll() {
-        return connection.findAll(User.class);
+        users = connection.findAll(User.class);
+        return users;
     }
 
     @Override

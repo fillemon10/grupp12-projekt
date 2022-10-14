@@ -15,7 +15,6 @@ public class User {
     @Secret
     private String password;
     private int storageID;
-    private ArrayList<Recipe> favorites;
 
     public String getUsername() {
         return username;
@@ -49,11 +48,4 @@ public class User {
         this.storageID = storageID;
     }
 
-    public ArrayList<Recipe> getFavorites() {
-        return favorites;
-    }
-
-    public void setFavorites(ArrayList<Recipe> favorites) {
-        this.favorites = favorites;
-    }
 }

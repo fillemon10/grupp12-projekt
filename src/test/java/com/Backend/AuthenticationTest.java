@@ -30,14 +30,15 @@ public class AuthenticationTest {
 
     @Test
     public void testLoginUser() {
-        User user = authentication.loginUser("username", "password");
-        assertFalse(user != null);
+        model.logInUser("username", "password");
+        assertTrue(model.getCurrentUser() != null);
     }
 
     @Test
     public void testRegisterUser() {
-        authentication.registerUser("username", "password");
-        User user = authentication.loginUser("username", "password");
-        assertFalse(user != null);
+        String username = getRandomString(8);
+        String password = getRandomString(8);
+        model.createNewUser(username, password);
+        assertTrue(model.getCurrentUser() != null);
     }
 }
