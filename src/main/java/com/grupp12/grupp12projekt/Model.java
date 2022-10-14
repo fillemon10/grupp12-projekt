@@ -5,8 +5,6 @@ import com.grupp12.grupp12projekt.backend.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class Model implements Observable {
     private User currentUser;
 
