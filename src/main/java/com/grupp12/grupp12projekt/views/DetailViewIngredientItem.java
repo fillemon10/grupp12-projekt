@@ -34,7 +34,8 @@ public class DetailViewIngredientItem extends AnchorPane {
         }
 
         ingredientNameLabel.setText(ingredient.getName());
-        if(Model.getInstance().getStorageContent().contains(ingredient))
-            recipeCheckbox.setImage(new Image("file:com/grupp12/grupp12projekt/Icons/check_box_FILL0_wght400_GRAD0_opsz48.png"));
+        if(model.getStorage().containsIngredient(ingredient))
+            recipeCheckbox.setImage(new Image(String.valueOf(App2good2go.class.getResource("Icons/check_box_FILL0_wght400_GRAD0_opsz48.png"))));
+
     }
 }
