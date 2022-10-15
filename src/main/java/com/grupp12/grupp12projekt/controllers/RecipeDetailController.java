@@ -2,19 +2,25 @@ package com.grupp12.grupp12projekt.controllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
+import com.grupp12.grupp12projekt.views.DetailViewIngredientItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class RecipeDetailController extends AnchorPane implements IController {
+public class RecipeDetailController extends AnchorPane implements IController, Initializable {
     private Model model;
     private NavigationController navigationController;
 
@@ -30,6 +36,8 @@ public class RecipeDetailController extends AnchorPane implements IController {
     private ImageView closeButton;
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private FlowPane ingredientsPane;
 
 
 
@@ -50,6 +58,17 @@ public class RecipeDetailController extends AnchorPane implements IController {
         recipeName.setText(recipe.getName());
         amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + "ingredients.");
         progressBar.setProgress(model.getMatchingPercentage(recipe));
+
+        ingredientsPane.getChildren().clear();
+        for (Ingredient i :
+                recipe.getIngredients()) {
+            ingredientsPane.getChildren().add(new DetailViewIngredientItem(i));
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
     public void onClickCloseButton(Event event) {
