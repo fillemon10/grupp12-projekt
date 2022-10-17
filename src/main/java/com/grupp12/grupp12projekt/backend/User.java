@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 @Document(collection = "users", schemaVersion = "1.0")
 public class User {
-
     @Id
     private int id;
     private String username;
