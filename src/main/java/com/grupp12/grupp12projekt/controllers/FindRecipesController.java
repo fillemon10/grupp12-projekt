@@ -9,8 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
@@ -56,8 +56,6 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //searchComboBox.setOnAction(e -> onIngredientItemClicked(ingredients, searchComboBox.getValue()));
-
         //Updates the value of the Combo Box as soon as something is entered
 /*        searchComboBox.getEditor().textProperty().addListener((observableValue, s, t1) -> {
             if (!isIngredient(t1) && !(t1.equals(""))) {
@@ -70,24 +68,17 @@ public class FindRecipesController extends VBox implements IController, Observer
             if (isIngredient(t1)) onIngredientItemClicked(searchComboBox.getSelectionModel().getSelectedItem());
         });*/
 
+        //recipeCardFlowPane.prefHeightProperty().bind(recipeCardScrollPane.heightProperty());
+        //recipeCardFlowPane.prefWidthProperty().bind(recipeCardScrollPane.widthProperty());
+
         searchComboBox.setOnAction(e -> searchComboAction());
-        setUpRecipes(this.model);
+        updateRecipeList(model.getRecipes());
     }
 
-    public void setUpRecipes(Model model) {
-        this.model = model;
-        URL receptkorturl = App2good2go.class.getResource("recipelistitem.fxml");
+    private void updateRecipeList(List<Recipe> recipes) {
         recipeCardFlowPane.getChildren().clear();
-        for (Recipe rec : model.getRecipes()) {
-            RecipeListItemController recipelistitemcontroller = new RecipeListItemController(rec, model.getStorage());
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(receptkorturl);
-                fxmlLoader.setController(recipelistitemcontroller);
-                AnchorPane cardAnchor = fxmlLoader.load();
-                recipeCardFlowPane.getChildren().add(cardAnchor);
-            } catch (IOException exception) {
-                throw new RuntimeException(exception);
-            }
+        for (Recipe recipe : recipes) {
+            recipeCardFlowPane.getChildren().add(new RecipeListItemController(recipe));
         }
     }
 
@@ -95,11 +86,6 @@ public class FindRecipesController extends VBox implements IController, Observer
     public void onSearchButtonClicked() {
         matchComboValueToIngredients();
     }
-
-/*    @FXML
-    public void buttonPressed(KeyEvent e) {
-        if (e.getCode() == KeyCode.ENTER) matchComboValueToIngredients();
-    }*/
 
     private void searchComboAction() {
         String comboValue = searchComboBox.getValue();
@@ -121,17 +107,7 @@ public class FindRecipesController extends VBox implements IController, Observer
         for (Ingredient i : filteredIngredients) {
             searchComboBox.getItems().add(i.getName());
         }
-
         searchComboBox.show();
-
-        //Does not work for some reason
-/*        if (!filteredIngredients.isEmpty()) {
-            String firstIngredient = filteredIngredients.get(0).getName();
-            searchComboBox.getEditor().setText("Milk");
-        }*/
-
-        //searchComboBox.setPromptText(filteredIngredients.get(0).getName());
-        //searchComboBox.getSelectionModel().selectFirst();
     }
 
     private void onIngredientItemClicked(String ingredient) {
@@ -146,13 +122,14 @@ public class FindRecipesController extends VBox implements IController, Observer
 
     @Override
     public void onNotify() {
-        for (Recipe r :
+        updateRecipeList(model.getFilteredRecipes());
+/*        for (Recipe r :
                 model.getFilteredRecipes()) {
             System.out.println(r.getName());
-        }
+        }*/
     }
 
-    private boolean isIngredient(String s) {
+/*    private boolean isIngredient(String s) {
         boolean isIngredient = false;
 
         for (Ingredient i : filteredIngredients) {
@@ -163,6 +140,6 @@ public class FindRecipesController extends VBox implements IController, Observer
         }
 
         return isIngredient;
-    }
+    }*/
 
 }
