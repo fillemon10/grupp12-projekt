@@ -72,8 +72,8 @@ public class Model implements Observable {
         notifyObservers();
     }
 
-    public List<Recipe> get20bestMatchingRecipes(){
-        recipes = recipeSearch.get20bestMatchingRecipes(this.storage);
+    public List<Recipe> get20bestMatchingRecipes(List<Recipe> recipes){
+        recipes = recipeSearch.get20bestMatchingRecipes(this.storage, recipes);
         return recipes;
     }
 
