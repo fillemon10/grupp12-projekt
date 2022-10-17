@@ -75,7 +75,7 @@ public class DataAccessFacade {
     public void addStorageToDatabase(Storage storage) {
         storageDataAccess.add(storage);
     }
-    public Storage getStorageByStorageCode(int storageCode) {
-        return storageDataAccess.getByStorageCode(storageCode);
+    public Storage getStorageById(int id) {
+        return storageDataAccess.getById(id);
     }
 }

@@ -19,6 +19,8 @@ public class Model implements Observable {
     private List<Observer> observers;
     private Authentication authentication;
 
+    private StorageHandler storageHandler;
+
     public static Model getInstance() {
         if (instance == null)
             instance = new Model();
@@ -30,6 +32,7 @@ public class Model implements Observable {
         //In order to test GUI before real database is connected
         //makeDefaultDatabase();
         authentication = Authentication.getInstance();
+        storageHandler = StorageHandler.getInstance();
 
         observers = new ArrayList<>();
 
@@ -46,13 +49,19 @@ public class Model implements Observable {
         this.storage = storage;
     }
 
-    public Storage getStorage() {
-        return storage;
+    public void setCurrentUserStorageId(int id){
+        this.currentUser.setStorageID(id);
     }
 
-    public List<Ingredient> getStorageContent(){
+    public Storage getStorage() {
+        storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        return this.storage;
+    }
+
+    public List<Ingredient> getStorageContents(){
         return this.storage.getContents();
     }
+
     public void setRecipeSearch(RecipeSearch recipeSearch) {
         this.recipeSearch = recipeSearch;
     }
@@ -61,10 +70,6 @@ public class Model implements Observable {
         this.storage.removeIngredient(ingredient);
         notifyObservers();
     }
-
-
-
-
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
@@ -115,7 +120,7 @@ public class Model implements Observable {
     }
 
     public void notifyObservers() {
-        this.observers.forEach(x -> x.onNotify(this));
+        this.observers.forEach(x -> x.onNotify());
     }
 
    
