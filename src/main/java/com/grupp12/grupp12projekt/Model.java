@@ -134,7 +134,8 @@ public class Model implements Observable {
         return currentUser;
     }
 
-    public void setNewStorageID(int otherUsersStorageID) {
-        currentUser.setStorageID(otherUsersStorageID);
+
+    public int getCurrentUsersStorageID(){
+       return currentUser.getStorageID();
     }
 }

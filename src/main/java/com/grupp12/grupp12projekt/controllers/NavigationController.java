@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
@@ -30,7 +31,7 @@ public class NavigationController implements IController, Initializable {
     @FXML
     private Label recipeSearchButton;
     @FXML
-    private Label favoritesButton;
+    private Label storageSettingsButton;
     @FXML
     private Label shoppingListButton;
     @FXML
@@ -52,8 +53,11 @@ public class NavigationController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
-        setLogInPage();
+        storageSettingsButton.setOnMouseClicked(this::onStorageSettingsButtonPressed);
+        //setLogInPage();
+        logInPane.toBack();
     }
+
 
     private void setLogInPage() {
         AnchorPane pane = null;
@@ -80,6 +84,10 @@ public class NavigationController implements IController, Initializable {
     }
 
     @FXML
+    private void onStorageSettingsButtonPressed(Event event) { setStorageSettingsPage();
+    }
+
+    @FXML
     private void closeDetailView(Event event) {
         lightBox.toBack();
         lightBox.setVisible(false);
@@ -92,6 +100,11 @@ public class NavigationController implements IController, Initializable {
 
     private void setStoragePage() {
         Region r = StorageController.getInstance();
+        contentScrollPane.setContent(r);
+    }
+
+    private void setStorageSettingsPage(){
+        Region r = StorageSettings.getInstance();
         contentScrollPane.setContent(r);
     }
 
