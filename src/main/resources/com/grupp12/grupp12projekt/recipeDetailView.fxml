@@ -35,7 +35,7 @@
             <Image url="@Icons/VectorcloseDetail.png" />
          </image>
       </ImageView>
-      <Label fx:id="recipeName" layoutX="260.0" layoutY="288.0" text="RecipeName">
+      <Label fx:id="recipeName" layoutX="260.0" layoutY="288.0" text="RecipeName" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="261.3333333333333">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>

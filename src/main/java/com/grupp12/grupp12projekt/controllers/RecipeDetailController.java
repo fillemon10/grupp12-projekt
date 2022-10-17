@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 public class RecipeDetailController extends AnchorPane implements IController, Initializable {
     private Model model;
     private NavigationController navigationController;
+    private Recipe recipe;
 
     @FXML
     private ScrollPane listOfIngredients;
@@ -40,8 +41,11 @@ public class RecipeDetailController extends AnchorPane implements IController, I
     private FlowPane ingredientsPane;
 
 
-
     public RecipeDetailController(Recipe recipe) {
+        this.model = Model.getInstance();
+        this.navigationController = NavigationController.getInstance();
+        this.recipe = recipe;
+
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipeDetailView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -51,24 +55,21 @@ public class RecipeDetailController extends AnchorPane implements IController, I
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-        this.model = Model.getInstance();
-        this.navigationController = NavigationController.getInstance();
-
-        recipeName.setText(recipe.getName());
-        amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + "ingredients.");
-        progressBar.setProgress(model.getMatchingPercentage(recipe));
-
-        ingredientsPane.getChildren().clear();
-        for (Ingredient i :
-                recipe.getIngredients()) {
-            ingredientsPane.getChildren().add(new DetailViewIngredientItem(i));
-        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        recipeName.setText(recipe.getName());
+        amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + " ingredients.");
+        progressBar.setProgress(model.getMatchingPercentage(recipe));
+        setUpIngredients();
+    }
 
+    private void setUpIngredients(){
+        ingredientsPane.getChildren().clear();
+        for (Ingredient i : recipe.getIngredients()) {
+            ingredientsPane.getChildren().add(new DetailViewIngredientItem(i));
+        }
     }
 
     public void onClickCloseButton(Event event) {
