@@ -1,5 +1,7 @@
 package com.grupp12.grupp12projekt.backend.dataAccess;
 
+import com.grupp12.grupp12projekt.backend.Ingredient;
+import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.Storage;
 import com.grupp12.grupp12projekt.backend.User;
 import io.jsondb.JsonDBTemplate;
@@ -37,6 +39,10 @@ public class ConnectionJson {
             con.createCollection(User.class);
         if (!con.collectionExists(Storage.class))
             con.createCollection(Storage.class);
+        if (!con.collectionExists(Ingredient.class))
+            con.createCollection(Ingredient.class);
+        if (!con.collectionExists(Recipe.class))
+            con.createCollection(Recipe.class);
         return con;
     }
 }

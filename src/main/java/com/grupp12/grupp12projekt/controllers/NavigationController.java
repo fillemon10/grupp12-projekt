@@ -54,8 +54,7 @@ public class NavigationController implements IController, Initializable {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
         storageSettingsButton.setOnMouseClicked(this::onStorageSettingsButtonPressed);
-        //setLogInPage();
-        logInPane.toBack();
+        setLogInPage();
     }
 
 

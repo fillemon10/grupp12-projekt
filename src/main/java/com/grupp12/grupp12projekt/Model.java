@@ -154,4 +154,8 @@ public class Model implements Observable {
         storageHandler.addStorageToDatabase(storage);
     }
 
+    public int getCurrentUsersStorageID(){
+        return currentUser.getStorageID();
+    }
+
 }
