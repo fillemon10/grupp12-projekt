@@ -50,7 +50,7 @@ public class Storage {
     public boolean containsIngredient(Ingredient ingredient){
         for (Ingredient i :
                 ingredients) {
-            if(ingredient.getID() == i.getID())
+            if(ingredient.getId() == i.getId())
                 return true;
         }
         return false;

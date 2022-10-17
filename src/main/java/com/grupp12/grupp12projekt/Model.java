@@ -113,7 +113,7 @@ public class Model implements Observable {
     }
 
     //TODO: TEST - remove later
-    private void makeDefaultDatabase() {
+    /*private void makeDefaultDatabase() {
         Ingredient butter = new Ingredient(1, "Butter");
         Ingredient milk = new Ingredient(2, "Milk");
         Ingredient salt = new Ingredient(3, "Salt");
@@ -175,7 +175,7 @@ public class Model implements Observable {
         ingredients.add(flour);
         ingredients.add(eggs);
         storage = new Storage(123, 12345, ingredients);
-    }
+    }*/
 
     public void createNewUser(String signUpUname, String signUpPword) {
         authentication.registerUser(signUpUname, signUpPword);
