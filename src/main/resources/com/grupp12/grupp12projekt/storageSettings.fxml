@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="450.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.controllers.StorageSettings">
+   <children>
+      <Label layoutX="178.0" layoutY="111.0" text="My storage id:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="usersStorageID" layoutX="216.0" layoutY="227.0" text="Label">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="447.0" layoutY="98.0" prefHeight="85.0" prefWidth="223.0" text="Input another users storage id here to start sharing a storage." textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="otherUsersStorageID" layoutX="479.0" layoutY="227.0" />
+      <Separator layoutX="383.0" layoutY="91.0" orientation="VERTICAL" prefHeight="200.0" />
+      <ImageView fitHeight="41.0" fitWidth="112.0" layoutX="652.0" layoutY="220.0" onMouseClicked="#onClickSyncStorage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Icons/ButtonsyncStroage.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
