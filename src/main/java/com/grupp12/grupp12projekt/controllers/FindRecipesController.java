@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class FindRecipesController extends VBox implements IController, Observer, Initializable {
+public class FindRecipesController extends VBox implements Observer, Initializable {
     private Model model;
     private List<Ingredient> filteredIngredients;
     @FXML
@@ -78,7 +78,8 @@ public class FindRecipesController extends VBox implements IController, Observer
         this.model = model;
         URL receptkorturl = App2good2go.class.getResource("recipelistitem.fxml");
         recipeCardFlowPane.getChildren().clear();
-        for (Recipe rec : model.getRecipes()) {
+        List<Recipe> recipes = model.get20bestMatchingRecipes();
+        for (Recipe rec : recipes) {
             RecipeListItemController recipelistitemcontroller = new RecipeListItemController(rec, model.getStorage());
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(receptkorturl);

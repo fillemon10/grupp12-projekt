@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.util.List;
 
-public class RecipeListItemController extends AnchorPane implements IController{
+public class RecipeListItemController extends AnchorPane {
 
     private Model model = Model.getInstance();
     private Recipe recipe;
@@ -67,7 +67,7 @@ public class RecipeListItemController extends AnchorPane implements IController{
     public void initialize() {
 
         this.recipeName.setText(this.recipe.getName());
-        this.recipeIngredientPercentageMessage.setText("Du har " + model.getMatchingPercentage(recipe)*100 + "% av ingredienserna");
+        this.recipeIngredientPercentageMessage.setText("Du har " + model.getMatchingPercentage(recipe) + "% av ingredienserna");
         this.percentageBar.setProgress(model.getMatchingPercentage(recipe));
 
     }

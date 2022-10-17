@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NavigationController implements IController, Initializable {
+public class NavigationController implements Initializable {
     private Model model;
     private static NavigationController instance;
 

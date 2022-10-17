@@ -15,7 +15,7 @@ import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 
-public class RecipeDetailController implements IController {
+public class RecipeDetailController {
     private NavigationController navigationController;
     private Model model;
 

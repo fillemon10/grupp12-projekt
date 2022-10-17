@@ -4,13 +4,13 @@ import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
 
 import java.util.*;
 
-public class RecipeSearch  {
+public class RecipeSearch {
 
 
     private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
 
 
-    public List<Ingredient> findIngredients(String search){
+    public List<Ingredient> findIngredients(String search) {
         List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
         List<Ingredient> foundIngredients = new ArrayList<>();
         for (Ingredient ingredient : allIngredients) {
@@ -32,29 +32,46 @@ public class RecipeSearch  {
         return filteredRecipes;
     }
 
+    public List<Recipe> sortListOfRecipesBasedOnNumberOfIngredientsInStorage(Storage storage) {
+
+        List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
+        Map<Recipe, Double> recipeIngredientCount = new HashMap<>();
+        for (Recipe recipe : allRecipes) {
+            double count = 0;
+            for (Ingredient ingredient : storage.getIngredients()) {
+                if (recipe.containsIngredient(ingredient))
+                    count++;
+                }
+                double match = count*(count/recipe.getIngredients().size());
+                recipeIngredientCount.put(recipe, match);
+        }
+        List<Recipe> sortedRecipes = new ArrayList<>();
+        recipeIngredientCount.entrySet().stream()
+                .sorted(Map.Entry.<Recipe, Double>comparingByValue().reversed())
+                .forEachOrdered(x -> sortedRecipes.add(x.getKey()));
+        return sortedRecipes;
+    }
+
+    public List<Recipe> get20bestMatchingRecipes(Storage storage) {
+        List<Recipe> sortedRecipes = sortListOfRecipesBasedOnNumberOfIngredientsInStorage(storage);
+        List<Recipe> bestMatchingRecipes = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            bestMatchingRecipes.add(sortedRecipes.get(i));
+        }
+        return bestMatchingRecipes;
+    }
+
+
 
     public double getMatchingPercentage(Storage storage, Recipe recipe){
-        List<Ingredient> recipeIngredients = recipe.getIngredients();
-        List<Ingredient> storageIngredients = storage.getIngredients();
-
-        double numberOfTotalIngredients = recipeIngredients.size();
-        double numberOfMatchingIngredients = 0;
-        double matchingPercentage;
-
-        for (Ingredient recipeIngredient: recipeIngredients){
-            for(Ingredient storageIngredient: storageIngredients){
-                if (storageIngredient.getName() == recipeIngredient.getName()){
-
-                    numberOfMatchingIngredients += 1;
-
-                }
-            }
+        double count = 0;
+        for (Ingredient ingredient : storage.getIngredients()) {
+            if (recipe.containsIngredient(ingredient))
+                count++;
         }
-
-
-        matchingPercentage = (numberOfMatchingIngredients/numberOfTotalIngredients);
-        return matchingPercentage;
-
+        double match = count/recipe.getIngredients().size();
+        int matchPercentage = (int) (match*100);
+        return matchPercentage;
     }
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {

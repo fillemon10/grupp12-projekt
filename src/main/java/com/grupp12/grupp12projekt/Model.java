@@ -51,7 +51,8 @@ public class Model implements Observable {
 
     public void setCurrentUserStorageId(int id){
         this.currentUser.setStorageID(id);
-        storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        notifyObservers();
     }
 
     public Storage getStorage() {
@@ -73,6 +74,11 @@ public class Model implements Observable {
         notifyObservers();
     }
 
+    public List<Recipe> get20bestMatchingRecipes(){
+        recipes = recipeSearch.get20bestMatchingRecipes(this.storage);
+        return recipes;
+    }
+
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
@@ -82,16 +88,7 @@ public class Model implements Observable {
     }
 
     public double getMatchingPercentage(Recipe recipe) {
-       /* Ingredient butter = new Ingredient(1, "Butter");
-        Ingredient eggs = new Ingredient(6, "Eggs");
-        List<Ingredient> storageIngredients = new ArrayList<>();
-        storageIngredients.add(butter);
-        storageIngredients.add(eggs);
-        Storage storage1 = new Storage(1, 2, storageIngredients);*/
-
-
-//        return recipeSearch.getMatchingPercentage(storage1, recipe);
-        return 1;
+        return recipeSearch.getMatchingPercentage(this.storage, recipe);
     }
 
     public List<Recipe> getRecipes() {
@@ -136,7 +133,8 @@ public class Model implements Observable {
     public void logInUser(String logInUname, String logInPword) {
         User user = authentication.loginUser(logInUname, logInPword);
         if(user != null){
-            currentUser = user;
+            this.currentUser = user;
+            this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
         }
     }
 

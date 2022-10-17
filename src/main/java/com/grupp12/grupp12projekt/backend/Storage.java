@@ -31,4 +31,8 @@ public class Storage {
         ingredients.remove(ingredient);
     }
 
+    public void containsIngredient(Ingredient ingredient) {
+        ingredients.contains(ingredient);
+    }
+
 }

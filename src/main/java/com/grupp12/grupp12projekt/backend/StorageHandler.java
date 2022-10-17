@@ -15,9 +15,13 @@ public class StorageHandler {
         return instance;
     }
 
-    public Storage getStorageFromDatabase(int id){
-        Storage storage = dataAccessFacade.getStorageById(id);
-        return storage;
+    public Storage getStorageFromDatabase(int id) {
+        List<Storage> storages = dataAccessFacade.getAllStorages();
+        for (Storage storage : storages) {
+            if (storage.getId() == id)
+                return storage;
+        }
+        return null;
     }
 
     public void addStorageToDatabase(Storage storage){
