@@ -63,7 +63,6 @@ public class FindRecipesController extends VBox implements Observer, Initializab
                 matchComboValueToIngredients();
             }
         });
-
         //Selects the Ingredient chosen, but has some bugs
         searchComboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, s, t1) -> {
             if (isIngredient(t1)) onIngredientItemClicked(searchComboBox.getSelectionModel().getSelectedItem());
@@ -73,28 +72,11 @@ public class FindRecipesController extends VBox implements Observer, Initializab
         //recipeCardFlowPane.prefWidthProperty().bind(recipeCardScrollPane.widthProperty());
 
         searchComboBox.setOnAction(e -> searchComboAction());
-        setUpRecipes(this.model);
-    }
-
-    public void setUpRecipes(Model model) {
-        this.model = model;
-        URL receptkorturl = App2good2go.class.getResource("recipelistitem.fxml");
-        recipeCardFlowPane.getChildren().clear();
-        List<Recipe> recipes = model.get20bestMatchingRecipes();
-        for (Recipe rec : recipes) {
-            RecipeListItemController recipelistitemcontroller = new RecipeListItemController(rec, model.getStorage());
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(receptkorturl);
-                fxmlLoader.setController(recipelistitemcontroller);
-                AnchorPane cardAnchor = fxmlLoader.load();
-                recipeCardFlowPane.getChildren().add(cardAnchor);
-            } catch (IOException exception) {
-                throw new RuntimeException(exception);
-            }
-        }
+        updateRecipeList(model.getRecipes());
     }
 
     private void updateRecipeList(List<Recipe> recipes) {
+        recipes = model.get20bestMatchingRecipes(recipes);
         recipeCardFlowPane.getChildren().clear();
         for (Recipe recipe : recipes) {
             recipeCardFlowPane.getChildren().add(new RecipeListItemController(recipe));
@@ -142,7 +124,6 @@ public class FindRecipesController extends VBox implements Observer, Initializab
     @Override
     public void onNotify() {
         updateRecipeList(model.getFilteredRecipes());
-
 /*        for (Recipe r :
                 model.getFilteredRecipes()) {
             System.out.println(r.getName());
@@ -151,14 +132,12 @@ public class FindRecipesController extends VBox implements Observer, Initializab
 
 /*    private boolean isIngredient(String s) {
         boolean isIngredient = false;
-
         for (Ingredient i : filteredIngredients) {
             if (i.getName().equals(s)) {
                 isIngredient = true;
                 break;
             }
         }
-
         return isIngredient;
     }*/
 

@@ -30,7 +30,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="favoritesButton" text="Favorites">
+                              <Label fx:id="storageSettingsButton" text="Storage Settings">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>

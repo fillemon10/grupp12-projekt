@@ -10,7 +10,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -21,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RecipeListItemController extends AnchorPane, Initializable {
+public class RecipeListItemController extends AnchorPane implements Initializable {
 
     private Model model;
     private Recipe recipe;

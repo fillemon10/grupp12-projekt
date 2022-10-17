@@ -33,7 +33,7 @@ public class NavigationController implements Initializable {
     @FXML
     private Label storageSettingsButton;
     @FXML
-    private Label shoppingListButton;
+    private Label recipeSettingsButton;
     @FXML
     private AnchorPane lightBox;
     @FXML
@@ -41,6 +41,7 @@ public class NavigationController implements Initializable {
 
     private NavigationController() {
         model = Model.getInstance();
+
     }
 
     public static NavigationController getInstance() {
@@ -66,6 +67,8 @@ public class NavigationController implements Initializable {
             e.printStackTrace();
         }
         logInPane.getChildren().setAll(pane);
+        logInPane.setVisible(true);
+        logInPane.toFront();
     }
     public void logInOrSignUp(){
         logInPane.toBack();
@@ -95,6 +98,8 @@ public class NavigationController implements Initializable {
         Region r = FindRecipesController.getInstance();
         contentScrollPane.setContent(r);
     }
+
+
 
     private void setStoragePage() {
         Region r = StorageController.getInstance();

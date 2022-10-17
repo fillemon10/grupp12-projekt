@@ -32,11 +32,9 @@ public class RecipeSearch {
         return filteredRecipes;
     }
 
-    public List<Recipe> sortListOfRecipesBasedOnNumberOfIngredientsInStorage(Storage storage) {
-
-        List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
+    public List<Recipe> sortListOfRecipesBasedOnNumberOfIngredientsInStorage(Storage storage, List<Recipe> recipes) {
         Map<Recipe, Double> recipeIngredientCount = new HashMap<>();
-        for (Recipe recipe : allRecipes) {
+        for (Recipe recipe : recipes) {
             double count = 0;
             for (Ingredient ingredient : storage.getIngredients()) {
                 if (recipe.containsIngredient(ingredient))
@@ -52,8 +50,8 @@ public class RecipeSearch {
         return sortedRecipes;
     }
 
-    public List<Recipe> get20bestMatchingRecipes(Storage storage) {
-        List<Recipe> sortedRecipes = sortListOfRecipesBasedOnNumberOfIngredientsInStorage(storage);
+    public List<Recipe> get20bestMatchingRecipes(Storage storage, List<Recipe> recipes) {
+        List<Recipe> sortedRecipes = sortListOfRecipesBasedOnNumberOfIngredientsInStorage(storage, recipes);
         List<Recipe> bestMatchingRecipes = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             bestMatchingRecipes.add(sortedRecipes.get(i));
