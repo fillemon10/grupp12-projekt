@@ -1,5 +1,6 @@
 package com.grupp12.grupp12projekt.backend.dataAccess;
 
+import com.grupp12.grupp12projekt.backend.Storage;
 import com.grupp12.grupp12projekt.backend.User;
 import io.jsondb.JsonDBTemplate;
 import io.jsondb.crypto.Default1Cipher;
@@ -34,7 +35,8 @@ public class ConnectionJson {
         }
         if (!con.collectionExists(User.class))
             con.createCollection(User.class);
-
+        if (!con.collectionExists(Storage.class))
+            con.createCollection(Storage.class);
         return con;
     }
 }

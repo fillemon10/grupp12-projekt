@@ -28,7 +28,7 @@ public class RecipeJsonDA implements IDataAccess<Recipe> {
     }
 
     @Override
-    public void update(Recipe recipe, String[] params) {
+    public void update(Recipe recipe) {
 
     }
 

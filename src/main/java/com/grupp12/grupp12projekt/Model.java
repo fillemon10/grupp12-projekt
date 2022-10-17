@@ -8,6 +8,7 @@ import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Model implements Observable {
     private User currentUser;
@@ -19,6 +20,8 @@ public class Model implements Observable {
     private List<Observer> observers;
     private Authentication authentication;
 
+    private StorageHandler storageHandler;
+
     public static Model getInstance() {
         if (instance == null) instance = new Model();
         return instance;
@@ -29,6 +32,7 @@ public class Model implements Observable {
         //In order to test GUI before real database is connected
         //makeDefaultDatabase();
         authentication = Authentication.getInstance();
+        storageHandler = StorageHandler.getInstance();
 
         observers = new ArrayList<>();
 
@@ -43,12 +47,19 @@ public class Model implements Observable {
         this.storage = storage;
     }
 
-    public Storage getStorage() {
-        return storage;
+    public void setCurrentUserStorageId(int id){
+        this.currentUser.setStorageID(id);
+        storageHandler.getStorageFromDatabase(currentUser.getStorageID());
     }
 
-    public List<Ingredient> getStorageContent() {
-        return this.storage.getContents();
+    public Storage getStorage() {
+        this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        return this.storage;
+    }
+
+    public List<Ingredient> getStorageContent(){
+        storage = getStorage();
+        return this.storage.getIngredients();
     }
 
     public void setRecipeSearch(RecipeSearch recipeSearch) {
@@ -182,6 +193,7 @@ public class Model implements Observable {
         logInUser(signUpUname, signUpPword);
     }
 
+
     public void logInUser(String logInUname, String logInPword) {
         User user = authentication.loginUser(logInUname, logInPword);
         if(user != null){
@@ -191,5 +203,15 @@ public class Model implements Observable {
 
     public User getCurrentUser(){
         return currentUser;
+    }
+
+    public void addIngredientToStorage(Ingredient ingredient){
+        storage.addIngredient(ingredient);
+        storageHandler.updateStorageInDatabase(storage);
+        notifyObservers();
+    }
+
+    public void addStorageToDatabase(Storage storage){
+        storageHandler.addStorageToDatabase(storage);
     }
 }

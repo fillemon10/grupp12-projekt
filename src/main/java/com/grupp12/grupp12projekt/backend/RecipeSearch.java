@@ -9,19 +9,6 @@ public class RecipeSearch  {
 
     private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
 
-    public List<Recipe> prioritize(){
-         List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
-         Collections.sort(allRecipes, new Comparator<Recipe>() {
-            @Override
-            public int compare(Recipe c1, Recipe c2) {
-                return Double.compare(c1.getMatchingPercentage(), c2.getMatchingPercentage());
-
-            }
-
-        } );
-
-         return allRecipes;
-    }
 
     public List<Ingredient> findIngredients(String search){
         List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
@@ -48,7 +35,7 @@ public class RecipeSearch  {
 
     public double getMatchingPercentage(Storage storage, Recipe recipe){
         List<Ingredient> recipeIngredients = recipe.getIngredients();
-        List<Ingredient> storageIngredients = storage.getContents();
+        List<Ingredient> storageIngredients = storage.getIngredients();
 
         double numberOfTotalIngredients = recipeIngredients.size();
         double numberOfMatchingIngredients = 0;
@@ -73,7 +60,7 @@ public class RecipeSearch  {
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
-        for (Ingredient storageIngredient : storage.getContents()) {
+        for (Ingredient storageIngredient : storage.getIngredients()) {
             if (recipe.containsIngredient(storageIngredient))
                 matchingIngredients.add(storageIngredient);
         }
@@ -84,7 +71,7 @@ public class RecipeSearch  {
         List<Ingredient> nonMatchingIngredients = new ArrayList<>();
         nonMatchingIngredients.addAll(recipe.getIngredients());
         for (Ingredient recipeIngredient: recipe.getIngredients()) {
-            for (Ingredient storageIngredient: storage.getContents()){
+            for (Ingredient storageIngredient: storage.getIngredients()){
                if( recipeIngredient.getId() == storageIngredient.getId()){
                    nonMatchingIngredients.remove(recipeIngredient);
                    break;

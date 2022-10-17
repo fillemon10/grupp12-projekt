@@ -9,29 +9,17 @@ import java.util.*;
 public class Storage {
     @Id
     private int id;
-    private int storageCode;
     private List<Ingredient> ingredients;
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
+    public void setId(int id){
         this.id = id;
     }
-
-    public int getStorageCode() {
-        return storageCode;
-    }
-
-    public void setStorageCode(int storageCode) {
-        this.storageCode = storageCode;
-    }
-
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
-
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
@@ -41,10 +29,6 @@ public class Storage {
 
     public void removeIngredient(Ingredient ingredient) {
         ingredients.remove(ingredient);
-    }
-
-    public List<Ingredient> getContents() {
-        return ingredients;
     }
 
     public boolean containsIngredient(Ingredient ingredient){

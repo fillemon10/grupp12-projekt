@@ -19,7 +19,7 @@ public class UserJsonDA implements IDataAccess<User> {
 
     @Override
     public List<User> getAll() {
-        users = connection.findAll(User.class);
+        users =  connection.findAll(User.class);
         return users;
     }
 
@@ -29,9 +29,7 @@ public class UserJsonDA implements IDataAccess<User> {
     }
 
     @Override
-    public void update(User user, String[] params) {
-        user.setUsername(params[0]);
-        user.setPassword(params[1]);
+    public void update(User user) {
         connection.upsert(user);
     }
 
