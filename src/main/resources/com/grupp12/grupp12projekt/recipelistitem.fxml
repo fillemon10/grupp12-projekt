@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="240.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root onMouseClicked="#onClick" prefHeight="300.0" prefWidth="240.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 30; -fx-background-radius: 30; -fx-background-color: #DDDDDD;" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="recipeImage" fitHeight="136.0" fitWidth="149.0" layoutX="52.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Icons/pastarecept.jpg" />
          </image></ImageView>
-      <Label fx:id="recipeName" layoutX="25.0" layoutY="177.0" prefHeight="54.0" prefWidth="192.0" text="Receptnamnda" wrapText="true">
+      <Label fx:id="recipeName" layoutX="60.0" layoutY="191.0" prefHeight="30.0" prefWidth="120.0" text="Recipe name" textAlignment="CENTER" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="59.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ProgressBar fx:id="percentageBar" layoutX="24.0" layoutY="234.0" prefHeight="19.0" prefWidth="192.0" progress="0.78" />
-      <Label fx:id="recipeIngredientPercentageMessage" layoutX="32.0" layoutY="253.0" prefHeight="19.0" prefWidth="175.0" text="Du har 75% av ingredienserna" textAlignment="CENTER">
+      <ProgressBar fx:id="percentageBar" layoutX="16.0" layoutY="257.0" prefHeight="20.0" prefWidth="200.0" progress="0.78" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="20.0" />
+      <Label fx:id="recipeIngredientPercentageMessage" layoutX="16.0" layoutY="229.0" prefHeight="20.0" prefWidth="200.0" text="You have 1 out of 3 ingredients" textAlignment="CENTER" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="20.0">
          <font>
             <Font size="13.0" />
          </font>
@@ -29,4 +29,4 @@
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
-</AnchorPane>
+</fx:root>

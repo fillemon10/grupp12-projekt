@@ -8,6 +8,7 @@ import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Model implements Observable {
     private User currentUser;
@@ -22,8 +23,7 @@ public class Model implements Observable {
     private StorageHandler storageHandler;
 
     public static Model getInstance() {
-        if (instance == null)
-            instance = new Model();
+        if (instance == null) instance = new Model();
         return instance;
     }
 
@@ -36,9 +36,7 @@ public class Model implements Observable {
 
         observers = new ArrayList<>();
 
-        if (recipeSearch == null)
-            recipeSearch = new RecipeSearch();
-
+        if (recipeSearch == null) recipeSearch = new RecipeSearch();
     }
 
     public void setCurrentUser(User user) {
