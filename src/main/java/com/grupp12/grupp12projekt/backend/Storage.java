@@ -31,4 +31,13 @@ public class Storage {
         ingredients.remove(ingredient);
     }
 
+    public boolean containsIngredient(Ingredient ingredient){
+        for (Ingredient i :
+                ingredients) {
+            if(ingredient.getId() == i.getId())
+                return true;
+        }
+        return false;
+    }
+
 }
