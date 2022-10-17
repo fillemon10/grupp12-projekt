@@ -8,7 +8,6 @@ import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Model implements Observable {
     private User currentUser;
@@ -127,7 +126,6 @@ public class Model implements Observable {
         this.observers.forEach(x -> x.onNotify());
     }
 
-   
 
     public void createNewUser(String signUpUname, String signUpPword) {
         authentication.registerUser(signUpUname, signUpPword);
@@ -155,4 +153,5 @@ public class Model implements Observable {
     public void addStorageToDatabase(Storage storage){
         storageHandler.addStorageToDatabase(storage);
     }
+
 }
