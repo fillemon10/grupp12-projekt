@@ -8,6 +8,7 @@ import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Model implements Observable {
     private User currentUser;
@@ -51,15 +52,17 @@ public class Model implements Observable {
 
     public void setCurrentUserStorageId(int id){
         this.currentUser.setStorageID(id);
+        storageHandler.getStorageFromDatabase(currentUser.getStorageID());
     }
 
     public Storage getStorage() {
-        storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
         return this.storage;
     }
 
-    public List<Ingredient> getStorageContents(){
-        return this.storage.getContents();
+    public List<Ingredient> getStorageContent(){
+        storage = getStorage();
+        return this.storage.getIngredients();
     }
 
     public void setRecipeSearch(RecipeSearch recipeSearch) {
@@ -70,6 +73,7 @@ public class Model implements Observable {
         this.storage.removeIngredient(ingredient);
         notifyObservers();
     }
+
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
@@ -130,6 +134,7 @@ public class Model implements Observable {
         logInUser(signUpUname, signUpPword);
     }
 
+
     public void logInUser(String logInUname, String logInPword) {
         User user = authentication.loginUser(logInUname, logInPword);
         if(user != null){
@@ -139,5 +144,15 @@ public class Model implements Observable {
 
     public User getCurrentUser(){
         return currentUser;
+    }
+
+    public void addIngredientToStorage(Ingredient ingredient){
+        storage.addIngredient(ingredient);
+        storageHandler.updateStorageInDatabase(storage);
+        notifyObservers();
+    }
+
+    public void addStorageToDatabase(Storage storage){
+        storageHandler.addStorageToDatabase(storage);
     }
 }

@@ -78,4 +78,13 @@ public class DataAccessFacade {
     public Storage getStorageById(int id) {
         return storageDataAccess.getById(id);
     }
+
+    public List<Storage> getAllStorages() {
+        return storageDataAccess.getAll();
+    }
+
+    public void updateStorageInDatabase(Storage storage) {
+        storageDataAccess.update(storage);
+    }
+
 }
