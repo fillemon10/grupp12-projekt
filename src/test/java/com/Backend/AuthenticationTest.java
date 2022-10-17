@@ -32,6 +32,8 @@ public class AuthenticationTest {
     public void testLoginUser() {
         model.logInUser("username", "password");
         assertTrue(model.getCurrentUser() != null);
+        assertTrue(model.getCurrentUser().getUsername() == "username");
+        assertTrue(model.getCurrentUser().getPassword() == "password");
     }
 
     @Test
