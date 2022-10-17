@@ -20,8 +20,7 @@ public class Model implements Observable {
     private Authentication authentication;
 
     public static Model getInstance() {
-        if (instance == null)
-            instance = new Model();
+        if (instance == null) instance = new Model();
         return instance;
     }
 
@@ -33,8 +32,7 @@ public class Model implements Observable {
 
         observers = new ArrayList<>();
 
-        if (recipeSearch == null)
-            recipeSearch = new RecipeSearch();
+        if (recipeSearch == null) recipeSearch = new RecipeSearch();
     }
 
     public void setCurrentUser(User user) {
@@ -49,9 +47,10 @@ public class Model implements Observable {
         return storage;
     }
 
-    public List<Ingredient> getStorageContent(){
+    public List<Ingredient> getStorageContent() {
         return this.storage.getContents();
     }
+
     public void setRecipeSearch(RecipeSearch recipeSearch) {
         this.recipeSearch = recipeSearch;
     }
@@ -70,6 +69,7 @@ public class Model implements Observable {
 
     public double getMatchingPercentage(Recipe recipe) {
        /* Ingredient butter = new Ingredient(1, "Butter");
+        Ingredient butter = new Ingredient(1, "Butter");
         Ingredient eggs = new Ingredient(6, "Eggs");
         List<Ingredient> storageIngredients = new ArrayList<>();
         storageIngredients.add(butter);
@@ -112,7 +112,7 @@ public class Model implements Observable {
         this.observers.forEach(x -> x.onNotify());
     }
 
-    //TEST - remove later
+    //TODO: TEST - remove later
     private void makeDefaultDatabase() {
         Ingredient butter = new Ingredient(1, "Butter");
         Ingredient milk = new Ingredient(2, "Milk");

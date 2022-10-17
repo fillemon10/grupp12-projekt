@@ -47,4 +47,13 @@ public class Storage {
         return ingredients;
     }
 
+    public boolean containsIngredient(Ingredient ingredient){
+        for (Ingredient i :
+                ingredients) {
+            if(ingredient.getID() == i.getID())
+                return true;
+        }
+        return false;
+    }
+
 }

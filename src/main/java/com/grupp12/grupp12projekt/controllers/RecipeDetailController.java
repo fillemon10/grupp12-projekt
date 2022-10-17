@@ -4,9 +4,11 @@ import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
+import com.grupp12.grupp12projekt.views.DetailViewIngredientItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
@@ -16,10 +18,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class RecipeDetailController extends AnchorPane implements IController {
     private NavigationController navigationController;
     private Model model;
+    private Recipe recipe;
 
     @FXML
     private FlowPane listOfIngredients;
@@ -35,10 +40,15 @@ public class RecipeDetailController extends AnchorPane implements IController {
     private TextField text;
     @FXML
     private AnchorPane rootPane;
-
+    @FXML
+    private FlowPane ingredientsPane;
 
 
     public RecipeDetailController(Recipe recipe) {
+        this.model = Model.getInstance();
+        this.navigationController = NavigationController.getInstance();
+        this.recipe = recipe;
+
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipeDetailView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -48,25 +58,20 @@ public class RecipeDetailController extends AnchorPane implements IController {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-        this.model = Model.getInstance();
-        this.navigationController = NavigationController.getInstance();
-
-        recipeName.setText(recipe.getName());
-        amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + "ingredients.");
-        progressBar.setProgress(model.getMatchingPercentage(recipe));
-        setListOfIngredients(recipe);
     }
 
-    private void setListOfIngredients(Recipe recipe) {
-        listOfIngredients.getChildren().clear();
-        listOfIngredients.getChildren().add(new Label("what you have:"));
-        for (Ingredient ingredient: model.getMatchingIngredients(recipe)) {
-            listOfIngredients.getChildren().add(new Label(ingredient.getName()));
-        }
-        listOfIngredients.getChildren().add(new Label("what you DONT have:"));
-        for (Ingredient ingredient: model.getNonMatchingIngredients(recipe)) {
-            listOfIngredients.getChildren().add(new Label(ingredient.getName()));
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        recipeName.setText(recipe.getName());
+        amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + " ingredients.");
+        progressBar.setProgress(model.getMatchingPercentage(recipe));
+        setUpIngredients();
+    }
+
+    private void setUpIngredients(){
+        ingredientsPane.getChildren().clear();
+        for (Ingredient i : recipe.getIngredients()) {
+            ingredientsPane.getChildren().add(new DetailViewIngredientItem(i));
         }
     }
 
