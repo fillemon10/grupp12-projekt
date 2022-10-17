@@ -14,8 +14,7 @@ public class StorageJsonDA implements IDataAccess<Storage> {
     @Override
     public Storage getById(long id) {
         String jxQuery = String.format("/.[id='%s']", id);
-        Storage storage =connection.find(jxQuery, Storage.class).get(0);
-        return storage;
+        return connection.find(jxQuery, Storage.class).get(0);
     }
 
     @Override

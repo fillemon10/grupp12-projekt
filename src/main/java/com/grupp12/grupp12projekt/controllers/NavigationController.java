@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NavigationController implements IController, Initializable {
+public class NavigationController implements Initializable {
     private Model model;
     private static NavigationController instance;
 
@@ -30,9 +31,9 @@ public class NavigationController implements IController, Initializable {
     @FXML
     private Label recipeSearchButton;
     @FXML
-    private Label favoritesButton;
+    private Label storageSettingsButton;
     @FXML
-    private Label shoppingListButton;
+    private Label recipeSettingsButton;
     @FXML
     private AnchorPane lightBox;
     @FXML
@@ -40,6 +41,7 @@ public class NavigationController implements IController, Initializable {
 
     private NavigationController() {
         model = Model.getInstance();
+
     }
 
     public static NavigationController getInstance() {
@@ -52,10 +54,10 @@ public class NavigationController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
+        storageSettingsButton.setOnMouseClicked(this::onStorageSettingsButtonPressed);
         setLogInPage();
-
-
     }
+
 
     private void setLogInPage() {
         AnchorPane pane = null;
@@ -65,6 +67,8 @@ public class NavigationController implements IController, Initializable {
             e.printStackTrace();
         }
         logInPane.getChildren().setAll(pane);
+        logInPane.setVisible(true);
+        logInPane.toFront();
     }
     public void logInOrSignUp(){
         logInPane.toBack();
@@ -82,6 +86,10 @@ public class NavigationController implements IController, Initializable {
     }
 
     @FXML
+    private void onStorageSettingsButtonPressed(Event event) { setStorageSettingsPage();
+    }
+
+    @FXML
     private void closeDetailView(Event event) {
         dismissLightbox();
     }
@@ -91,8 +99,15 @@ public class NavigationController implements IController, Initializable {
         contentScrollPane.setContent(r);
     }
 
+
+
     private void setStoragePage() {
         Region r = StorageController.getInstance();
+        contentScrollPane.setContent(r);
+    }
+
+    private void setStorageSettingsPage(){
+        Region r = StorageSettings.getInstance();
         contentScrollPane.setContent(r);
     }
 

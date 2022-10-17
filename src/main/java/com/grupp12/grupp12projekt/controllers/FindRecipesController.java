@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class FindRecipesController extends VBox implements IController, Observer, Initializable {
+public class FindRecipesController extends VBox implements Observer, Initializable {
     private Model model;
     private List<Ingredient> filteredIngredients;
     @FXML
@@ -62,7 +63,6 @@ public class FindRecipesController extends VBox implements IController, Observer
                 matchComboValueToIngredients();
             }
         });
-
         //Selects the Ingredient chosen, but has some bugs
         searchComboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, s, t1) -> {
             if (isIngredient(t1)) onIngredientItemClicked(searchComboBox.getSelectionModel().getSelectedItem());
@@ -76,6 +76,7 @@ public class FindRecipesController extends VBox implements IController, Observer
     }
 
     private void updateRecipeList(List<Recipe> recipes) {
+        recipes = model.get20bestMatchingRecipes(recipes);
         recipeCardFlowPane.getChildren().clear();
         for (Recipe recipe : recipes) {
             recipeCardFlowPane.getChildren().add(new RecipeListItemController(recipe));
@@ -131,14 +132,12 @@ public class FindRecipesController extends VBox implements IController, Observer
 
 /*    private boolean isIngredient(String s) {
         boolean isIngredient = false;
-
         for (Ingredient i : filteredIngredients) {
             if (i.getName().equals(s)) {
                 isIngredient = true;
                 break;
             }
         }
-
         return isIngredient;
     }*/
 
