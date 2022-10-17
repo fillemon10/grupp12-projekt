@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.controllers.LogInController">
+   <children>
+      <StackPane prefHeight="500.0" prefWidth="780.0">
+         <children>
+            <AnchorPane fx:id="logIn" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="283.0" layoutY="17.0" onMouseClicked="#clickedOnSignUpPage" text="Sign up">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="441.0" layoutY="17.0" text="Login">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="268.0" layoutY="148.0" text="Username:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="272.0" layoutY="192.0" text="Password:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="logInUname" layoutX="420.0" layoutY="146.0" />
+                  <TextField fx:id="logInPword" layoutX="420.0" layoutY="191.0" />
+                  <Separator layoutX="388.0" layoutY="120.0" orientation="VERTICAL" prefHeight="200.0" />
+                  <ImageView fitHeight="56.0" fitWidth="139.0" layoutX="590.0" layoutY="380.0" onMouseClicked="#clickedOnLogIn" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Buttonlogin.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fill="#00000040" height="60.0" onMouseClicked="#clickedOnSignUpPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="signUp" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="283.0" layoutY="17.0" text="Sign up">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="441.0" layoutY="17.0" onMouseClicked="#clickedOnLogInPage" text="Login">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="268.0" layoutY="148.0" text="Username:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="272.0" layoutY="192.0" text="Password:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="signUpUname" layoutX="420.0" layoutY="146.0" />
+                  <TextField fx:id="signUpPword" layoutX="420.0" layoutY="191.0" />
+                  <Separator layoutX="388.0" layoutY="120.0" orientation="VERTICAL" prefHeight="200.0" />
+                  <ImageView fitHeight="56.0" fitWidth="139.0" layoutX="590.0" layoutY="380.0" onMouseClicked="#clickedOnSignUp" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Buttonsignup.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fill="#00000040" height="60.0" layoutX="390.0" onMouseClicked="#clickedOnLogInPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

@@ -7,10 +7,15 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <AnchorPane fx:id="lightBox" onMouseClicked="#closeDetailView" style="-fx-background-color: rgba(0, 0, 0, 0.75);" visible="false">
+               <children>
+                  <AnchorPane fx:id="detailView" layoutX="70.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #000000;" />
+               </children>
+            </AnchorPane>
             <BorderPane prefHeight="500.0" prefWidth="780.0">
                <top>
                   <AnchorPane prefHeight="50.0" prefWidth="780.0" BorderPane.alignment="CENTER">
@@ -20,7 +25,7 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="recipeSearchButton" layoutX="233.0" layoutY="11.0" text="Recipe Search">
+                        <Label fx:id="recipeSearchButton" layoutX="233.0" layoutY="11.0" text="Find Recipes">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -42,6 +47,7 @@
                   <ScrollPane fx:id="contentScrollPane" fitToWidth="true" prefHeight="200.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
+            <AnchorPane fx:id="logInPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" />
          </children>
       </StackPane>
    </children>

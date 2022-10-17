@@ -1,13 +1,16 @@
 package com.grupp12.grupp12projekt.backend;
 
+import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
+
 import java.util.*;
 
 public class RecipeSearch  {
 
 
+    private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
 
-    public ArrayList<Recipe>  prioritize(){
-         ArrayList<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+    public List<Recipe> prioritize(){
+         List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
          Collections.sort(allRecipes, new Comparator<Recipe>() {
             @Override
             public int compare(Recipe c1, Recipe c2) {
@@ -20,24 +23,19 @@ public class RecipeSearch  {
          return allRecipes;
     }
 
-    public List<Ingredient> findIngredients(String s) {
-        String lowS = s.toLowerCase();
-        List<Ingredient> result = new ArrayList();
-        Iterator var4 = Database.getInstance().getAllIngredients().iterator();
-
-        while (var4.hasNext()) {
-            Ingredient i = (Ingredient) var4.next();
-            String productName = i.getName().toLowerCase();
-            if (productName.indexOf(lowS) > -1) {
-                result.add(i);
+    public List<Ingredient> findIngredients(String search){
+        List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
+        List<Ingredient> foundIngredients = new ArrayList<>();
+        for (Ingredient ingredient : allIngredients) {
+            if (ingredient.getName().toLowerCase().contains(search.toLowerCase())) {
+                foundIngredients.add(ingredient);
             }
         }
-
-        return result;
+        return foundIngredients;
     }
 
     public List<Recipe> filterByIngredient(Ingredient ingredient) {
-        List<Recipe> allRecipes = Database.getInstance().getAllRecipes();
+        List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
         List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
@@ -49,7 +47,7 @@ public class RecipeSearch  {
 
 
     public double getMatchingPercentage(Storage storage, Recipe recipe){
-        List<Ingredient> recipeIngredients = recipe.getContents();
+        List<Ingredient> recipeIngredients = recipe.getIngredients();
         List<Ingredient> storageIngredients = storage.getContents();
 
         double numberOfTotalIngredients = recipeIngredients.size();
@@ -82,23 +80,12 @@ public class RecipeSearch  {
 
         return matchingIngredients;
     }
-
-/*    public boolean recipeContains(Recipe recipe, Ingredient ingredient) {
-        for (Ingredient recipeIngredient : recipe.getContents()) {
-            if (recipeIngredient.getID() == ingredient.getID())
-                return true;
-        }
-        return false;
-    }*/
-
-
-
     public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
         List<Ingredient> nonMatchingIngredients = new ArrayList<>();
-        nonMatchingIngredients.addAll(recipe.getContents());
-        for (Ingredient recipeIngredient: recipe.getContents()) {
+        nonMatchingIngredients.addAll(recipe.getIngredients());
+        for (Ingredient recipeIngredient: recipe.getIngredients()) {
             for (Ingredient storageIngredient: storage.getContents()){
-               if( recipeIngredient.getID() == storageIngredient.getID()){
+               if( recipeIngredient.getId() == storageIngredient.getId()){
                    nonMatchingIngredients.remove(recipeIngredient);
                    break;
                }
@@ -107,23 +94,13 @@ public class RecipeSearch  {
         return nonMatchingIngredients;
     }
 
-//    public List<Recipe> ReadRecipesFromFile() throws IOException, CsvException {
-//        List<Recipe> recipes = new ArrayList<Recipe>();
-//        CSVReader reader = new CSVReader(new BufferedReader(new FileReader("src/main/resources/recipe.csv")));
-//        List<String[]> rows = reader.readAll();
-//
-//        List<Ingredient> ingredients = new ArrayList<Ingredient>();
-//        for (int i = 5; i < rows.get(0).length; i++) {
-//            ingredients.add(new Ingredient(0, rows.get(0)[i]));
-//        }
-//
-//        for (String[] row : rows) {
-//            Recipe recipe = new Recipe(0, "", ingredients , "");
-//            recipes.add(recipe);
-//        }
-//
-//        return recipes;
-//    }
 
+    public Recipe getRecipeById(int id){
+        Recipe recipe = dataAccessFacade.getRecipeById(id);
+        return recipe;
+    }
 
+    public List<Recipe> getAllRecipes(){
+        return dataAccessFacade.getAllRecipes();
+    }
 }
