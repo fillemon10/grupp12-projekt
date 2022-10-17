@@ -54,7 +54,11 @@ public class RecipeSearch {
         List<Recipe> sortedRecipes = sortListOfRecipesBasedOnNumberOfIngredientsInStorage(storage, recipes);
         List<Recipe> bestMatchingRecipes = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            bestMatchingRecipes.add(sortedRecipes.get(i));
+            try {
+                bestMatchingRecipes.add(sortedRecipes.get(i));
+            } catch (IndexOutOfBoundsException e) {
+                break;
+            }
         }
         return bestMatchingRecipes;
     }
