@@ -27,7 +27,7 @@ public class RecipeDetailController extends AnchorPane implements Initializable 
     private Recipe recipe;
 
     @FXML
-    private FlowPane listOfIngredients;
+    private ScrollPane listOfIngredients;
     @FXML
     private Label recipeName;
     @FXML
