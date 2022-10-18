@@ -70,7 +70,8 @@ public class NavigationController implements Initializable {
         logInPane.setVisible(true);
         logInPane.toFront();
     }
-    public void logInOrSignUp(){
+
+    public void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
     }
@@ -86,7 +87,8 @@ public class NavigationController implements Initializable {
     }
 
     @FXML
-    private void onStorageSettingsButtonPressed(Event event) { setStorageSettingsPage();
+    private void onStorageSettingsButtonPressed(Event event) {
+        setStorageSettingsPage();
     }
 
     @FXML
@@ -99,14 +101,12 @@ public class NavigationController implements Initializable {
         contentScrollPane.setContent(r);
     }
 
-
-
     private void setStoragePage() {
         Region r = StorageController.getInstance();
         contentScrollPane.setContent(r);
     }
 
-    private void setStorageSettingsPage(){
+    private void setStorageSettingsPage() {
         Region r = StorageSettings.getInstance();
         contentScrollPane.setContent(r);
     }
