@@ -1,17 +1,20 @@
 package com.grupp12.grupp12projekt.viewsAndControllers;
+
+import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class StorageIngredientItem extends AnchorPane implements Initializable {
-    private StoragePage parentcontroller;
     private Ingredient ingredient;
     private Model model;
 
@@ -19,15 +22,21 @@ public class StorageIngredientItem extends AnchorPane implements Initializable {
     private Label ingredientName;
 
     @FXML
-    private ImageView  deleteButton;
+    private ImageView deleteButton;
 
-    public StorageIngredientItem(Ingredient ingredient, StoragePage storageController) {
-
+    public StorageIngredientItem(Ingredient ingredient) {
         this.ingredient = ingredient;
-        this.parentcontroller = storageController;
-        model = model.getInstance();
+        model = Model.getInstance();
 
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageIngredientItem.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
 
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
 
     }
 
@@ -38,11 +47,8 @@ public class StorageIngredientItem extends AnchorPane implements Initializable {
     }
 
     @FXML
-    public void onClick(){
+    public void onClick() {
         model.deleteStorageIngredient(ingredient);
-
     }
-
-
 
 }

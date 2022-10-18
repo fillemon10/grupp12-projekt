@@ -9,17 +9,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-public class StoragePage extends AnchorPane implements Initializable, Observer {
+public class StoragePage extends VBox implements Initializable, Observer {
     @FXML
-    private AnchorPane rootPane;
-    @FXML
-    private FlowPane mystorgaeflowpane;
+    private FlowPane storageFlowPane;
 
     private Model model;
     private static StoragePage instance;
@@ -49,20 +47,9 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
     }
 
     public void updateStorageList(){
-        URL recipeURL = App2good2go.class.getResource("storageIngredientItem.fxml");
-        mystorgaeflowpane.getChildren().clear();
-        List<Ingredient> ingredients = model.getStorageContent();
-        for(Ingredient i: ingredients){
-            StorageIngredientItem storageIngredientController = new StorageIngredientItem(i, this);
-            try{
-                FXMLLoader fxmlLoader = new FXMLLoader(recipeURL);
-                fxmlLoader.setController(storageIngredientController);
-                AnchorPane cardAnchor = fxmlLoader.load();
-                mystorgaeflowpane.getChildren().add(cardAnchor);
-            }
-            catch (IOException exception) {
-                throw new RuntimeException(exception);
-            }
+        storageFlowPane.getChildren().clear();
+        for (Ingredient i : model.getStorageContent()) {
+            storageFlowPane.getChildren().add(new StorageIngredientItem(i));
         }
     }
 
