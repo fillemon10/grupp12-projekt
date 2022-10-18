@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StorageIngredientController extends AnchorPane implements IController, Initializable {
+public class StorageIngredientController extends AnchorPane implements Initializable {
     private StorageController parentcontroller;
     private Ingredient ingredient;
     private Model model;

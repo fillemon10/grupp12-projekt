@@ -11,7 +11,6 @@ public class User {
     @Id
     private int id;
     private String username;
-    @Secret
     private String password;
     private int storageID;
 

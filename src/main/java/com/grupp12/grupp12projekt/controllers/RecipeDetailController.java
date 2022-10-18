@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RecipeDetailController extends AnchorPane implements IController, Initializable {
+public class RecipeDetailController extends AnchorPane implements Initializable {
     private NavigationController navigationController;
     private Model model;
     private Recipe recipe;
