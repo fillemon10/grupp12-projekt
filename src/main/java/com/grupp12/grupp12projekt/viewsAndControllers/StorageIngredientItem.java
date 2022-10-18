@@ -1,6 +1,5 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 import com.grupp12.grupp12projekt.Model;
-import com.grupp12.grupp12projekt.Observer;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,8 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StorageIngredientController extends AnchorPane implements Initializable {
-    private StorageController parentcontroller;
+public class StorageIngredientItem extends AnchorPane implements Initializable {
+    private StoragePage parentcontroller;
     private Ingredient ingredient;
     private Model model;
 
@@ -22,7 +21,7 @@ public class StorageIngredientController extends AnchorPane implements Initializ
     @FXML
     private ImageView  deleteButton;
 
-    public StorageIngredientController(Ingredient ingredient, StorageController storageController) {
+    public StorageIngredientItem(Ingredient ingredient, StoragePage storageController) {
 
         this.ingredient = ingredient;
         this.parentcontroller = storageController;
@@ -41,9 +40,6 @@ public class StorageIngredientController extends AnchorPane implements Initializ
     @FXML
     public void onClick(){
         model.deleteStorageIngredient(ingredient);
-
-
-
 
     }
 

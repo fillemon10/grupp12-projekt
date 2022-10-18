@@ -4,7 +4,6 @@ import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
 
 import java.util.List;
-import java.util.Set;
 
 @Document(collection = "recipes", schemaVersion = "1.0")
 public class Recipe {
@@ -46,7 +45,7 @@ public class Recipe {
         this.rating = rating;
     }
 
-    public boolean containsIngredient(Ingredient ingredient) {
+    boolean containsIngredient(Ingredient ingredient) {
         for (Ingredient recipeIngredient : ingredients) {
             if (recipeIngredient.getId() == ingredient.getId()) return true;
         }

@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
@@ -62,7 +61,7 @@ public class NavigationController implements Initializable {
     private void setLogInPage() {
         AnchorPane pane = null;
         try {
-            pane = FXMLLoader.load(App2good2go.class.getResource("logIn.fxml"));
+            pane = FXMLLoader.load(App2good2go.class.getResource("logInPage.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,17 +96,17 @@ public class NavigationController implements Initializable {
     }
 
     private void setRecipeSearchPage() {
-        Region r = FindRecipesController.getInstance();
+        Region r = FindRecipesPage.getInstance();
         contentScrollPane.setContent(r);
     }
 
     private void setStoragePage() {
-        Region r = StorageController.getInstance();
+        Region r = StoragePage.getInstance();
         contentScrollPane.setContent(r);
     }
 
     private void setStorageSettingsPage() {
-        Region r = StorageSettings.getInstance();
+        Region r = StorageSettingsPage.getInstance();
         contentScrollPane.setContent(r);
     }
 

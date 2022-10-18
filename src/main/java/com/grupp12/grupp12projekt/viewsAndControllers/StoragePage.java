@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -14,27 +14,26 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
 
-public class StorageController extends AnchorPane implements Initializable, Observer {
+public class StoragePage extends AnchorPane implements Initializable, Observer {
     @FXML
     private AnchorPane rootPane;
     @FXML
     private FlowPane mystorgaeflowpane;
 
     private Model model;
-    private static StorageController instance;
+    private static StoragePage instance;
 
-    public static StorageController getInstance() {
+    public static StoragePage getInstance() {
         if (instance == null)
-            instance = new StorageController();
+            instance = new StoragePage();
         return instance;
     }
 
-    private StorageController() {
+    private StoragePage() {
         this.model = Model.getInstance();
         model.addObserver(this);
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storage-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storagePage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -50,11 +49,11 @@ public class StorageController extends AnchorPane implements Initializable, Obse
     }
 
     public void updateStorageList(){
-        URL recipeURL = App2good2go.class.getResource("added-ingridient-item-in-storage.fxml");
+        URL recipeURL = App2good2go.class.getResource("storageIngredientItem.fxml");
         mystorgaeflowpane.getChildren().clear();
         List<Ingredient> ingredients = model.getStorageContent();
         for(Ingredient i: ingredients){
-            StorageIngredientController storageIngredientController = new StorageIngredientController(i, this);
+            StorageIngredientItem storageIngredientController = new StorageIngredientItem(i, this);
             try{
                 FXMLLoader fxmlLoader = new FXMLLoader(recipeURL);
                 fxmlLoader.setController(storageIngredientController);

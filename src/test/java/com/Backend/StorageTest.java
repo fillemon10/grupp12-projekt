@@ -1,16 +1,11 @@
 package com.Backend;
 
 import com.grupp12.grupp12projekt.Model;
-import com.grupp12.grupp12projekt.controllers.StorageController;
-import com.grupp12.grupp12projekt.controllers.StorageIngredientController;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Storage;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class StorageTest {
@@ -25,10 +20,10 @@ public class StorageTest {
     public void addStorageTest(){
         Storage storage = new Storage();
         storage.setId(12);
-        List<Ingredient> ingredients = model.getRecipes().get(3).getIngredients();
+        List<Ingredient> ingredients = model.getAllRecipes().get(3).getIngredients();
         storage.setIngredients(ingredients);
 
-        model.addStorageToDatabase(storage);
+        model.addNewStorageToDatabase();
     }
 
 

@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RecipeListItemController extends AnchorPane implements Initializable {
+public class FindRecipeListItem extends AnchorPane implements Initializable {
 
     private Model model;
     private Recipe recipe;
@@ -41,13 +41,13 @@ public class RecipeListItemController extends AnchorPane implements Initializabl
     ProgressBar percentageBar;
 
 
-    public RecipeListItemController(Recipe recipe) {
+    public FindRecipeListItem(Recipe recipe) {
         this.recipe = recipe;
         this.navigationController = NavigationController.getInstance();
         this.model = Model.getInstance();
         this.setOnMouseClicked(this::onClick);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipelistitem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("findRecipeListItem.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
 
@@ -61,7 +61,7 @@ public class RecipeListItemController extends AnchorPane implements Initializabl
 
     @FXML
     public void onClick(Event event) {
-        navigationController.displayLightbox(new RecipeDetailController(this.recipe));
+        navigationController.displayLightbox(new DetailViewPage(this.recipe));
     }
 
     @Override
