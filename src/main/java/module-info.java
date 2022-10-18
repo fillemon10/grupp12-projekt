@@ -3,8 +3,6 @@ module com.grupp12.grupp12projekt {
     requires javafx.fxml;
     requires jsondb.core;
 
-
-
     opens com.grupp12.grupp12projekt to javafx.fxml;
     exports com.grupp12.grupp12projekt;
     exports com.grupp12.grupp12projekt.backend;

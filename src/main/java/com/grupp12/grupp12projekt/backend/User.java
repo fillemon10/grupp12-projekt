@@ -5,7 +5,6 @@ import io.jsondb.annotation.Id;
 import io.jsondb.annotation.Secret;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Document(collection = "users", schemaVersion = "1.0")
 public class User {
