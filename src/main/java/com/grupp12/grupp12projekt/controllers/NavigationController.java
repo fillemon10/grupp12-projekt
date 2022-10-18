@@ -53,8 +53,6 @@ public class NavigationController implements IController, Initializable {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
         setLogInPage();
-
-
     }
 
     private void setLogInPage() {
@@ -65,6 +63,8 @@ public class NavigationController implements IController, Initializable {
             e.printStackTrace();
         }
         logInPane.getChildren().setAll(pane);
+        logInPane.setVisible(true);
+        logInPane.toFront();
     }
     public void logInOrSignUp(){
         logInPane.toBack();
