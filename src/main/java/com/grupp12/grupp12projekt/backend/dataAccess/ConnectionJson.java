@@ -5,10 +5,6 @@ import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.Storage;
 import com.grupp12.grupp12projekt.backend.User;
 import io.jsondb.JsonDBTemplate;
-import io.jsondb.crypto.Default1Cipher;
-import io.jsondb.crypto.ICipher;
-
-import java.security.GeneralSecurityException;
 
 public class ConnectionJson {
     private static JsonDBTemplate con = null;
@@ -17,6 +13,7 @@ public class ConnectionJson {
 
     //Java package name where POJO's are present
     private static String baseScanPackage = "com.grupp12.grupp12projekt.backend";
+
 
     public static JsonDBTemplate getConnection() {
         if(con == null) {
