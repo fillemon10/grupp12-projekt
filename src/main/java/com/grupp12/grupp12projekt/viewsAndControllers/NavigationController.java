@@ -99,18 +99,16 @@ public class NavigationController implements Initializable {
     }
 
     private void setRecipeSearchPage() {
-        FindRecipesPage findRecipesPage = new FindRecipesPage();
-        Region r = findRecipesPage;
+        Region r = FindRecipesPage.getInstance();
         model.clearObservers();
-        model.addObserver(findRecipesPage);
+        model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
     }
 
     private void setStoragePage() {
-        StoragePage storagePage = new StoragePage();
-        Region r = storagePage;
+        Region r = StoragePage.getInstance();
         model.clearObservers();
-        model.addObserver(storagePage);
+        model.addObserver(StoragePage.getInstance());
         contentScrollPane.setContent(r);
     }
 

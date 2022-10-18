@@ -46,5 +46,10 @@
       </ImageView>
       <Label fx:id="amountMatchingIngredients" alignment="CENTER" layoutX="10.0" layoutY="223.0" prefHeight="18.0" prefWidth="190.0" text="You have _ of _ ingredients" textAlignment="CENTER" />
       <ProgressBar fx:id="progressBar" layoutX="28.0" layoutY="242.0" prefHeight="16.0" prefWidth="154.0" progress="0.0" />
+      <Label fx:id="ratingLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="318.0" prefHeight="27.0" prefWidth="154.0" text="Rating: 1/5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </fx:root>

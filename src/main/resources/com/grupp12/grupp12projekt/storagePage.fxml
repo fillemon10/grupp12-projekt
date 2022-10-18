@@ -26,7 +26,7 @@
       </AnchorPane>
     <AnchorPane layoutX="390.0" minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="390.0">
          <children>
-            <ScrollPane layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="390.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-174.0" AnchorPane.topAnchor="50.0">
+            <ScrollPane layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="390.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <content>
                   <FlowPane fx:id="allIngredientFlowpane" prefHeight="20.0" prefWidth="20.0" />
                </content>

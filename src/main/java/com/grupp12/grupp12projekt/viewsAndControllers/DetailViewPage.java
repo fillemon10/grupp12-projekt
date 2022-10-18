@@ -41,6 +41,8 @@ public class DetailViewPage extends AnchorPane implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private FlowPane ingredientsPane;
+    @FXML
+    private Label ratingLabel;
 
 
     public DetailViewPage(Recipe recipe) {
@@ -64,6 +66,7 @@ public class DetailViewPage extends AnchorPane implements Initializable {
         recipeName.setText(recipe.getName());
         amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + " ingredients.");
         progressBar.setProgress(model.getMatchingPercentage(recipe));
+        ratingLabel.setText("Rating: " + recipe.getRating()+ "/5");
         setUpIngredients();
     }
 

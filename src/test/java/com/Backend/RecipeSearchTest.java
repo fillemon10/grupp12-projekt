@@ -22,6 +22,16 @@ public class RecipeSearchTest {
         List<Recipe> recipes = recipeSearch.filterByIngredient(turkey);
         assertTrue(recipes.size() > 0);
     }
+    @Test
+    public void getAllRecipesTest(){
+        List<Recipe> recipes = recipeSearch.getAllRecipes();
+        assertTrue(recipes.size() > 0);
+    }
+    @Test
+    public void getAllIngredientsTest(){
+        List<Ingredient> ingredients = recipeSearch.getAllIngredients();
+        assertTrue(ingredients.size() > 0);
+    }
 }
 //
 //

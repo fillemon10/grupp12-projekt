@@ -79,9 +79,16 @@ public class RecipeSearch {
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
-        for (Ingredient storageIngredient : storage.getIngredients()) {
-            if (recipe.containsIngredient(storageIngredient)) matchingIngredients.add(storageIngredient);
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            if (storage.containsIngredient(ingredient)){
+                matchingIngredients.add(ingredient);
+            }
         }
+
+/*        for (Ingredient storageIngredient : storage.getIngredients()) {
+            if (recipe.containsIngredient(storageIngredient))
+                matchingIngredients.add(storageIngredient);
+        }*/
 
         return matchingIngredients;
     }
@@ -98,5 +105,9 @@ public class RecipeSearch {
                 ingredientsNotInStorage.add(i);
         }
         return ingredientsNotInStorage;
+    }
+
+    public List<Ingredient> getAllIngredients(){
+        return dataAccessFacade.getAllIngredients();
     }
 }
