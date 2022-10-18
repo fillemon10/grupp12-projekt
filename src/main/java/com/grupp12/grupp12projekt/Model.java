@@ -30,6 +30,7 @@ public class Model implements Observable {
         authentication = Authentication.getInstance();
         storageHandler = StorageHandler.getInstance();
         recipeSearch = RecipeSearch.getInstance();
+        filteredRecipes = getAllRecipes();
 
         observers = new ArrayList<>();
     }

@@ -58,7 +58,6 @@ public class NavigationController implements Initializable {
     }
 
 
-
     private void setLogInPage() {
         AnchorPane pane = null;
         try {
@@ -100,22 +99,22 @@ public class NavigationController implements Initializable {
 
     private void setRecipeSearchPage() {
         Region r = FindRecipesPage.getInstance();
-        model.clearObservers();
-        model.addObserver(FindRecipesPage.getInstance());
+        //model.clearObservers();
+        //model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
     }
 
     private void setStoragePage() {
         Region r = StoragePage.getInstance();
-        model.clearObservers();
-        model.addObserver(StoragePage.getInstance());
+        //model.clearObservers();
+        //model.addObserver(StoragePage.getInstance());
         contentScrollPane.setContent(r);
     }
 
     private void setStorageSettingsPage() {
         Region r = StorageSettingsPage.getInstance();
-        model.clearObservers();
-        model.addObserver(StorageSettingsPage.getInstance());
+        //model.clearObservers();
+        //model.addObserver(StorageSettingsPage.getInstance());
         contentScrollPane.setContent(r);
 
     }
