@@ -1,14 +1,13 @@
 package com.grupp12.grupp12projekt.viewsAndControllers;
+
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -18,17 +17,17 @@ import java.util.ResourceBundle;
 public class StorageAllIngredientItem extends AnchorPane implements Initializable {
     private Ingredient ingredient;
     private Model model;
-
     @FXML
     private Label ingredientName;
+
     @FXML
-    ImageView addButton;
+    private ImageView addButton;
 
     public StorageAllIngredientItem(Ingredient ingredient) {
         this.ingredient = ingredient;
-        model = model.getInstance();
+        this.model = Model.getInstance();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageAllIngredientsItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageAllIngredientItem.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
 
@@ -37,6 +36,7 @@ public class StorageAllIngredientItem extends AnchorPane implements Initializabl
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
     }
 
     @Override
@@ -46,7 +46,7 @@ public class StorageAllIngredientItem extends AnchorPane implements Initializabl
     }
 
     @FXML
-    public void onAddClick(){
+    public void onClick() {
         model.addIngredientToStorage(ingredient);
     }
 

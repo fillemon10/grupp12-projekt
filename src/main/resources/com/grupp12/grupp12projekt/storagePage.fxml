@@ -7,42 +7,37 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.SplitPane?>
 <fx:root fx:id="rootPane" prefHeight="450.0" prefWidth="780.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <SplitPane dividerPositions="0.5" layoutX="-1.0" prefHeight="450.0" prefWidth="780.0">
-            <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                    <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="386.0" />
-                        <Label layoutX="147.0" layoutY="11.0" text="My Storage">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <ScrollPane layoutX="-3.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="397.0">
-                            <content>
-                                <FlowPane fx:id="storageFlowpane" prefHeight="20.0" prefWidth="20.0" />
-                            </content>
-                        </ScrollPane>
-                    </children>
-                </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="608.0">
-                    <children>
-                        <ScrollPane layoutX="-6.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="397.0">
-                            <content>
-                                <FlowPane fx:id="allProductsFlowpane" prefHeight="20.0" prefWidth="20.0" />
-                            </content>
-                        </ScrollPane>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="386.0" />
-                        <Label layoutX="145.0" layoutY="11.0" text="All Products">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-            </items>
-        </SplitPane>
-    </children>
+   <children>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="390.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label layoutX="149.0" layoutY="11.0" text="My Storage">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ScrollPane layoutX="-3.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="390.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <content>
+                  <FlowPane fx:id="myStorageFlowpane" prefHeight="20.0" prefWidth="20.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+    <AnchorPane layoutX="390.0" minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="390.0">
+         <children>
+            <ScrollPane layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="390.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-174.0" AnchorPane.topAnchor="50.0">
+               <content>
+                  <FlowPane fx:id="allIngredientFlowpane" prefHeight="20.0" prefWidth="20.0" />
+               </content>
+            </ScrollPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" AnchorPane.rightAnchor="0.0" />
+            <Label layoutX="140.0" layoutY="11.0" text="All Products">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
 </fx:root>

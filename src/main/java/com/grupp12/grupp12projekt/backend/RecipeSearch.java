@@ -46,7 +46,7 @@ public class RecipeSearch {
             for (Ingredient ingredient : storage.getIngredients()) {
                 if (recipe.containsIngredient(ingredient)) count++;
             }
-            double match = count / recipe.getIngredients().size();
+            double match =count / recipe.getIngredients().size();
             recipeIngredientCount.put(recipe, match);
         }
         List<Recipe> sortedRecipes = new ArrayList<>();

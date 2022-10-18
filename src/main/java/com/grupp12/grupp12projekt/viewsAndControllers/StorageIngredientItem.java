@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 public class StorageIngredientItem extends AnchorPane implements Initializable {
     private Ingredient ingredient;
     private Model model;
-
     @FXML
     private Label ingredientName;
 
@@ -26,11 +25,11 @@ public class StorageIngredientItem extends AnchorPane implements Initializable {
 
     public StorageIngredientItem(Ingredient ingredient) {
         this.ingredient = ingredient;
-        model = Model.getInstance();
+        this.model = Model.getInstance();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageIngredientItem.fxml"));
-        fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+        fxmlLoader.setRoot(this);
 
         try {
             fxmlLoader.load();

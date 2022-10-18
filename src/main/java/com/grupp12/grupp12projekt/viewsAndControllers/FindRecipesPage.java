@@ -33,17 +33,15 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     @FXML
     private Button clearFiltersButton;
 
-    private static FindRecipesPage instance;
+/*    private static FindRecipesPage instance;
 
     public static FindRecipesPage getInstance() {
         if (instance == null) instance = new FindRecipesPage();
-
         return instance;
-    }
+    }*/
 
-    private FindRecipesPage() {
+    public FindRecipesPage() {
         model = Model.getInstance();
-        model.addObserver(this);
         filteredIngredients = new ArrayList<>();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("findRecipePage.fxml"));

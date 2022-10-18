@@ -85,6 +85,7 @@ public class Model implements Observable {
     @Override
     public void addObserver(Observer o) {
         this.observers.add(o);
+
     }
     @Override
     public void removeObserver(Observer o) {

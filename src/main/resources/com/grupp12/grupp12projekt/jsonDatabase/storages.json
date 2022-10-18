@@ -1,5 +1,5 @@
 {"schemaVersion":"1.0"}
-{"id":12,"ingredients":[]}
+{"id":12,"ingredients":[{"id":27,"name":"biscuit"},{"id":284,"name":"strawberry"},{"id":283,"name":"steak"},{"id":1,"name":"almond"},{"id":2,"name":"anchovy"},{"id":4,"name":"apple"},{"id":6,"name":"apricot"},{"id":11,"name":"aspen"},{"id":12,"name":"avocado"},{"id":14,"name":"banana"},{"id":16,"name":"basil"},{"id":17,"name":"bass"},{"id":15,"name":"barley"}]}
 {"id":13,"ingredients":[{"id":189,"name":"olive"}]}
 {"id":14,"ingredients":null}
 {"id":15,"ingredients":null}
