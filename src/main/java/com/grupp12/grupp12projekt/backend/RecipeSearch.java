@@ -26,8 +26,7 @@ public class RecipeSearch {
         List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
-            if (recipe.containsIngredient(ingredient))
-                filteredRecipes.add(recipe);
+            if (recipe.containsIngredient(ingredient)) filteredRecipes.add(recipe);
         }
         return filteredRecipes;
     }
@@ -37,16 +36,13 @@ public class RecipeSearch {
         for (Recipe recipe : recipes) {
             double count = 0;
             for (Ingredient ingredient : storage.getIngredients()) {
-                if (recipe.containsIngredient(ingredient))
-                    count++;
-                }
-                double match = count*(count/recipe.getIngredients().size());
-                recipeIngredientCount.put(recipe, match);
+                if (recipe.containsIngredient(ingredient)) count++;
+            }
+            double match = count * (count / recipe.getIngredients().size());
+            recipeIngredientCount.put(recipe, match);
         }
         List<Recipe> sortedRecipes = new ArrayList<>();
-        recipeIngredientCount.entrySet().stream()
-                .sorted(Map.Entry.<Recipe, Double>comparingByValue().reversed())
-                .forEachOrdered(x -> sortedRecipes.add(x.getKey()));
+        recipeIngredientCount.entrySet().stream().sorted(Map.Entry.<Recipe, Double>comparingByValue().reversed()).forEachOrdered(x -> sortedRecipes.add(x.getKey()));
         return sortedRecipes;
     }
 
@@ -63,16 +59,13 @@ public class RecipeSearch {
         return bestMatchingRecipes;
     }
 
-
-
-    public double getMatchingPercentage(Storage storage, Recipe recipe){
+    public double getMatchingPercentage(Storage storage, Recipe recipe) {
         double count = 0;
         for (Ingredient ingredient : storage.getIngredients()) {
-            if (recipe.containsIngredient(ingredient))
-                count++;
+            if (recipe.containsIngredient(ingredient)) count++;
         }
-        double match = count/recipe.getIngredients().size();
-        int matchPercentage = (int) (match*100);
+        double match = count / recipe.getIngredients().size();
+        int matchPercentage = (int) (match * 100);
         return matchPercentage;
     }
 
@@ -80,33 +73,33 @@ public class RecipeSearch {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
         for (Ingredient storageIngredient : storage.getIngredients()) {
-            if (recipe.containsIngredient(storageIngredient))
-                matchingIngredients.add(storageIngredient);
+            if (recipe.containsIngredient(storageIngredient)) matchingIngredients.add(storageIngredient);
         }
 
         return matchingIngredients;
     }
-    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage){
+
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> nonMatchingIngredients = new ArrayList<>();
         nonMatchingIngredients.addAll(recipe.getIngredients());
-        for (Ingredient recipeIngredient: recipe.getIngredients()) {
-            for (Ingredient storageIngredient: storage.getIngredients()){
-               if( recipeIngredient.getId() == storageIngredient.getId()){
-                   nonMatchingIngredients.remove(recipeIngredient);
-                   break;
-               }
+        for (Ingredient recipeIngredient : recipe.getIngredients()) {
+            for (Ingredient storageIngredient : storage.getIngredients()) {
+                if (recipeIngredient.getId() == storageIngredient.getId()) {
+                    nonMatchingIngredients.remove(recipeIngredient);
+                    break;
+                }
             }
         }
         return nonMatchingIngredients;
     }
 
 
-    public Recipe getRecipeById(int id){
+    public Recipe getRecipeById(int id) {
         Recipe recipe = dataAccessFacade.getRecipeById(id);
         return recipe;
     }
 
-    public List<Recipe> getAllRecipes(){
+    public List<Recipe> getAllRecipes() {
         return dataAccessFacade.getAllRecipes();
     }
 }
