@@ -59,6 +59,7 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchComboBox.setOnAction(e -> searchComboAction());
+        updateRecipeList(model.getAllRecipes());
     }
 
     void updateRecipeList(List<Recipe> recipes) {
@@ -70,7 +71,7 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     }
 
     @FXML
-    private void onClearFiltersButtonClicked(){
+    private void onClearFiltersButtonClicked() {
         updateRecipeList(model.getAllRecipes());
         searchComboBox.getEditor().clear();
         searchComboBox.hide();
@@ -113,6 +114,7 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     private void filterByIngredient(Ingredient ingredient) {
         model.filterByIngredient(ingredient);
     }
+
     @Override
     public void onNotify() {
         updateRecipeList(model.getFilteredRecipes());

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -28,17 +29,30 @@ public class LogInPage extends AnchorPane implements Initializable {
     private Label errorLabel;
 
 
-    private NavigationController navigationController;
-    private Model model;
+    private static NavigationController navigationController;
+    private static Model model;
 
     public LogInPage() {
-        navigationController = navigationController.getInstance();
-        model = model.getInstance();
+        navigationController = NavigationController.getInstance();
+        model = Model.getInstance();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
+
+        logInPword.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                clickedOnLogIn();
+            }
+        });
+
+        signUpPword.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                clickedOnSignUp();
+            }
+        });
+
     }
 
     @FXML
@@ -58,7 +72,7 @@ public class LogInPage extends AnchorPane implements Initializable {
         try {
             model.createNewUser(signUpUname.getText(), signUpPword.getText());
             navigationController.logInOrSignUp();
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
             errorLabel.toFront();
             errorLabel.setVisible(true);
@@ -70,7 +84,7 @@ public class LogInPage extends AnchorPane implements Initializable {
         try {
             model.logInUser(logInUname.getText(), logInPword.getText());
             navigationController.logInOrSignUp();
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
             errorLabel.toFront();
             errorLabel.setVisible(true);
