@@ -32,20 +32,19 @@ public class FindRecipeListItem extends AnchorPane implements Initializable {
     private NavigationController navigationController;
 
     @FXML
-    ImageView recipeImage;
+    private ImageView recipeImage;
     @FXML
-    Label recipeName;
+    private Label recipeName;
     @FXML
-    Label recipeIngredientPercentageMessage;
+    private Label recipeIngredientPercentageMessage;
     @FXML
-    ProgressBar percentageBar;
+    private ProgressBar percentageBar;
 
 
     public FindRecipeListItem(Recipe recipe) {
         this.recipe = recipe;
         this.navigationController = NavigationController.getInstance();
         this.model = Model.getInstance();
-        this.setOnMouseClicked(this::onClick);
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("findRecipeListItem.fxml"));
         fxmlLoader.setController(this);
@@ -59,16 +58,17 @@ public class FindRecipeListItem extends AnchorPane implements Initializable {
 
     }
 
-    @FXML
-    public void onClick(Event event) {
-        navigationController.displayLightbox(new DetailViewPage(this.recipe));
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.setOnMouseClicked(this::onClick);
         this.recipeName.setText(this.recipe.getName());
         recipeIngredientPercentageMessage.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + " ingredients.");
         this.percentageBar.setProgress(model.getMatchingPercentage(recipe));
+    }
+
+    @FXML
+    private void onClick(Event event) {
+        navigationController.displayLightbox(new DetailViewPage(this.recipe));
     }
 
 }

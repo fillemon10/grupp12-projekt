@@ -43,6 +43,10 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
         }
 
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateStorageID();
+    }
 
     @FXML
     private void onClickSyncStorage(){
@@ -52,11 +56,6 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
 
     @Override
     public void onNotify() {
-        updateStorageID();
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         updateStorageID();
     }
 

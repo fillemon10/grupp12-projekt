@@ -1,7 +1,6 @@
 package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
-
 import java.util.*;
 
 public class RecipeSearch {
@@ -34,7 +33,8 @@ public class RecipeSearch {
         List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
-            if (recipe.containsIngredient(ingredient)) filteredRecipes.add(recipe);
+            if (recipe.containsIngredient(ingredient))
+                filteredRecipes.add(recipe);
         }
         return filteredRecipes;
     }
@@ -90,7 +90,13 @@ public class RecipeSearch {
         return dataAccessFacade.getAllRecipes();
     }
 
-    public List<Ingredient> getAllIngredients(){
-        return dataAccessFacade.getAllIngredients();
+    public List<Ingredient> getIngredientsNotInStorage(Storage storage){
+        List<Ingredient> ingredients = dataAccessFacade.getAllIngredients();
+        List<Ingredient> ingredientsNotInStorage = new ArrayList<>();
+        for (Ingredient i : ingredients) {
+            if (!storage.containsIngredient(i))
+                ingredientsNotInStorage.add(i);
+        }
+        return ingredientsNotInStorage;
     }
 }

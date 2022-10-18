@@ -70,13 +70,14 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     }
 
     @FXML
-    public void onClearFiltersButtonClicked(){
+    private void onClearFiltersButtonClicked(){
         updateRecipeList(model.getAllRecipes());
         searchComboBox.getEditor().clear();
+        searchComboBox.hide();
     }
 
     @FXML
-    public void onSearchButtonClicked() {
+    private void onSearchButtonClicked() {
         matchComboValueToIngredients();
     }
 

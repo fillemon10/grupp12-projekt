@@ -121,6 +121,8 @@ public class Model implements Observable {
     }
     public void addNewStorageToDatabase() {
         storage = new Storage();
+        List<Ingredient> ingredients = new ArrayList<Ingredient>();
+        storage.setIngredients(ingredients);
         storageHandler.addNewStorageToDatabase(storage);
 
     }
@@ -128,7 +130,7 @@ public class Model implements Observable {
         return currentUser.getStorageID();
     }
 
-    public List<Ingredient> getAllIngredients() {
-        return recipeSearch.getAllIngredients();
+    public List<Ingredient> getIngredientsNotInStorage() {
+        return recipeSearch.getIngredientsNotInStorage(this.storage);
     }
 }

@@ -74,12 +74,13 @@ public class DetailViewPage extends AnchorPane implements Initializable {
         }
     }
 
-    public void onClickCloseButton(Event event) {
+    @FXML
+    private void onClickCloseButton() {
         this.navigationController.dismissLightbox();
     }
 
     @FXML
-    public void mouseTrap(Event event) {
+    private void mouseTrap(Event event) {
         event.consume();
     }
 

@@ -46,7 +46,7 @@ public class StorageIngredientItem extends AnchorPane implements Initializable {
     }
 
     @FXML
-    public void onClick() {
+    private void onClick() {
         model.deleteStorageIngredient(ingredient);
     }
 
