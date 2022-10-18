@@ -65,15 +65,26 @@ public class DataAccessFacade {
         return recipeDataAccess.getById(id);
     }
     public void addUserToDatabase(String username, String password) {
+
         User userToAdd = new User();
         userToAdd.setUsername(username);
         userToAdd.setPassword(password);
+        userToAdd.setId(userDataAccess.getLastId()+1);
         userDataAccess.add(userToAdd);
     }
     public void addStorageToDatabase(Storage storage) {
         storageDataAccess.add(storage);
     }
-    public Storage getStorageByStorageCode(int storageCode) {
-        return storageDataAccess.getByStorageCode(storageCode);
+    public Storage getStorageById(int id) {
+        return storageDataAccess.getById(id);
     }
+
+    public List<Storage> getAllStorages() {
+        return storageDataAccess.getAll();
+    }
+
+    public void updateStorageInDatabase(Storage storage) {
+        storageDataAccess.update(storage);
+    }
+
 }

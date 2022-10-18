@@ -8,14 +8,11 @@ import java.util.ArrayList;
 
 @Document(collection = "users", schemaVersion = "1.0")
 public class User {
-
     @Id
     private int id;
     private String username;
-    @Secret
     private String password;
     private int storageID;
-    private ArrayList<Recipe> favorites;
 
     public String getUsername() {
         return username;
@@ -49,11 +46,4 @@ public class User {
         this.storageID = storageID;
     }
 
-    public ArrayList<Recipe> getFavorites() {
-        return favorites;
-    }
-
-    public void setFavorites(ArrayList<Recipe> favorites) {
-        this.favorites = favorites;
-    }
 }

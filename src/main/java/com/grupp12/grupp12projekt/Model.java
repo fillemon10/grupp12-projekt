@@ -8,6 +8,7 @@ import com.grupp12.grupp12projekt.backend.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Model implements Observable {
     private User currentUser;
@@ -19,9 +20,10 @@ public class Model implements Observable {
     private List<Observer> observers;
     private Authentication authentication;
 
+    private StorageHandler storageHandler;
+
     public static Model getInstance() {
-        if (instance == null)
-            instance = new Model();
+        if (instance == null) instance = new Model();
         return instance;
     }
 
@@ -29,11 +31,12 @@ public class Model implements Observable {
     private Model() {
         //In order to test GUI before real database is connected
         //makeDefaultDatabase();
+        authentication = Authentication.getInstance();
+        storageHandler = StorageHandler.getInstance();
 
         observers = new ArrayList<>();
 
-        if (recipeSearch == null)
-            recipeSearch = new RecipeSearch();
+        if (recipeSearch == null) recipeSearch = new RecipeSearch();
     }
 
     public void setCurrentUser(User user) {
@@ -44,13 +47,22 @@ public class Model implements Observable {
         this.storage = storage;
     }
 
+    public void setCurrentUserStorageId(int id){
+        this.currentUser.setStorageID(id);
+        this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        notifyObservers();
+    }
+
     public Storage getStorage() {
-        return storage;
+        this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        return this.storage;
     }
 
     public List<Ingredient> getStorageContent(){
-        return this.storage.getContents();
+        storage = getStorage();
+        return this.storage.getIngredients();
     }
+
     public void setRecipeSearch(RecipeSearch recipeSearch) {
         this.recipeSearch = recipeSearch;
     }
@@ -60,25 +72,21 @@ public class Model implements Observable {
         notifyObservers();
     }
 
-
-
+    public List<Recipe> get20bestMatchingRecipes(List<Recipe> recipes){
+        recipes = recipeSearch.get20bestMatchingRecipes(this.storage, recipes);
+        return recipes;
+    }
 
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
+    public List<Ingredient> getNonMatchingIngredients(Recipe recipe){
+        return recipeSearch.getNonMatchingIngredients(recipe, this.storage);
+    }
 
     public double getMatchingPercentage(Recipe recipe) {
-       /* Ingredient butter = new Ingredient(1, "Butter");
-        Ingredient eggs = new Ingredient(6, "Eggs");
-        List<Ingredient> storageIngredients = new ArrayList<>();
-        storageIngredients.add(butter);
-        storageIngredients.add(eggs);
-        Storage storage1 = new Storage(1, 2, storageIngredients);*/
-
-
-//        return recipeSearch.getMatchingPercentage(storage1, recipe);
-        return 1;
+        return recipeSearch.getMatchingPercentage(this.storage, recipe);
     }
 
     public List<Recipe> getRecipes() {
@@ -98,14 +106,6 @@ public class Model implements Observable {
         filteredRecipes = recipeSearch.filterByIngredient(ingredient);
         notifyObservers();
     }
-    public void createNewUser(String signUpUname, String signUpPword) {
-        authentication.registerUser(signUpUname, signUpPword);
-        logInUser(signUpUname, signUpPword);
-    }
-
-    public void logInUser(String logInUname, String logInPword) {
-        authentication.loginUser(logInUname, logInPword);
-    }
 
     @Override
     public void addObserver(Observer o) {
@@ -120,4 +120,38 @@ public class Model implements Observable {
     public void notifyObservers() {
         this.observers.forEach(x -> x.onNotify());
     }
+
+
+    public void createNewUser(String signUpUname, String signUpPword) {
+        authentication.registerUser(signUpUname, signUpPword);
+        logInUser(signUpUname, signUpPword);
+    }
+
+
+    public void logInUser(String logInUname, String logInPword) {
+        User user = authentication.loginUser(logInUname, logInPword);
+        if(user != null){
+            this.currentUser = user;
+            this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
+        }
+    }
+
+    public User getCurrentUser(){
+        return currentUser;
+    }
+
+    public void addIngredientToStorage(Ingredient ingredient){
+        storage.addIngredient(ingredient);
+        storageHandler.updateStorageInDatabase(storage);
+        notifyObservers();
+    }
+
+    public void addStorageToDatabase(Storage storage){
+        storageHandler.addStorageToDatabase(storage);
+    }
+
+    public int getCurrentUsersStorageID(){
+        return currentUser.getStorageID();
+    }
+
 }
