@@ -20,7 +20,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RecipeListItemController extends AnchorPane implements IController, Initializable {
+public class RecipeListItemController extends AnchorPane implements Initializable {
+
     private Model model;
     private Recipe recipe;
     private Storage storage;
