@@ -5,10 +5,18 @@ import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
 import java.util.*;
 
 public class RecipeSearch {
+    private DataAccessFacade dataAccessFacade;
+    private static RecipeSearch instance;
 
+    public static RecipeSearch getInstance() {
+        if (instance == null)
+            instance = new RecipeSearch();
+        return instance;
+    }
 
-    private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
-
+    private RecipeSearch() {
+        dataAccessFacade = DataAccessFacade.getInstance();
+    }
 
     public List<Ingredient> findIngredients(String search) {
         List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
@@ -31,7 +39,7 @@ public class RecipeSearch {
         return filteredRecipes;
     }
 
-    public List<Recipe> sortListOfRecipesBasedOnNumberOfIngredientsInStorage(Storage storage, List<Recipe> recipes) {
+    private List<Recipe> sortListOfRecipesBasedOnNumberOfIngredientsInStorage(Storage storage, List<Recipe> recipes) {
         Map<Recipe, Double> recipeIngredientCount = new HashMap<>();
         for (Recipe recipe : recipes) {
             double count = 0;
@@ -65,8 +73,7 @@ public class RecipeSearch {
             if (recipe.containsIngredient(ingredient)) count++;
         }
         double match = count / recipe.getIngredients().size();
-        int matchPercentage = (int) (match * 100);
-        return matchPercentage;
+        return match;
     }
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
@@ -77,26 +84,6 @@ public class RecipeSearch {
         }
 
         return matchingIngredients;
-    }
-
-    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage) {
-        List<Ingredient> nonMatchingIngredients = new ArrayList<>();
-        nonMatchingIngredients.addAll(recipe.getIngredients());
-        for (Ingredient recipeIngredient : recipe.getIngredients()) {
-            for (Ingredient storageIngredient : storage.getIngredients()) {
-                if (recipeIngredient.getId() == storageIngredient.getId()) {
-                    nonMatchingIngredients.remove(recipeIngredient);
-                    break;
-                }
-            }
-        }
-        return nonMatchingIngredients;
-    }
-
-
-    public Recipe getRecipeById(int id) {
-        Recipe recipe = dataAccessFacade.getRecipeById(id);
-        return recipe;
     }
 
     public List<Recipe> getAllRecipes() {

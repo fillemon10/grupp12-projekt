@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.controllers.LogInController">
+<AnchorPane prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.viewsAndControllers.LogInPage">
    <children>
       <StackPane prefHeight="500.0" prefWidth="780.0">
          <children>
@@ -78,6 +78,7 @@
                      </image>
                   </ImageView>
                   <Rectangle fill="#00000040" height="60.0" layoutX="390.0" onMouseClicked="#clickedOnLogInPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" />
+                  <Label fx:id="errorLabel" layoutX="420.0" layoutY="232.0" />
                </children>
             </AnchorPane>
          </children>

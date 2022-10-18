@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StorageSettings extends AnchorPane implements Observer, Initializable {
+public class StorageSettingsPage extends AnchorPane implements Observer, Initializable {
     @FXML
     private Label usersStorageID;
     @FXML
@@ -22,18 +22,18 @@ public class StorageSettings extends AnchorPane implements Observer, Initializab
     @FXML
     private AnchorPane rootpane;
     private Model model;
-    private static StorageSettings instance;
+    private static StorageSettingsPage instance;
 
-    public static StorageSettings getInstance() {
+    public static StorageSettingsPage getInstance() {
         if (instance == null)
-            instance = new StorageSettings();
+            instance = new StorageSettingsPage();
         return instance;
     }
 
-    private StorageSettings(){
+    private StorageSettingsPage(){
         model = model.getInstance();
         model.addObserver(this);
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageSettings.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageSettingsPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {

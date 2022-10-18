@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.views;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;

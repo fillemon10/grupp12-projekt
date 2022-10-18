@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeSearchTest {
-    private RecipeSearch recipeSearch = new RecipeSearch();
+    private RecipeSearch recipeSearch = RecipeSearch.getInstance();
 
     @Test
     public void filterByIngredientTest() {
