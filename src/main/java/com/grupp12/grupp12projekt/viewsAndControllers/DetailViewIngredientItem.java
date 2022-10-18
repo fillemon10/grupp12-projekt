@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.views;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -18,7 +18,7 @@ public class DetailViewIngredientItem extends AnchorPane {
     @FXML
     private ImageView recipeCheckbox;
     @FXML
-    Label ingredientNameLabel;
+    private Label ingredientNameLabel;
 
     public DetailViewIngredientItem(Ingredient ingredient) {
         this.model = Model.getInstance();
@@ -34,7 +34,7 @@ public class DetailViewIngredientItem extends AnchorPane {
         }
 
         ingredientNameLabel.setText(ingredient.getName());
-        if(model.getStorage().containsIngredient(ingredient))
+        if (model.getStorage().containsIngredient(ingredient))
             recipeCheckbox.setImage(new Image(String.valueOf(App2good2go.class.getResource("Icons/check_box_FILL0_wght400_GRAD0_opsz48.png"))));
 
     }

@@ -14,15 +14,19 @@ public class Storage {
     public int getId() {
         return id;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
+
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
+
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
+
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
@@ -32,7 +36,12 @@ public class Storage {
     }
 
     public boolean containsIngredient(Ingredient ingredient) {
-        return ingredients.contains(ingredient);
+        for (Ingredient i :
+                ingredients) {
+            if (i.getId() == ingredient.getId())
+                return true;
+        }
+        return false;
     }
 
 }

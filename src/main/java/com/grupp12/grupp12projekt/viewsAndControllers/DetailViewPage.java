@@ -1,10 +1,9 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.views.DetailViewIngredientItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,13 +20,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RecipeDetailController extends AnchorPane implements Initializable {
+public class DetailViewPage extends AnchorPane implements Initializable {
     private NavigationController navigationController;
     private Model model;
     private Recipe recipe;
 
     @FXML
-    private FlowPane listOfIngredients;
+    private ScrollPane listOfIngredients;
     @FXML
     private Label recipeName;
     @FXML
@@ -44,12 +43,12 @@ public class RecipeDetailController extends AnchorPane implements Initializable 
     private FlowPane ingredientsPane;
 
 
-    public RecipeDetailController(Recipe recipe) {
+    public DetailViewPage(Recipe recipe) {
         this.model = Model.getInstance();
         this.navigationController = NavigationController.getInstance();
         this.recipe = recipe;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipeDetailView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("detailViewPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
