@@ -33,14 +33,14 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     @FXML
     private Button clearFiltersButton;
 
-/*    private static FindRecipesPage instance;
+    private static FindRecipesPage instance;
 
     public static FindRecipesPage getInstance() {
         if (instance == null) instance = new FindRecipesPage();
         return instance;
-    }*/
+    }
 
-    public FindRecipesPage() {
+    private FindRecipesPage() {
         model = Model.getInstance();
         filteredIngredients = new ArrayList<>();
 
@@ -70,13 +70,14 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     }
 
     @FXML
-    public void onClearFiltersButtonClicked(){
+    private void onClearFiltersButtonClicked(){
         updateRecipeList(model.getAllRecipes());
         searchComboBox.getEditor().clear();
+        searchComboBox.hide();
     }
 
     @FXML
-    public void onSearchButtonClicked() {
+    private void onSearchButtonClicked() {
         matchComboValueToIngredients();
     }
 
@@ -112,7 +113,6 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     private void filterByIngredient(Ingredient ingredient) {
         model.filterByIngredient(ingredient);
     }
-
     @Override
     public void onNotify() {
         updateRecipeList(model.getFilteredRecipes());

@@ -1,7 +1,6 @@
 package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
-
 import java.util.*;
 
 public class RecipeSearch {
@@ -34,7 +33,8 @@ public class RecipeSearch {
         List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
-            if (recipe.containsIngredient(ingredient)) filteredRecipes.add(recipe);
+            if (recipe.containsIngredient(ingredient))
+                filteredRecipes.add(recipe);
         }
         return filteredRecipes;
     }
@@ -79,15 +79,32 @@ public class RecipeSearch {
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
-        for (Ingredient storageIngredient : storage.getIngredients()) {
-            if (recipe.containsIngredient(storageIngredient)) matchingIngredients.add(storageIngredient);
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            if (storage.containsIngredient(ingredient)){
+                matchingIngredients.add(ingredient);
+            }
         }
+
+/*        for (Ingredient storageIngredient : storage.getIngredients()) {
+            if (recipe.containsIngredient(storageIngredient))
+                matchingIngredients.add(storageIngredient);
+        }*/
 
         return matchingIngredients;
     }
 
     public List<Recipe> getAllRecipes() {
         return dataAccessFacade.getAllRecipes();
+    }
+
+    public List<Ingredient> getIngredientsNotInStorage(Storage storage){
+        List<Ingredient> ingredients = dataAccessFacade.getAllIngredients();
+        List<Ingredient> ingredientsNotInStorage = new ArrayList<>();
+        for (Ingredient i : ingredients) {
+            if (!storage.containsIngredient(i))
+                ingredientsNotInStorage.add(i);
+        }
+        return ingredientsNotInStorage;
     }
 
     public List<Ingredient> getAllIngredients(){

@@ -42,35 +42,37 @@ public class LogInPage extends AnchorPane implements Initializable {
     }
 
     @FXML
-    public void clickedOnSignUpPage() {
+    private void clickedOnSignUpPage() {
         errorLabel.setVisible(false);
         signUp.toFront();
     }
 
     @FXML
-    public void clickedOnLogInPage() {
+    private void clickedOnLogInPage() {
         errorLabel.setVisible(false);
         logIn.toFront();
     }
 
     @FXML
-    public void clickedOnSignUp() {
+    private void clickedOnSignUp() {
         try {
             model.createNewUser(signUpUname.getText(), signUpPword.getText());
             navigationController.logInOrSignUp();
         } catch(IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
+            errorLabel.toFront();
             errorLabel.setVisible(true);
         }
     }
 
     @FXML
-    public void clickedOnLogIn() {
+    private void clickedOnLogIn() {
         try {
             model.logInUser(logInUname.getText(), logInPword.getText());
             navigationController.logInOrSignUp();
         } catch(IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
+            errorLabel.toFront();
             errorLabel.setVisible(true);
         }
     }

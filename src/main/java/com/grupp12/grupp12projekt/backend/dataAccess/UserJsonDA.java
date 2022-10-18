@@ -44,6 +44,5 @@ public class UserJsonDA implements IDataAccess<User> {
         user = users.get(users.size() - 1);
         return user.getId();
     }
-
 }
 

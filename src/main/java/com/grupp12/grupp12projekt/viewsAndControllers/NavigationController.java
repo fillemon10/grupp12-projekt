@@ -71,19 +71,19 @@ public class NavigationController implements Initializable {
         logInPane.toFront();
     }
 
-    public void logInOrSignUp() {
+    void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
         setRecipeSearchPage();
     }
 
     @FXML
-    protected void onStorageButtonPressed(Event event) {
+    private void onStorageButtonPressed(Event event) {
         setStoragePage();
     }
 
     @FXML
-    protected void onRecipeSearchButtonPressed(Event event) {
+    private void onRecipeSearchButtonPressed(Event event) {
         setRecipeSearchPage();
 
     }
@@ -99,10 +99,9 @@ public class NavigationController implements Initializable {
     }
 
     private void setRecipeSearchPage() {
-        FindRecipesPage findRecipesPage = new FindRecipesPage();
-        Region r = findRecipesPage;
+        Region r = FindRecipesPage.getInstance();
         model.clearObservers();
-        model.addObserver(findRecipesPage);
+        model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
     }
 
@@ -121,7 +120,7 @@ public class NavigationController implements Initializable {
 
     }
 
-    public void displayLightbox(AnchorPane pane) {
+    void displayLightbox(AnchorPane pane) {
         lightBox.getChildren().clear();
         lightBox.getChildren().add(pane);
         AnchorPane.setBottomAnchor(pane, 50.0);
@@ -132,7 +131,7 @@ public class NavigationController implements Initializable {
         lightBox.setVisible(true);
     }
 
-    public void dismissLightbox() {
+    void dismissLightbox() {
         lightBox.toBack();
         lightBox.setVisible(false);
     }
