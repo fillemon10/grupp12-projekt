@@ -35,6 +35,7 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
 
     private StoragePage() {
         model = Model.getInstance();
+        model.addObserver(this);
         storageAllIngredientItemMap = new HashMap<>();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storagePage.fxml"));

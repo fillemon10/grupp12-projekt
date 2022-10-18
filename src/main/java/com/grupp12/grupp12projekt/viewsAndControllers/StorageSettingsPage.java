@@ -31,8 +31,9 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
     }
 
     private StorageSettingsPage(){
-        model = model.getInstance();
+        model = Model.getInstance();
         model.addObserver(this);
+
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageSettingsPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

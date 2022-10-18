@@ -42,6 +42,7 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
 
     private FindRecipesPage() {
         model = Model.getInstance();
+        model.addObserver(this);
         filteredIngredients = new ArrayList<>();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("findRecipePage.fxml"));
@@ -61,7 +62,7 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
         updateRecipeList(model.getAllRecipes());
     }
 
-    private void updateRecipeList(List<Recipe> recipes) {
+    void updateRecipeList(List<Recipe> recipes) {
         List<Recipe> bestMatchingRecipes = model.get20bestMatchingRecipes(recipes);
         recipeCardFlowPane.getChildren().clear();
         for (Recipe recipe : bestMatchingRecipes) {
@@ -70,7 +71,7 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     }
 
     @FXML
-    private void onClearFiltersButtonClicked(){
+    private void onClearFiltersButtonClicked() {
         updateRecipeList(model.getAllRecipes());
         searchComboBox.getEditor().clear();
         searchComboBox.hide();
@@ -113,6 +114,7 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     private void filterByIngredient(Ingredient ingredient) {
         model.filterByIngredient(ingredient);
     }
+
     @Override
     public void onNotify() {
         updateRecipeList(model.getFilteredRecipes());
