@@ -67,11 +67,9 @@ public class Model implements Observable {
     public double getMatchingPercentage(Recipe recipe) {
         return recipeSearch.getMatchingPercentage(this.storage, recipe);
     }
-
     public List<Recipe> getAllRecipes() {
         return recipeSearch.getAllRecipes();
     }
-
     public List<Recipe> getFilteredRecipes() {
         return filteredRecipes;
     }
@@ -84,22 +82,20 @@ public class Model implements Observable {
         filteredRecipes = recipeSearch.filterByIngredient(ingredient);
         notifyObservers();
     }
-
     @Override
     public void addObserver(Observer o) {
         this.observers.add(o);
     }
-
     @Override
     public void removeObserver(Observer o) {
         this.observers.remove(o);
     }
-
+    public void clearObservers() {
+        this.observers.clear();
+    }
     public void notifyObservers() {
         this.observers.forEach(x -> x.onNotify());
     }
-
-
     public void createNewUser(String signUpUname, String signUpPword) {
         authentication.registerUser(signUpUname, signUpPword);
         addNewStorageToDatabase();
@@ -122,15 +118,16 @@ public class Model implements Observable {
         storageHandler.updateStorageInDatabase(storage);
         notifyObservers();
     }
-
     public void addNewStorageToDatabase() {
         storage = new Storage();
         storageHandler.addNewStorageToDatabase(storage);
 
     }
-
     public int getCurrentUsersStorageID() {
         return currentUser.getStorageID();
     }
 
+    public List<Ingredient> getAllIngredients() {
+        return recipeSearch.getAllIngredients();
+    }
 }
