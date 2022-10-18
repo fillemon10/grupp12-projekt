@@ -11,4 +11,7 @@ module com.grupp12.grupp12projekt {
     opens com.grupp12.grupp12projekt.backend.dataAccess to javafx.fxml;
     exports com.grupp12.grupp12projekt.controllers;
     opens com.grupp12.grupp12projekt.controllers to javafx.fxml;
+    exports com.grupp12.grupp12projekt.views;
+    opens com.grupp12.grupp12projekt.views to javafx.fxml;
+
 }

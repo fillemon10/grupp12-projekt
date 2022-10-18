@@ -18,7 +18,7 @@ public class DetailViewIngredientItem extends AnchorPane {
     @FXML
     private ImageView recipeCheckbox;
     @FXML
-    Label ingredientNameLabel;
+    private Label ingredientNameLabel;
 
     public DetailViewIngredientItem(Ingredient ingredient) {
         this.model = Model.getInstance();
