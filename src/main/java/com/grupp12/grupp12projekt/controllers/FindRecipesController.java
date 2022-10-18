@@ -8,6 +8,7 @@ import com.grupp12.grupp12projekt.backend.Recipe;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -30,6 +31,9 @@ public class FindRecipesController extends VBox implements Observer, Initializab
     private FlowPane recipeCardFlowPane;
     @FXML
     private ComboBox<String> searchComboBox;
+
+    @FXML
+    private Button clearFiltersButton;
 
     private static FindRecipesController instance;
 
@@ -81,6 +85,12 @@ public class FindRecipesController extends VBox implements Observer, Initializab
         for (Recipe recipe : recipes) {
             recipeCardFlowPane.getChildren().add(new RecipeListItemController(recipe));
         }
+    }
+
+    @FXML
+    public void onClearFiltersButtonClicked(){
+        updateRecipeList(model.getRecipes());
+        searchComboBox.getEditor().clear();
     }
 
     @FXML
