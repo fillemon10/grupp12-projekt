@@ -35,11 +35,6 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="shoppingListButton" text="Shopping List">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
                            </children>
                         </HBox>
                      </children>

@@ -14,20 +14,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StorageIngredientItem extends AnchorPane implements Initializable {
+public class StorageAllIngredientItem extends AnchorPane implements Initializable {
     private Ingredient ingredient;
     private Model model;
     @FXML
     private Label ingredientName;
 
     @FXML
-    private ImageView deleteButton;
+    private ImageView addButton;
 
-    public StorageIngredientItem(Ingredient ingredient) {
+    public StorageAllIngredientItem(Ingredient ingredient) {
         this.ingredient = ingredient;
         this.model = Model.getInstance();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageIngredientItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageAllIngredientItem.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
 
@@ -47,7 +47,7 @@ public class StorageIngredientItem extends AnchorPane implements Initializable {
 
     @FXML
     public void onClick() {
-        model.deleteStorageIngredient(ingredient);
+        model.addIngredientToStorage(ingredient);
     }
 
 }

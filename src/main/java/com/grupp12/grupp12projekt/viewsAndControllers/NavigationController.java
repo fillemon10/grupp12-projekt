@@ -58,6 +58,7 @@ public class NavigationController implements Initializable {
     }
 
 
+
     private void setLogInPage() {
         AnchorPane pane = null;
         try {
@@ -73,6 +74,7 @@ public class NavigationController implements Initializable {
     public void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
+        setRecipeSearchPage();
     }
 
     @FXML
@@ -83,6 +85,7 @@ public class NavigationController implements Initializable {
     @FXML
     protected void onRecipeSearchButtonPressed(Event event) {
         setRecipeSearchPage();
+
     }
 
     @FXML
@@ -96,18 +99,26 @@ public class NavigationController implements Initializable {
     }
 
     private void setRecipeSearchPage() {
-        Region r = FindRecipesPage.getInstance();
+        FindRecipesPage findRecipesPage = new FindRecipesPage();
+        Region r = findRecipesPage;
+        model.clearObservers();
+        model.addObserver(findRecipesPage);
         contentScrollPane.setContent(r);
     }
 
     private void setStoragePage() {
         Region r = StoragePage.getInstance();
+        model.clearObservers();
+        model.addObserver(StoragePage.getInstance());
         contentScrollPane.setContent(r);
     }
 
     private void setStorageSettingsPage() {
         Region r = StorageSettingsPage.getInstance();
+        model.clearObservers();
+        model.addObserver(StorageSettingsPage.getInstance());
         contentScrollPane.setContent(r);
+
     }
 
     public void displayLightbox(AnchorPane pane) {
