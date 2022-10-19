@@ -20,7 +20,7 @@ public class StorageHandler {
             if (storage.getId() == id)
                 return storage;
         }
-        return null;
+        throw new IllegalArgumentException("Storage does not exist.");
     }
 
     public void addNewStorageToDatabase(Storage storage) {

@@ -6,6 +6,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -34,6 +35,8 @@ public class NavigationController implements Initializable {
     @FXML
     private Label recipeSettingsButton;
     @FXML
+    private Button logoutButton;
+    @FXML
     private AnchorPane lightBox;
     @FXML
     private AnchorPane logInPane;
@@ -54,25 +57,17 @@ public class NavigationController implements Initializable {
         storageButton.setOnMouseClicked(this::onStorageButtonPressed);
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
         storageSettingsButton.setOnMouseClicked(this::onStorageSettingsButtonPressed);
-        setLogInPage();
+        logoutButton.setOnMouseClicked(this::logOut);
+        setLogInPage(LogInPage.getInstance());
     }
 
 
-    private void setLogInPage() {
-        AnchorPane pane = null;
-        try {
-            pane = FXMLLoader.load(App2good2go.class.getResource("logInPage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        logInPane.getChildren().setAll(pane);
-        logInPane.setVisible(true);
-        logInPane.toFront();
-    }
+
 
     void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
+
         setFindRecipePage();
     }
 
@@ -97,9 +92,28 @@ public class NavigationController implements Initializable {
         dismissLightbox();
     }
 
+    private void setLogInPage(AnchorPane pane) {
+        logInPane.getChildren().clear();
+        logInPane.getChildren().add(pane);
+        AnchorPane.setBottomAnchor(pane, 0.0);
+        AnchorPane.setLeftAnchor(pane, 0.0);
+        AnchorPane.setRightAnchor(pane, 0.0);
+        AnchorPane.setTopAnchor(pane, 0.0);
+
+/*        AnchorPane pane = null;
+        try {
+            pane = FXMLLoader.load(App2good2go.class.getResource("logInPage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        logInPane.getChildren().setAll(pane);*/
+        logInPane.setVisible(true);
+        logInPane.toFront();
+    }
+
     private void setFindRecipePage() {
         Region r = FindRecipesPage.getInstance();
-        //model.clearObservers();
+       // model.clearObservers();
         //model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
         contentScrollPane.setVvalue(0);
@@ -133,5 +147,11 @@ public class NavigationController implements Initializable {
     void dismissLightbox() {
         lightBox.toBack();
         lightBox.setVisible(false);
+    }
+
+    @FXML
+    private void logOut(Event event){
+        setLogInPage(LogInPage.getInstance());
+        model.logout();
     }
 }
