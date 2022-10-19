@@ -1,7 +1,7 @@
 package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
-import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Model;
 import com.grupp12.grupp12projekt.Observer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

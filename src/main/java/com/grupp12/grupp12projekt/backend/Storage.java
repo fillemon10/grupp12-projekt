@@ -3,7 +3,7 @@ package com.grupp12.grupp12projekt.backend;
 import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
 
-import java.util.*;
+import java.util.List;
 
 @Document(collection = "storages", schemaVersion = "1.0")
 public class Storage {

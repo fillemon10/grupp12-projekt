@@ -1,6 +1,6 @@
 package com.Backend;
 
-import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Storage;
 import org.junit.jupiter.api.Test;
