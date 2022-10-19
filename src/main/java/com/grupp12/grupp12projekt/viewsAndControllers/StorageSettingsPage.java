@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -21,8 +22,11 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
     private TextField otherUsersStorageID;
     @FXML
     private AnchorPane rootpane;
+    @FXML
+    private Label errorLabel;
     private Model model;
     private static StorageSettingsPage instance;
+
 
     public static StorageSettingsPage getInstance() {
         if (instance == null)
@@ -30,10 +34,9 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
         return instance;
     }
 
-    private StorageSettingsPage(){
+    private StorageSettingsPage() {
         model = Model.getInstance();
         model.addObserver(this);
-
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageSettingsPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -42,16 +45,29 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        errorLabel.setVisible(false);
+        otherUsersStorageID.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                onClickSyncStorage();
+            }
+        });
+
         updateStorageID();
     }
 
     @FXML
-    private void onClickSyncStorage(){
-       model.setCurrentUserStorageId(Integer.parseInt(otherUsersStorageID.getText()));
+    private void onClickSyncStorage() {
+        try {
+            model.setCurrentUserStorageId(Integer.parseInt(otherUsersStorageID.getText()));
+            errorLabel.setVisible(false);
+        } catch (IllegalArgumentException e) {
+            errorLabel.setText(e.getMessage());
+            errorLabel.setVisible(true);
+        }
 
     }
 
@@ -60,7 +76,7 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
         updateStorageID();
     }
 
-    private void updateStorageID(){
+    private void updateStorageID() {
         usersStorageID.setText(String.valueOf(model.getCurrentUsersStorageID()));
     }
 }

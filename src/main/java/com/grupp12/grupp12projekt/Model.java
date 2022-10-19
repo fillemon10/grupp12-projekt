@@ -36,9 +36,9 @@ public class Model implements Observable {
     }
 
     public void setCurrentUserStorageId(int id) {
+        this.storage = storageHandler.getStorageFromDatabase(id);
         this.currentUser.setStorageID(id);
         authentication.setStorageID(currentUser);
-        this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
         notifyObservers();
     }
 
@@ -142,5 +142,10 @@ public class Model implements Observable {
 
     public List<Ingredient> getIngredientsNotInStorage() {
         return recipeSearch.getIngredientsNotInStorage(this.storage);
+    }
+
+    public void logout(){
+        this.currentUser = null;
+        this.storage = null;
     }
 }
