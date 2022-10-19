@@ -2,11 +2,8 @@ package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.Observable;
 import com.grupp12.grupp12projekt.Observer;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 
 public class Model implements Observable {
@@ -14,10 +11,10 @@ public class Model implements Observable {
     private Storage storage;
     private static Model instance;
     private List<Recipe> filteredRecipes;
-    private List<Observer> observers;
-    private Authentication authentication;
-    private StorageHandler storageHandler;
-    private RecipeSearch recipeSearch;
+    private static List<Observer> observers;
+    private static Authentication authentication;
+    private static StorageHandler storageHandler;
+    private static RecipeSearch recipeSearch;
 
 
     public static Model getInstance() {
@@ -143,7 +140,7 @@ public class Model implements Observable {
         return recipeSearch.getIngredientsNotInStorage(this.storage);
     }
 
-    public void logout(){
+    public void logout() {
         this.currentUser = null;
         this.storage = null;
     }
