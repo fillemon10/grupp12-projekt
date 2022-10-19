@@ -11,8 +11,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupp12.grupp12projekt.viewsAndControllers.LogInPage">
+<fx:root fx:id="rootPane" prefHeight="500.0" prefWidth="780.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Label fx:id="loggingInLabel" layoutX="700.0" layoutY="400.0" />
       <Label fx:id="errorLabel" layoutX="425.0" layoutY="250.0" textFill="#ff5151" />
       <StackPane prefHeight="500.0" prefWidth="780.0">
          <children>
@@ -85,4 +86,4 @@
          </children>
       </StackPane>
    </children>
-</AnchorPane>
+</fx:root>

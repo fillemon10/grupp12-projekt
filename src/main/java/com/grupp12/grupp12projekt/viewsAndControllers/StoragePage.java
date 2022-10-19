@@ -24,8 +24,6 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
     private FlowPane allIngredientFlowpane;
 
     private Model model;
-    private Map<String, StorageAllIngredientItem> storageAllIngredientItemMap;
-
     private static StoragePage instance;
 
     public static StoragePage getInstance() {
@@ -36,8 +34,6 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
     private StoragePage() {
         model = Model.getInstance();
         model.addObserver(this);
-        storageAllIngredientItemMap = new HashMap<>();
-
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storagePage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -51,10 +47,6 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for (Ingredient ingredient : model.getIngredientsNotInStorage()) {
-            StorageAllIngredientItem storageAllIngredientItem = new StorageAllIngredientItem(ingredient);
-            storageAllIngredientItemMap.put(ingredient.getName(), storageAllIngredientItem);
-        }
         updateStorageList();
         updateAllProductsList();
     }
@@ -69,14 +61,10 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
 
     private void updateAllProductsList() {
         allIngredientFlowpane.getChildren().clear();
-        List<Ingredient> allIngredients = model.getIngredientsNotInStorage();
-        StorageAllIngredientItem storageAllIngredientItem;
-
-        for (Ingredient i : allIngredients) {
-            storageAllIngredientItem = storageAllIngredientItemMap.get(i.getName());
-            allIngredientFlowpane.getChildren().add((storageAllIngredientItem));
+        List<Ingredient> ingredients = model.getIngredientsNotInStorage();
+        for (Ingredient i : ingredients) {
+            allIngredientFlowpane.getChildren().add(new StorageAllIngredientItem(i));
         }
-
     }
 
 

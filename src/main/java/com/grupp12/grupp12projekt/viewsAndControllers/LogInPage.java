@@ -1,13 +1,16 @@
 package com.grupp12.grupp12projekt.viewsAndControllers;
 
+import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,13 +31,32 @@ public class LogInPage extends AnchorPane implements Initializable {
     @FXML
     private Label errorLabel;
 
+    @FXML
+    private Label loggingInLabel;
+
 
     private static NavigationController navigationController;
     private static Model model;
+    private static LogInPage instance;
+
+    public static LogInPage getInstance() {
+        if (instance == null) instance = new LogInPage();
+        return instance;
+    }
 
     public LogInPage() {
         navigationController = NavigationController.getInstance();
         model = Model.getInstance();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("logInPage.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     @Override
@@ -74,7 +96,6 @@ public class LogInPage extends AnchorPane implements Initializable {
             navigationController.logInOrSignUp();
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
-            errorLabel.toFront();
             errorLabel.setVisible(true);
         }
     }
@@ -86,7 +107,6 @@ public class LogInPage extends AnchorPane implements Initializable {
             navigationController.logInOrSignUp();
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
-            errorLabel.toFront();
             errorLabel.setVisible(true);
         }
     }
