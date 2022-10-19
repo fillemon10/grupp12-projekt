@@ -77,12 +77,14 @@ public class LogInPage extends AnchorPane implements Initializable {
     private void clickedOnSignUpPage() {
         errorLabel.setVisible(false);
         signUp.toFront();
+        clearFields();
     }
 
     @FXML
     private void clickedOnLogInPage() {
         errorLabel.setVisible(false);
         logIn.toFront();
+        clearFields();
     }
 
     @FXML
@@ -105,5 +107,12 @@ public class LogInPage extends AnchorPane implements Initializable {
             errorLabel.setText(e.getMessage());
             errorLabel.setVisible(true);
         }
+    }
+
+    void clearFields() {
+        logInUname.clear();
+        logInPword.clear();
+        signUpUname.clear();
+        signUpPword.clear();
     }
 }

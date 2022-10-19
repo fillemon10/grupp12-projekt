@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 public class FindRecipesPage extends VBox implements Observer, Initializable {
     private Model model;
     private List<Ingredient> filteredIngredients;
-    @FXML
-    private ImageView searchButton;
+    private static FindRecipesPage instance;
+
     @FXML
     private FlowPane recipeCardFlowPane;
     @FXML
@@ -33,7 +33,6 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     @FXML
     private Button clearFiltersButton;
 
-    private static FindRecipesPage instance;
 
     public static FindRecipesPage getInstance() {
         if (instance == null) instance = new FindRecipesPage();
@@ -75,11 +74,6 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
         updateRecipeList(model.getAllRecipes());
         searchComboBox.getEditor().clear();
         searchComboBox.hide();
-    }
-
-    @FXML
-    private void onSearchButtonClicked() {
-        matchComboValueToIngredients();
     }
 
     private void searchComboAction() {

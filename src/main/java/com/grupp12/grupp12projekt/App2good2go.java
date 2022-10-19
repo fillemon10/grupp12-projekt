@@ -14,6 +14,8 @@ public class App2good2go extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("rootPage.fxml"));
         fxmlLoader.setController(NavigationController.getInstance());
         Scene scene = new Scene(fxmlLoader.load(), 780, 500);
+        stage.setMinHeight(550);
+        stage.setMinWidth(820);
         stage.setTitle("2good2go");
         stage.setScene(scene);
         stage.show();
