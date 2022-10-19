@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Class for the find recipes page
+ */
+
 public class FindRecipesPage extends VBox implements Observer, Initializable {
     private Model model;
     private List<Ingredient> filteredIngredients;
@@ -38,6 +42,8 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
         if (instance == null) instance = new FindRecipesPage();
         return instance;
     }
+
+
 
     private FindRecipesPage() {
         model = Model.getInstance();
@@ -60,6 +66,11 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
         searchComboBox.setOnAction(e -> searchComboAction());
         updateRecipeList(model.getAllRecipes());
     }
+
+    /**
+     * Method that gets the 20 top matching recipes from the model and adds each of these recipes to the FlowPane in find recipes page.
+     * @param recipes recipes are supplied
+     */
 
     void updateRecipeList(List<Recipe> recipes) {
         List<Recipe> bestMatchingRecipes = model.get20bestMatchingRecipes(recipes);

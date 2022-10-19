@@ -14,6 +14,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class for the ingredient items in a users' storage.
+ */
+
+
 public class StorageIngredientItem extends AnchorPane implements Initializable {
     private Ingredient ingredient;
     private Model model;
@@ -22,6 +27,12 @@ public class StorageIngredientItem extends AnchorPane implements Initializable {
 
     @FXML
     private ImageView deleteButton;
+
+
+    /**
+     * Constructor for instances of Storage ingredient items that loads the fxml file with the supplied ingredient.
+     * @param ingredient supplied ingredient
+     */
 
     public StorageIngredientItem(Ingredient ingredient) {
         this.ingredient = ingredient;

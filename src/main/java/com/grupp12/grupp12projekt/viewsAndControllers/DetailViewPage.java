@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class that creates detail views of all the listed recipes in the Find Recipes page that contains detailed information of the recipes.
+ */
 public class DetailViewPage extends AnchorPane implements Initializable {
     private NavigationController navigationController;
     private Model model;
@@ -45,6 +48,10 @@ public class DetailViewPage extends AnchorPane implements Initializable {
     private Label ratingLabel;
 
 
+    /**
+     * Constructor for creating the detail view page
+     * @param recipe the supplied recipe
+     */
     public DetailViewPage(Recipe recipe) {
         this.model = Model.getInstance();
         this.navigationController = NavigationController.getInstance();

@@ -4,6 +4,10 @@ import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
 
 import java.util.List;
 
+/**
+ * This class handles users storages from the database
+ */
+
 public class StorageHandler {
     private static StorageHandler instance;
     private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
