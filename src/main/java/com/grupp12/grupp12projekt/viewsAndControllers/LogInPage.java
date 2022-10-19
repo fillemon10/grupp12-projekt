@@ -1,7 +1,7 @@
 package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
-import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,10 +34,6 @@ public class LogInPage extends AnchorPane implements Initializable {
     private TextField signUpPword;
     @FXML
     private Label errorLabel;
-
-    @FXML
-    private Label loggingInLabel;
-
 
     private static NavigationController navigationController;
     private static Model model;
@@ -88,12 +84,14 @@ public class LogInPage extends AnchorPane implements Initializable {
     private void clickedOnSignUpPage() {
         errorLabel.setVisible(false);
         signUp.toFront();
+        clearFields();
     }
 
     @FXML
     private void clickedOnLogInPage() {
         errorLabel.setVisible(false);
         logIn.toFront();
+        clearFields();
     }
 
     @FXML
@@ -116,5 +114,12 @@ public class LogInPage extends AnchorPane implements Initializable {
             errorLabel.setText(e.getMessage());
             errorLabel.setVisible(true);
         }
+    }
+
+    void clearFields() {
+        logInUname.clear();
+        logInPword.clear();
+        signUpUname.clear();
+        signUpPword.clear();
     }
 }

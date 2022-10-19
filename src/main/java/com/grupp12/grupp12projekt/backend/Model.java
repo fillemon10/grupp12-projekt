@@ -1,10 +1,7 @@
-package com.grupp12.grupp12projekt;
+package com.grupp12.grupp12projekt.backend;
 
-import com.grupp12.grupp12projekt.backend.*;
-import com.grupp12.grupp12projekt.backend.Ingredient;
-import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.backend.Storage;
-import com.grupp12.grupp12projekt.backend.User;
+import com.grupp12.grupp12projekt.Observable;
+import com.grupp12.grupp12projekt.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +9,8 @@ import java.util.List;
 /**
  * Model class that handles the logic for the entire program.
  */
+
+
 
 
 
