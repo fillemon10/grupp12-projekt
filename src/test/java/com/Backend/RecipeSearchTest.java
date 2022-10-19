@@ -59,10 +59,28 @@ public class RecipeSearchTest {
     }
     @Test
     public void getMatchingIngredientsTest(){
+        List<Ingredient> i =  recipeSearch.findIngredients("turkey");
+        Recipe r =  recipeSearch.getAllRecipes().get(241);
+        Storage s = new Storage();
+        s.setIngredients(i);
+        assertTrue(recipeSearch.getMatchingIngredients(r, s).size() == 1);
+
+
+    }
+    @Test
+    public void getIngredientsNotInStorage(){
+
+        List<Ingredient> i =  recipeSearch.findIngredients("turkey");
+        Storage s = new Storage();
+        s.setIngredients(i);
+        List<Ingredient> ingredientsNotInStorage = recipeSearch.getIngredientsNotInStorage(s);
+        assertTrue(ingredientsNotInStorage.size() == 323);
 
 
 
     }
+
+
 
 
 }
