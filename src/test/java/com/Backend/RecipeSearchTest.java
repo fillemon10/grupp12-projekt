@@ -74,7 +74,7 @@ public class RecipeSearchTest {
         Storage s = new Storage();
         s.setIngredients(i);
         List<Ingredient> ingredientsNotInStorage = recipeSearch.getIngredientsNotInStorage(s);
-        assertTrue(ingredientsNotInStorage.size() == 323);
+        assertEquals(323, ingredientsNotInStorage.size() );
 
 
 
