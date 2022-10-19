@@ -31,8 +31,9 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
     }
 
     private StorageSettingsPage(){
-        model = model.getInstance();
+        model = Model.getInstance();
         model.addObserver(this);
+
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storageSettingsPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -43,6 +44,10 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
         }
 
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateStorageID();
+    }
 
     @FXML
     private void onClickSyncStorage(){
@@ -52,11 +57,6 @@ public class StorageSettingsPage extends AnchorPane implements Observer, Initial
 
     @Override
     public void onNotify() {
-        updateStorageID();
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         updateStorageID();
     }
 

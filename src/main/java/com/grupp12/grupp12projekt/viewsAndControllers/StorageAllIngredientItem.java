@@ -46,7 +46,7 @@ public class StorageAllIngredientItem extends AnchorPane implements Initializabl
     }
 
     @FXML
-    public void onClick() {
+    private void onClick() {
         model.addIngredientToStorage(ingredient);
     }
 

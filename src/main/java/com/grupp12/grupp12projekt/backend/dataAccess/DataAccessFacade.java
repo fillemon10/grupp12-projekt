@@ -79,4 +79,8 @@ public class DataAccessFacade {
         storageDataAccess.update(storage);
     }
 
+    public void setStorageID(User user) {
+        userDataAccess.update(user);
+    }
+
 }

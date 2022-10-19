@@ -4,7 +4,7 @@ import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.Observer;
 import com.grupp12.grupp12projekt.backend.Ingredient;
-import com.grupp12.grupp12projekt.backend.Recipe;
+import com.grupp12.grupp12projekt.backend.StorageHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,21 +21,22 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
     @FXML
     private FlowPane myStorageFlowpane;
     @FXML
-    private  FlowPane allIngredientFlowpane;
+    private FlowPane allIngredientFlowpane;
 
     private Model model;
+    private Map<String, StorageAllIngredientItem> storageAllIngredientItemMap;
+
     private static StoragePage instance;
 
-    private Map<String, StorageAllIngredientItem> storageAllIngredientItemMap = new HashMap<>();
-
     public static StoragePage getInstance() {
-        if (instance == null)
-            instance = new StoragePage();
+        if (instance == null) instance = new StoragePage();
         return instance;
     }
 
     private StoragePage() {
         model = Model.getInstance();
+        model.addObserver(this);
+        storageAllIngredientItemMap = new HashMap<>();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("storagePage.fxml"));
         fxmlLoader.setRoot(this);
@@ -50,7 +51,7 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for (Ingredient ingredient: model.getAllIngredients()) {
+        for (Ingredient ingredient : model.getIngredientsNotInStorage()) {
             StorageAllIngredientItem storageAllIngredientItem = new StorageAllIngredientItem(ingredient);
             storageAllIngredientItemMap.put(ingredient.getName(), storageAllIngredientItem);
         }
@@ -58,7 +59,7 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
         updateAllProductsList();
     }
 
-    public void updateStorageList(){
+    private void updateStorageList() {
         myStorageFlowpane.getChildren().clear();
         List<Ingredient> ingredients = model.getStorageContent();
         for (Ingredient i : ingredients) {
@@ -66,17 +67,17 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
         }
     }
 
-    public void updateAllProductsList(){
+    private void updateAllProductsList() {
         allIngredientFlowpane.getChildren().clear();
-        List<Ingredient> allIngredients = model.getAllIngredients();
+        List<Ingredient> allIngredients = model.getIngredientsNotInStorage();
         StorageAllIngredientItem storageAllIngredientItem;
 
-        for (Ingredient i: allIngredients) {
+        for (Ingredient i : allIngredients) {
             storageAllIngredientItem = storageAllIngredientItemMap.get(i.getName());
             allIngredientFlowpane.getChildren().add((storageAllIngredientItem));
-    }
+        }
 
-}
+    }
 
 
     @Override

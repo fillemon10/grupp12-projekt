@@ -42,4 +42,8 @@ public class Authentication {
             throw new IllegalArgumentException("Username already exists!");
         }
     }
+
+    public void setStorageID(User user){
+        dataAccessFacade.setStorageID(user);
+    }
 }

@@ -58,7 +58,6 @@ public class NavigationController implements Initializable {
     }
 
 
-
     private void setLogInPage() {
         AnchorPane pane = null;
         try {
@@ -71,20 +70,20 @@ public class NavigationController implements Initializable {
         logInPane.toFront();
     }
 
-    public void logInOrSignUp() {
+    void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
-        setRecipeSearchPage();
+        setFindRecipePage();
     }
 
     @FXML
-    protected void onStorageButtonPressed(Event event) {
+    private void onStorageButtonPressed(Event event) {
         setStoragePage();
     }
 
     @FXML
-    protected void onRecipeSearchButtonPressed(Event event) {
-        setRecipeSearchPage();
+    private void onRecipeSearchButtonPressed(Event event) {
+        setFindRecipePage();
 
     }
 
@@ -98,30 +97,29 @@ public class NavigationController implements Initializable {
         dismissLightbox();
     }
 
-    private void setRecipeSearchPage() {
-        FindRecipesPage findRecipesPage = new FindRecipesPage();
-        Region r = findRecipesPage;
-        model.clearObservers();
-        model.addObserver(findRecipesPage);
+    private void setFindRecipePage() {
+        Region r = FindRecipesPage.getInstance();
+        //model.clearObservers();
+        //model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
+        contentScrollPane.setVvalue(0);
     }
 
     private void setStoragePage() {
         Region r = StoragePage.getInstance();
-        model.clearObservers();
-        model.addObserver(StoragePage.getInstance());
+        //model.clearObservers();
+        //model.addObserver(StoragePage.getInstance());
         contentScrollPane.setContent(r);
     }
 
     private void setStorageSettingsPage() {
         Region r = StorageSettingsPage.getInstance();
-        model.clearObservers();
-        model.addObserver(StorageSettingsPage.getInstance());
+        //model.clearObservers();
+        //model.addObserver(StorageSettingsPage.getInstance());
         contentScrollPane.setContent(r);
-
     }
 
-    public void displayLightbox(AnchorPane pane) {
+    void displayLightbox(AnchorPane pane) {
         lightBox.getChildren().clear();
         lightBox.getChildren().add(pane);
         AnchorPane.setBottomAnchor(pane, 50.0);
@@ -132,7 +130,7 @@ public class NavigationController implements Initializable {
         lightBox.setVisible(true);
     }
 
-    public void dismissLightbox() {
+    void dismissLightbox() {
         lightBox.toBack();
         lightBox.setVisible(false);
     }
