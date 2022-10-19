@@ -22,12 +22,12 @@ Run the file
 mvn exec:java -Dexec.mainClass=com.grupp12.grupp12projekt.App2good2go
 ```
 ## Info
-Made by:
-Filip Eles <fille_900@live.se> 
-Hanna Monastyrski <hanna@monastyrski.com>
-Rikard Roos <rikardroos@hotmail.com>
-Filip Sjölander <filip.sjolander@gmail.com>
-Amanda Taghdisi <amanda.taghdisi@hotmail.com>
+#### Made by:
+- Filip Eles <fille_900@live.se> 
+- Hanna Monastyrski <hanna@monastyrski.com>
+- Rikard Roos <rikardroos@hotmail.com>
+- Filip Sjölander <filip.sjolander@gmail.com>
+- Amanda Taghdisi <amanda.taghdisi@hotmail.com>
 
-Made for:
-Chalmers TDA367 / DIT213 TDA367 / DIT213 Objektorienterat programmeringsprojekt
+#### Made for:
+- Chalmers TDA367 / DIT213 TDA367 / DIT213 Objektorienterat programmeringsprojekt
