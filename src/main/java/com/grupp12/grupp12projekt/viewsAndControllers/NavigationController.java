@@ -79,7 +79,6 @@ public class NavigationController implements Initializable {
     @FXML
     private void onRecipeSearchButtonPressed(Event event) {
         setFindRecipePage();
-
     }
 
     @FXML

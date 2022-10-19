@@ -2,10 +2,7 @@ package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.backend.Model;
-import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.backend.RecipeSearch;
-import com.grupp12.grupp12projekt.backend.Storage;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,14 +23,9 @@ import java.util.ResourceBundle;
 
 public class FindRecipeListItem extends AnchorPane implements Initializable {
 
-    private Model model;
+    private static Model model;
+    private static NavigationController navigationController;
     private Recipe recipe;
-    private Storage storage;
-    private RecipeSearch recipeSearch;
-
-    private List<Recipe> recipes;
-    private Ingredient ingredient;
-    private NavigationController navigationController;
 
     @FXML
     private ImageView recipeImage;
@@ -53,8 +45,8 @@ public class FindRecipeListItem extends AnchorPane implements Initializable {
 
     public FindRecipeListItem(Recipe recipe) {
         this.recipe = recipe;
-        this.navigationController = NavigationController.getInstance();
-        this.model = Model.getInstance();
+        navigationController = NavigationController.getInstance();
+        model = Model.getInstance();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("findRecipeListItem.fxml"));
         fxmlLoader.setController(this);
