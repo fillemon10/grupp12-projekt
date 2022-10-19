@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * Class for finding recipes
+ */
 public class RecipeSearch {
     private DataAccessFacade dataAccessFacade;
     private static RecipeSearch instance;
@@ -19,6 +23,11 @@ public class RecipeSearch {
         dataAccessFacade = DataAccessFacade.getInstance();
     }
 
+    /**
+     * method for finding ingredients that match the search query
+     * @param search
+     * @return list of ingredients matching the search
+     */
     List<Ingredient> findIngredients(String search) {
         List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
         List<Ingredient> foundIngredients = new ArrayList<>();
@@ -29,6 +38,12 @@ public class RecipeSearch {
         }
         return foundIngredients;
     }
+
+    /**
+     * a filtering method for the recipe search, that is supplied an ingredient and only returns recipes that contain the supplied ingredient
+     * @param ingredient supplied filtering ingredient
+     * @return Returns a list with recipes that all contain the supplied ingredient
+     */
 
     List<Recipe> filterByIngredient(Ingredient ingredient) {
         List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
@@ -76,6 +91,13 @@ public class RecipeSearch {
         return bestMatchingRecipes;
     }
 
+    /**
+     * method that returns a matching percentage based on the number of ingredients in the supplied recipe that this storage also contains.
+     * @param storage supplied storage
+     * @param recipe supplied recipe
+     * @return returns the matching percentage as a double
+     */
+
     double getMatchingPercentage(Storage storage, Recipe recipe) {
         double count = 0;
         for (Ingredient ingredient : storage.getIngredients()) {
@@ -84,6 +106,13 @@ public class RecipeSearch {
         double match = count / recipe.getIngredients().size();
         return match;
     }
+
+    /**
+     * method that is supplied this recipe and storage and gets the ingredients from this storage and the ingredients from this recipe and returns the ingredients from the recipe that the storage contains in a list
+     * @param recipe supplied recipe
+     * @param storage supplied storage
+     * @return
+     */
 
     List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
@@ -96,9 +125,16 @@ public class RecipeSearch {
         return matchingIngredients;
     }
 
+
     List<Recipe> getAllRecipes() {
         return dataAccessFacade.getAllRecipes();
     }
+
+    /**
+     * method that is supplied this storage and gets all the ingredients in this storage and returns the all the available ingredients are not added to this storage
+     * @param storage supplied storage
+     * @return returns a list of all the available ingredients that has not been added in the storage
+     */
 
     List<Ingredient> getIngredientsNotInStorage(Storage storage){
         List<Ingredient> ingredients = dataAccessFacade.getAllIngredients();

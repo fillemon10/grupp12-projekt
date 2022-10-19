@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Class for the ingredient items in a users storage.
+ * Class for the ingredient items in a users' storage.
  */
 
 

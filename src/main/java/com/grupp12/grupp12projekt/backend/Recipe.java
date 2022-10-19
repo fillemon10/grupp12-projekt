@@ -5,6 +5,10 @@ import io.jsondb.annotation.Id;
 
 import java.util.List;
 
+/**
+ * Class for recipe instances
+ */
+
 @Document(collection = "recipes", schemaVersion = "1.0")
 public class Recipe {
     @Id

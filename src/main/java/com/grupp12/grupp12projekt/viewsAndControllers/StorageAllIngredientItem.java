@@ -28,7 +28,7 @@ public class StorageAllIngredientItem extends AnchorPane implements Initializabl
     private ImageView addButton;
 
     /**
-     * Constructor for instances of the storags all products ingredient items that loads the fxml file with the supplied ingredient.
+     * Constructor for instances of the storages all products' ingredient items that loads the fxml file with the supplied ingredient.
      * @param ingredient
      */
 

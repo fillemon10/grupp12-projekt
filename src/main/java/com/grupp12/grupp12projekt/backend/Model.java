@@ -9,11 +9,6 @@ import java.util.List;
 /**
  * Model class that handles the logic for the entire program.
  */
-
-
-
-
-
 public class Model implements Observable {
     private User currentUser;
     private Storage storage;
@@ -92,9 +87,20 @@ public class Model implements Observable {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }
 
+    /**
+     * method that returns a  matching percentage based on the number of ingredients in the supplied recipe that this storage also contains.
+     * @param recipe
+     * @return
+     */
+
     public double getMatchingPercentage(Recipe recipe) {
         return recipeSearch.getMatchingPercentage(this.storage, recipe);
     }
+
+    /**
+     * method that returns all list of all the recipes in the program
+     * @return returns a list of all the recipes in the program
+     */
 
     public List<Recipe> getAllRecipes() {
         return recipeSearch.getAllRecipes();
@@ -104,9 +110,20 @@ public class Model implements Observable {
         return filteredRecipes;
     }
 
+    /**
+     * method that is supplied a string and returns all ingredients in the program that matches the supplied string. The method used in the find recipe page when the user
+     * @param s
+     * @return
+     */
+
     public List<Ingredient> findIngredients(String s) {
         return recipeSearch.findIngredients(s);
     }
+
+    /**
+     * method that filters the recipe search based on a supplied ingredient and returns a list of recipes that contains the supplied ingredient
+     * @param ingredient supplied ingredient
+     */
 
     public void filterByIngredient(Ingredient ingredient) {
         filteredRecipes = recipeSearch.filterByIngredient(ingredient);
@@ -132,11 +149,23 @@ public class Model implements Observable {
         this.observers.forEach(x -> x.onNotify());
     }
 
+    /**
+     * method for creating/registering a new user of the program
+     * @param signUpUname supplied username for registration
+     * @param signUpPword supplied password for registration
+     */
+
     public void createNewUser(String signUpUname, String signUpPword) {
         authentication.registerUser(signUpUname, signUpPword);
         addNewStorageToDatabase();
         logInUser(signUpUname, signUpPword);
     }
+
+    /**
+     * method for the log in of a user based on supplied username and password
+     * @param logInUname supplied username
+     * @param logInPword supplied password
+     */
 
 
     public void logInUser(String logInUname, String logInPword) {
@@ -145,15 +174,24 @@ public class Model implements Observable {
         this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
     }
 
+
+
     public User getCurrentUser() {
         return currentUser;
     }
+
+    /**
+     * method for adding this ingredient to a storage
+     * @param ingredient supplied ingredient to add to the storage
+     */
 
     public void addIngredientToStorage(Ingredient ingredient) {
         storage.addIngredient(ingredient);
         storageHandler.updateStorageInDatabase(storage);
         notifyObservers();
     }
+
+
 
     public void addNewStorageToDatabase() {
         storage = new Storage();

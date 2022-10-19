@@ -3,6 +3,10 @@ package com.grupp12.grupp12projekt.backend;
 import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
 
+/**
+ * Class for ingredient instances
+ */
+
 @Document(collection = "ingredients", schemaVersion = "1.0")
 public class Ingredient {
     @Id

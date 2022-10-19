@@ -3,7 +3,7 @@ package com.grupp12.grupp12projekt.backend;
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
 
 /**
- * This class handles the creation and log in functionality of the users of the program
+ * The Authentication class handles the creation and log in functionality of the users of the program
  */
 
 
