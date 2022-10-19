@@ -1,5 +1,6 @@
 package com.Backend;
 
+import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.*;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeSearchTest {
+    private Model model = Model.getInstance();
+
     private RecipeSearch recipeSearch = RecipeSearch.getInstance();
 
     @Test
@@ -32,6 +35,36 @@ public class RecipeSearchTest {
         List<Ingredient> ingredients = recipeSearch.getAllIngredients();
         assertTrue(ingredients.size() > 0);
     }
+    @Test
+    public void findIngredientTest(){
+       List<Ingredient> findIngredientList =  recipeSearch.findIngredients("al");
+       assertTrue(findIngredientList.size() > 0);
+
+
+    }
+    @Test
+    public void get20BestMatchingRecipesTest(){
+        List<Recipe> bestMatchingRecipes = model.get20bestMatchingRecipes(model.getAllRecipes());
+        assertTrue(bestMatchingRecipes.size() == 20);
+    }
+
+    @Test
+    public void getMatchingPercentageTest(){
+        List<Ingredient> i =  recipeSearch.findIngredients("turkey");
+        Recipe r =  recipeSearch.getAllRecipes().get(241);
+        Storage s = new Storage();
+        s.setIngredients(i);
+        double match = recipeSearch.getMatchingPercentage(s,r);
+        assertTrue(match == 0.25);
+    }
+    @Test
+    public void getMatchingIngredientsTest(){
+
+
+
+    }
+
+
 }
 //
 //
