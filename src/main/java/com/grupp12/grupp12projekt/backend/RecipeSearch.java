@@ -79,17 +79,11 @@ public class RecipeSearch {
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            if (storage.containsIngredient(ingredient)){
+        for (Ingredient ingredient : storage.getIngredients()) {
+            if (recipe.containsIngredient(ingredient)){
                 matchingIngredients.add(ingredient);
             }
         }
-
-/*        for (Ingredient storageIngredient : storage.getIngredients()) {
-            if (recipe.containsIngredient(storageIngredient))
-                matchingIngredients.add(storageIngredient);
-        }*/
-
         return matchingIngredients;
     }
 
