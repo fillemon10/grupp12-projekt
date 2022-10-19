@@ -1,6 +1,6 @@
 package com.grupp12.grupp12projekt.viewsAndControllers;
 
-import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Model;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -15,7 +15,7 @@ public class ConnectionJson {
     private static String baseScanPackage = "com.grupp12.grupp12projekt.backend";
 
 
-    public static JsonDBTemplate getConnection() {
+    static JsonDBTemplate getConnection() {
         if(con == null) {
             try{
                 con = new JsonDBTemplate(dbFilesLocation, baseScanPackage);

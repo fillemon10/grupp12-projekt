@@ -11,7 +11,7 @@ public class RecipeSearch {
     private DataAccessFacade dataAccessFacade;
     private static RecipeSearch instance;
 
-    public static RecipeSearch getInstance() {
+    static RecipeSearch getInstance() {
         if (instance == null)
             instance = new RecipeSearch();
         return instance;
@@ -21,7 +21,7 @@ public class RecipeSearch {
         dataAccessFacade = DataAccessFacade.getInstance();
     }
 
-    public List<Ingredient> findIngredients(String search) {
+    List<Ingredient> findIngredients(String search) {
         List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
         List<Ingredient> foundIngredients = new ArrayList<>();
         for (Ingredient ingredient : allIngredients) {
@@ -32,7 +32,7 @@ public class RecipeSearch {
         return foundIngredients;
     }
 
-    public List<Recipe> filterByIngredient(Ingredient ingredient) {
+    List<Recipe> filterByIngredient(Ingredient ingredient) {
         List<Recipe> allRecipes = dataAccessFacade.getAllRecipes();
         List<Recipe> filteredRecipes = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class RecipeSearch {
         return sortedRecipes;
     }
 
-    public List<Recipe> get20bestMatchingRecipes(Storage storage, List<Recipe> recipes) {
+    List<Recipe> get20bestMatchingRecipes(Storage storage, List<Recipe> recipes) {
         List<Recipe> sortedRecipes = sortListOfRecipesBasedOnNumberOfIngredientsInStorage(storage, recipes);
         List<Recipe> bestMatchingRecipes = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -71,7 +71,7 @@ public class RecipeSearch {
         return bestMatchingRecipes;
     }
 
-    public double getMatchingPercentage(Storage storage, Recipe recipe) {
+    double getMatchingPercentage(Storage storage, Recipe recipe) {
         double count = 0;
         for (Ingredient ingredient : storage.getIngredients()) {
             if (recipe.containsIngredient(ingredient)) count++;
@@ -80,7 +80,7 @@ public class RecipeSearch {
         return match;
     }
 
-    public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
+    List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
         for (Ingredient ingredient : storage.getIngredients()) {
@@ -91,11 +91,11 @@ public class RecipeSearch {
         return matchingIngredients;
     }
 
-    public List<Recipe> getAllRecipes() {
+    List<Recipe> getAllRecipes() {
         return dataAccessFacade.getAllRecipes();
     }
 
-    public List<Ingredient> getIngredientsNotInStorage(Storage storage){
+    List<Ingredient> getIngredientsNotInStorage(Storage storage){
         List<Ingredient> ingredients = dataAccessFacade.getAllIngredients();
         List<Ingredient> ingredientsNotInStorage = new ArrayList<>();
         for (Ingredient i : ingredients) {
@@ -105,7 +105,7 @@ public class RecipeSearch {
         return ingredientsNotInStorage;
     }
 
-    public List<Ingredient> getAllIngredients(){
+    List<Ingredient> getAllIngredients(){
         return dataAccessFacade.getAllIngredients();
     }
 }
