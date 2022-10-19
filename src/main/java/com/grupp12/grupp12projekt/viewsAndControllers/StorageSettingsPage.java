@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class for the storage setting page where the user is able to see their own storage ID and can share their storage with another user.
+ */
+
 public class StorageSettingsPage extends AnchorPane implements Observer, Initializable {
     @FXML
     private Label usersStorageID;

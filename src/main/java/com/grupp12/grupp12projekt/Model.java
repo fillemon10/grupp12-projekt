@@ -9,6 +9,11 @@ import com.grupp12.grupp12projekt.backend.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Model class that handles the logic for the entire program.
+ */
+
+
 
 public class Model implements Observable {
     private User currentUser;
@@ -35,6 +40,11 @@ public class Model implements Observable {
         observers = new ArrayList<>();
     }
 
+    /**
+     * method for setting a users Storage ID which is used for the synchronization of storages.
+     * @param id is supplied
+     */
+
     public void setCurrentUserStorageId(int id) {
         this.storage = storageHandler.getStorageFromDatabase(id);
         this.currentUser.setStorageID(id);
@@ -52,16 +62,33 @@ public class Model implements Observable {
         return this.storage.getIngredients();
     }
 
+    /**
+     * method for deleting/removing an ingredient from storage which is used in the storage ingredient item class.
+     * @param ingredient that will be deleted from the storage is supplied
+     */
+
     public void deleteStorageIngredient(Ingredient ingredient) {
         this.storage.removeIngredient(ingredient);
         storageHandler.updateStorageInDatabase(storage);
         notifyObservers();
     }
 
+    /**
+     * method that is supplied with a list of recipes and returns a list of recipes with the 20 best matching recipes which is used in the find recipes class.
+     * @param recipes supplied recipes
+     * @return returns the top 20 best recipe matches recipes based on the supplied recipes and storage
+     */
+
     public List<Recipe> get20bestMatchingRecipes(List<Recipe> recipes) {
         return recipeSearch.get20bestMatchingRecipes(this.storage, recipes);
     }
 
+
+    /**
+     * method that is supplied with this recipe and checks which of the ingredients in the supplied recipe that the storage also contains and returns a list of matching ingredients.
+     * @param recipe supplied recipe
+     * @return a list of matching ingredients
+     */
     public List<Ingredient> getMatchingIngredients(Recipe recipe) {
         return recipeSearch.getMatchingIngredients(recipe, this.storage);
     }

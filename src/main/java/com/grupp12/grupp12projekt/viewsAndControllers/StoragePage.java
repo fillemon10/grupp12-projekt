@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Class that extends AnchorPane and dynamically updates the users Storage page with ingredients items that are added in their storage and all the product items which can be added in their storage.
+ */
+
 public class StoragePage extends AnchorPane implements Initializable, Observer {
     @FXML
     private AnchorPane rootPane;
@@ -30,6 +34,10 @@ public class StoragePage extends AnchorPane implements Initializable, Observer {
         if (instance == null) instance = new StoragePage();
         return instance;
     }
+
+    /**
+     * Constructor for instance of the Storage Page
+     */
 
     private StoragePage() {
         model = Model.getInstance();

@@ -14,6 +14,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class for the programs log in page
+ */
+
 public class LogInPage extends AnchorPane implements Initializable {
 
     @FXML
@@ -44,6 +48,9 @@ public class LogInPage extends AnchorPane implements Initializable {
         return instance;
     }
 
+    /**
+     * Constructor for the creation of instance of the login in page.
+     */
     public LogInPage() {
         navigationController = NavigationController.getInstance();
         model = Model.getInstance();

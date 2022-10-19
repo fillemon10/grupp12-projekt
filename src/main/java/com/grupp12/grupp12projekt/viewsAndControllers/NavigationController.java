@@ -17,6 +17,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Navigation controller class that handles the navigation of the program
+ */
+
 public class NavigationController implements Initializable {
     private Model model;
     private static NavigationController instance;
@@ -62,8 +66,9 @@ public class NavigationController implements Initializable {
     }
 
 
-
-
+    /**
+     * method for removing the login pane when login or sign up is successful
+     */
     void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
@@ -100,13 +105,7 @@ public class NavigationController implements Initializable {
         AnchorPane.setRightAnchor(pane, 0.0);
         AnchorPane.setTopAnchor(pane, 0.0);
 
-/*        AnchorPane pane = null;
-        try {
-            pane = FXMLLoader.load(App2good2go.class.getResource("logInPage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        logInPane.getChildren().setAll(pane);*/
+
 
         logInPane.setVisible(true);
         logInPane.toFront();
@@ -114,26 +113,25 @@ public class NavigationController implements Initializable {
 
     private void setFindRecipePage() {
         Region r = FindRecipesPage.getInstance();
-       // model.clearObservers();
-        //model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
         contentScrollPane.setVvalue(0);
     }
 
     private void setStoragePage() {
         Region r = StoragePage.getInstance();
-        //model.clearObservers();
-        //model.addObserver(StoragePage.getInstance());
         contentScrollPane.setContent(r);
     }
 
     private void setStorageSettingsPage() {
         Region r = StorageSettingsPage.getInstance();
-        //model.clearObservers();
-        //model.addObserver(StorageSettingsPage.getInstance());
         contentScrollPane.setContent(r);
     }
 
+    /**
+     * method for displaying the lightbox for the detail view in find recipes
+     *
+     * @param pane supplied anchor pane that is displayed in the light box.
+     */
     void displayLightbox(AnchorPane pane) {
         lightBox.getChildren().clear();
         lightBox.getChildren().add(pane);
@@ -144,6 +142,10 @@ public class NavigationController implements Initializable {
         lightBox.toFront();
         lightBox.setVisible(true);
     }
+
+    /**
+     * method for dismissing the lightbox for the detail view in find recipes
+     */
 
     void dismissLightbox() {
         lightBox.toBack();

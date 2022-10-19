@@ -12,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+
+
 public class DetailViewIngredientItem extends AnchorPane {
     Model model;
 
