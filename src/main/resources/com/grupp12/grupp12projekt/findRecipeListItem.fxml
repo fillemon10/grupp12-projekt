@@ -16,7 +16,7 @@
          </image></ImageView>
       <Label fx:id="recipeName" layoutX="21.0" layoutY="172.0" prefHeight="52.0" prefWidth="199.0" text="Recipe name" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="21.0">
          <font>
-            <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+            <Font name="Arial Nova Cond Bold" size="18.0" />
          </font>
       </Label>
       <ProgressBar fx:id="percentageBar" layoutX="16.0" layoutY="257.0" prefHeight="20.0" prefWidth="200.0" progress="0.78" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="20.0" />
