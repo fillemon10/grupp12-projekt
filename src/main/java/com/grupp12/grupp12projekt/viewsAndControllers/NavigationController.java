@@ -1,19 +1,13 @@
 package com.grupp12.grupp12projekt.viewsAndControllers;
 
-import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
-
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,8 +56,6 @@ public class NavigationController implements Initializable {
     }
 
 
-
-
     void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
@@ -79,7 +71,6 @@ public class NavigationController implements Initializable {
     @FXML
     private void onRecipeSearchButtonPressed(Event event) {
         setFindRecipePage();
-
     }
 
     @FXML
@@ -103,21 +94,13 @@ public class NavigationController implements Initializable {
         AnchorPane.setTopAnchor(pane, 0.0);
         LogInPage.getInstance().clearFields();
 
-/*        AnchorPane pane = null;
-        try {
-            pane = FXMLLoader.load(App2good2go.class.getResource("logInPage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        logInPane.getChildren().setAll(pane);*/
-
         logInPane.setVisible(true);
         logInPane.toFront();
     }
 
     private void setFindRecipePage() {
         Region r = FindRecipesPage.getInstance();
-       // model.clearObservers();
+        // model.clearObservers();
         //model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
         contentScrollPane.setVvalue(0);
@@ -154,7 +137,7 @@ public class NavigationController implements Initializable {
     }
 
     @FXML
-    private void logOut(Event event){
+    private void logOut(Event event) {
         setLogInPage();
         model.logout();
     }
