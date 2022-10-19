@@ -1,8 +1,6 @@
 package com.Backend;
 
-import com.grupp12.grupp12projekt.Model;
-import com.grupp12.grupp12projekt.backend.Authentication;
-import com.grupp12.grupp12projekt.backend.User;
+import com.grupp12.grupp12projekt.backend.Model;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;

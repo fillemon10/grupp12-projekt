@@ -13,8 +13,6 @@
 
 <fx:root fx:id="rootPane" prefHeight="500.0" prefWidth="780.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="loggingInLabel" layoutX="700.0" layoutY="400.0" />
-      <Label fx:id="errorLabel" layoutX="425.0" layoutY="250.0" textFill="#ff5151" />
       <StackPane prefHeight="500.0" prefWidth="780.0">
          <children>
             <AnchorPane fx:id="logIn" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
@@ -47,7 +45,7 @@
                      </image>
                   </ImageView>
                   <Rectangle fill="#00000040" height="60.0" onMouseClicked="#clickedOnSignUpPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="390.0" />
-                  <PasswordField fx:id="logInPword" layoutX="421.0" layoutY="193.0" />
+                  <PasswordField fx:id="logInPword" layoutX="420.0" layoutY="192.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="signUp" prefHeight="500.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
@@ -85,5 +83,6 @@
             </AnchorPane>
          </children>
       </StackPane>
+      <Label fx:id="errorLabel" layoutX="425.0" layoutY="250.0" textFill="#ff5151" />
    </children>
 </fx:root>
