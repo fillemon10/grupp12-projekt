@@ -17,7 +17,7 @@
             <AnchorPane fx:id="logInPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" visible="false" />
             <BorderPane minHeight="500.0" minWidth="780.0" prefHeight="500.0" prefWidth="780.0">
                <top>
-                  <AnchorPane prefHeight="50.0" prefWidth="780.0" BorderPane.alignment="CENTER">
+                  <AnchorPane maxHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="780.0" BorderPane.alignment="CENTER">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>

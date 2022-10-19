@@ -58,7 +58,7 @@ public class NavigationController implements Initializable {
         recipeSearchButton.setOnMouseClicked(this::onRecipeSearchButtonPressed);
         storageSettingsButton.setOnMouseClicked(this::onStorageSettingsButtonPressed);
         logoutButton.setOnMouseClicked(this::logOut);
-        setLogInPage(LogInPage.getInstance());
+        setLogInPage();
     }
 
 
@@ -92,13 +92,16 @@ public class NavigationController implements Initializable {
         dismissLightbox();
     }
 
-    private void setLogInPage(AnchorPane pane) {
+    private void setLogInPage() {
+        AnchorPane pane = LogInPage.getInstance();
+
         logInPane.getChildren().clear();
         logInPane.getChildren().add(pane);
         AnchorPane.setBottomAnchor(pane, 0.0);
         AnchorPane.setLeftAnchor(pane, 0.0);
         AnchorPane.setRightAnchor(pane, 0.0);
         AnchorPane.setTopAnchor(pane, 0.0);
+        LogInPage.getInstance().clearFields();
 
 /*        AnchorPane pane = null;
         try {
@@ -152,7 +155,7 @@ public class NavigationController implements Initializable {
 
     @FXML
     private void logOut(Event event){
-        setLogInPage(LogInPage.getInstance());
+        setLogInPage();
         model.logout();
     }
 }

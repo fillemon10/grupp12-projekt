@@ -26,8 +26,6 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
     private static FindRecipesPage instance;
 
     @FXML
-    private ImageView searchButton;
-    @FXML
     private FlowPane recipeCardFlowPane;
     @FXML
     private ComboBox<String> searchComboBox;
@@ -76,11 +74,6 @@ public class FindRecipesPage extends VBox implements Observer, Initializable {
         updateRecipeList(model.getAllRecipes());
         searchComboBox.getEditor().clear();
         searchComboBox.hide();
-    }
-
-    @FXML
-    private void onSearchButtonClicked() {
-        matchComboValueToIngredients();
     }
 
     private void searchComboAction() {
