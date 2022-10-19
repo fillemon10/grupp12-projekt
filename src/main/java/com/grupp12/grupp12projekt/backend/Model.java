@@ -125,7 +125,7 @@ public class Model implements Observable {
         notifyObservers();
     }
 
-    public void addNewStorageToDatabase() {
+    private void addNewStorageToDatabase() {
         storage = new Storage();
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
         storage.setIngredients(ingredients);

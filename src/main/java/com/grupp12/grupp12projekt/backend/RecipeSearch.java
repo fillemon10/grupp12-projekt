@@ -105,7 +105,5 @@ public class RecipeSearch {
         return ingredientsNotInStorage;
     }
 
-    List<Ingredient> getAllIngredients(){
-        return dataAccessFacade.getAllIngredients();
-    }
+
 }
