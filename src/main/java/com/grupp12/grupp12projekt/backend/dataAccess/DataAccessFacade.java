@@ -12,7 +12,6 @@ public class DataAccessFacade {
     private IngredientJsonDA ingredientDataAccess;
     private RecipeJsonDA recipeDataAccess;
     private UserJsonDA userDataAccess;
-
     private StorageJsonDA storageDataAccess;
     private DataAccessFacade() {
         ingredientDataAccess = new IngredientJsonDA();
@@ -20,30 +19,12 @@ public class DataAccessFacade {
         userDataAccess = new UserJsonDA();
         storageDataAccess = new StorageJsonDA();
     }
-
     public static DataAccessFacade getInstance() {
         if (instance == null) {
             instance = new DataAccessFacade();
         }
         return instance;
     }
-
-    public IngredientJsonDA getIngredientDataAccess() {
-        return ingredientDataAccess;
-    }
-
-    public RecipeJsonDA getRecipeDataAccess() {
-        return recipeDataAccess;
-    }
-
-    public UserJsonDA getUserDataAccess() {
-        return userDataAccess;
-    }
-
-    public StorageJsonDA getStorageDataAccess() {
-        return storageDataAccess;
-    }
-
     public List<User> getAllUsers() {
         return userDataAccess.getAll();
     }
@@ -53,11 +34,7 @@ public class DataAccessFacade {
     public List<Ingredient> getAllIngredients() {
         return ingredientDataAccess.getAll();
     }
-    public Recipe getRecipeById(int id) {
-        return recipeDataAccess.getById(id);
-    }
     public void addUserToDatabase(String username, String password) {
-
         User userToAdd = new User();
         userToAdd.setUsername(username);
         userToAdd.setPassword(password);
@@ -68,18 +45,12 @@ public class DataAccessFacade {
     public void addStorageToDatabase(Storage storage) {
         storageDataAccess.add(storage);
     }
-    public Storage getStorageById(int id) {
-        return storageDataAccess.getById(id);
-    }
-
     public List<Storage> getAllStorages() {
         return storageDataAccess.getAll();
     }
-
     public void updateStorageInDatabase(Storage storage) {
         storageDataAccess.update(storage);
     }
-
     public void setStorageID(User user) {
         userDataAccess.update(user);
     }
