@@ -1,7 +1,6 @@
 package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
-
 import java.util.List;
 
 public class StorageHandler {
@@ -24,14 +23,13 @@ public class StorageHandler {
         return null;
     }
 
-    public void addStorageToDatabase(Storage storage){
+    public void addNewStorageToDatabase(Storage storage) {
         dataAccessFacade.addStorageToDatabase(storage);
     }
 
-    public void updateStorageInDatabase(Storage storage){
+    public void updateStorageInDatabase(Storage storage) {
         dataAccessFacade.updateStorageInDatabase(storage);
     }
-
 
 
 }

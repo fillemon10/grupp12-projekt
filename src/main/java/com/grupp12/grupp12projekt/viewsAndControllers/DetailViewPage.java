@@ -1,10 +1,9 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.views.DetailViewIngredientItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RecipeDetailController extends AnchorPane implements Initializable {
+public class DetailViewPage extends AnchorPane implements Initializable {
     private NavigationController navigationController;
     private Model model;
     private Recipe recipe;
@@ -42,14 +41,16 @@ public class RecipeDetailController extends AnchorPane implements Initializable 
     private AnchorPane rootPane;
     @FXML
     private FlowPane ingredientsPane;
+    @FXML
+    private Label ratingLabel;
 
 
-    public RecipeDetailController(Recipe recipe) {
+    public DetailViewPage(Recipe recipe) {
         this.model = Model.getInstance();
         this.navigationController = NavigationController.getInstance();
         this.recipe = recipe;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("recipeDetailView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("detailViewPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -65,6 +66,7 @@ public class RecipeDetailController extends AnchorPane implements Initializable 
         recipeName.setText(recipe.getName());
         amountMatchingIngredients.setText("You have " + model.getMatchingIngredients(recipe).size() + " out of " + recipe.getIngredients().size() + " ingredients.");
         progressBar.setProgress(model.getMatchingPercentage(recipe));
+        ratingLabel.setText("Rating: " + recipe.getRating()+ "/5");
         setUpIngredients();
     }
 
@@ -75,12 +77,13 @@ public class RecipeDetailController extends AnchorPane implements Initializable 
         }
     }
 
-    public void onClickCloseButton(Event event) {
+    @FXML
+    private void onClickCloseButton() {
         this.navigationController.dismissLightbox();
     }
 
     @FXML
-    public void mouseTrap(Event event) {
+    private void mouseTrap(Event event) {
         event.consume();
     }
 

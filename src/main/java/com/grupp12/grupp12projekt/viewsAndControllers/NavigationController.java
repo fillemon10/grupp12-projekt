@@ -1,4 +1,4 @@
-package com.grupp12.grupp12projekt.controllers;
+package com.grupp12.grupp12projekt.viewsAndControllers;
 
 import com.grupp12.grupp12projekt.App2good2go;
 import com.grupp12.grupp12projekt.Model;
@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
@@ -62,7 +61,7 @@ public class NavigationController implements Initializable {
     private void setLogInPage() {
         AnchorPane pane = null;
         try {
-            pane = FXMLLoader.load(App2good2go.class.getResource("logIn.fxml"));
+            pane = FXMLLoader.load(App2good2go.class.getResource("logInPage.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,19 +70,21 @@ public class NavigationController implements Initializable {
         logInPane.toFront();
     }
 
-    public void logInOrSignUp() {
+    void logInOrSignUp() {
         logInPane.toBack();
         logInPane.setVisible(false);
+        setFindRecipePage();
     }
 
     @FXML
-    protected void onStorageButtonPressed(Event event) {
+    private void onStorageButtonPressed(Event event) {
         setStoragePage();
     }
 
     @FXML
-    protected void onRecipeSearchButtonPressed(Event event) {
-        setRecipeSearchPage();
+    private void onRecipeSearchButtonPressed(Event event) {
+        setFindRecipePage();
+
     }
 
     @FXML
@@ -96,22 +97,29 @@ public class NavigationController implements Initializable {
         dismissLightbox();
     }
 
-    private void setRecipeSearchPage() {
-        Region r = FindRecipesController.getInstance();
+    private void setFindRecipePage() {
+        Region r = FindRecipesPage.getInstance();
+        //model.clearObservers();
+        //model.addObserver(FindRecipesPage.getInstance());
         contentScrollPane.setContent(r);
+        contentScrollPane.setVvalue(0);
     }
 
     private void setStoragePage() {
-        Region r = StorageController.getInstance();
+        Region r = StoragePage.getInstance();
+        //model.clearObservers();
+        //model.addObserver(StoragePage.getInstance());
         contentScrollPane.setContent(r);
     }
 
     private void setStorageSettingsPage() {
-        Region r = StorageSettings.getInstance();
+        Region r = StorageSettingsPage.getInstance();
+        //model.clearObservers();
+        //model.addObserver(StorageSettingsPage.getInstance());
         contentScrollPane.setContent(r);
     }
 
-    public void displayLightbox(AnchorPane pane) {
+    void displayLightbox(AnchorPane pane) {
         lightBox.getChildren().clear();
         lightBox.getChildren().add(pane);
         AnchorPane.setBottomAnchor(pane, 50.0);
@@ -122,7 +130,7 @@ public class NavigationController implements Initializable {
         lightBox.setVisible(true);
     }
 
-    public void dismissLightbox() {
+    void dismissLightbox() {
         lightBox.toBack();
         lightBox.setVisible(false);
     }

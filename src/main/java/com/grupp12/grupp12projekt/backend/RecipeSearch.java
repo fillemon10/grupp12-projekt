@@ -1,14 +1,21 @@
 package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.dataAccess.DataAccessFacade;
-
 import java.util.*;
 
 public class RecipeSearch {
+    private DataAccessFacade dataAccessFacade;
+    private static RecipeSearch instance;
 
+    public static RecipeSearch getInstance() {
+        if (instance == null)
+            instance = new RecipeSearch();
+        return instance;
+    }
 
-    private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
-
+    private RecipeSearch() {
+        dataAccessFacade = DataAccessFacade.getInstance();
+    }
 
     public List<Ingredient> findIngredients(String search) {
         List<Ingredient> allIngredients = dataAccessFacade.getAllIngredients();
@@ -26,19 +33,20 @@ public class RecipeSearch {
         List<Recipe> filteredRecipes = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
-            if (recipe.containsIngredient(ingredient)) filteredRecipes.add(recipe);
+            if (recipe.containsIngredient(ingredient))
+                filteredRecipes.add(recipe);
         }
         return filteredRecipes;
     }
 
-    public List<Recipe> sortListOfRecipesBasedOnNumberOfIngredientsInStorage(Storage storage, List<Recipe> recipes) {
+    private List<Recipe> sortListOfRecipesBasedOnNumberOfIngredientsInStorage(Storage storage, List<Recipe> recipes) {
         Map<Recipe, Double> recipeIngredientCount = new HashMap<>();
         for (Recipe recipe : recipes) {
             double count = 0;
             for (Ingredient ingredient : storage.getIngredients()) {
                 if (recipe.containsIngredient(ingredient)) count++;
             }
-            double match = count * (count / recipe.getIngredients().size());
+            double match =count / recipe.getIngredients().size();
             recipeIngredientCount.put(recipe, match);
         }
         List<Recipe> sortedRecipes = new ArrayList<>();
@@ -65,41 +73,41 @@ public class RecipeSearch {
             if (recipe.containsIngredient(ingredient)) count++;
         }
         double match = count / recipe.getIngredients().size();
-        int matchPercentage = (int) (match * 100);
-        return matchPercentage;
+        return match;
     }
 
     public List<Ingredient> getMatchingIngredients(Recipe recipe, Storage storage) {
         List<Ingredient> matchingIngredients = new ArrayList<Ingredient>();
 
-        for (Ingredient storageIngredient : storage.getIngredients()) {
-            if (recipe.containsIngredient(storageIngredient)) matchingIngredients.add(storageIngredient);
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            if (storage.containsIngredient(ingredient)){
+                matchingIngredients.add(ingredient);
+            }
         }
+
+/*        for (Ingredient storageIngredient : storage.getIngredients()) {
+            if (recipe.containsIngredient(storageIngredient))
+                matchingIngredients.add(storageIngredient);
+        }*/
 
         return matchingIngredients;
     }
 
-    public List<Ingredient> getNonMatchingIngredients(Recipe recipe, Storage storage) {
-        List<Ingredient> nonMatchingIngredients = new ArrayList<>();
-        nonMatchingIngredients.addAll(recipe.getIngredients());
-        for (Ingredient recipeIngredient : recipe.getIngredients()) {
-            for (Ingredient storageIngredient : storage.getIngredients()) {
-                if (recipeIngredient.getId() == storageIngredient.getId()) {
-                    nonMatchingIngredients.remove(recipeIngredient);
-                    break;
-                }
-            }
-        }
-        return nonMatchingIngredients;
-    }
-
-
-    public Recipe getRecipeById(int id) {
-        Recipe recipe = dataAccessFacade.getRecipeById(id);
-        return recipe;
-    }
-
     public List<Recipe> getAllRecipes() {
         return dataAccessFacade.getAllRecipes();
+    }
+
+    public List<Ingredient> getIngredientsNotInStorage(Storage storage){
+        List<Ingredient> ingredients = dataAccessFacade.getAllIngredients();
+        List<Ingredient> ingredientsNotInStorage = new ArrayList<>();
+        for (Ingredient i : ingredients) {
+            if (!storage.containsIngredient(i))
+                ingredientsNotInStorage.add(i);
+        }
+        return ingredientsNotInStorage;
+    }
+
+    public List<Ingredient> getAllIngredients(){
+        return dataAccessFacade.getAllIngredients();
     }
 }

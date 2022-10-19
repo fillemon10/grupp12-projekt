@@ -1,6 +1,5 @@
 package com.grupp12.grupp12projekt.backend.dataAccess;
 import com.grupp12.grupp12projekt.backend.Storage;
-
 import io.jsondb.JsonDBTemplate;
 
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ public class StorageJsonDA implements IDataAccess<Storage> {
 
     @Override
     public void add(Storage storage) {
+        storage.setId(getLastId()+1);
         connection.insert(storage);
     }
 
@@ -36,6 +36,13 @@ public class StorageJsonDA implements IDataAccess<Storage> {
     @Override
     public void delete(Storage storage) {
         connection.remove(storage, Storage.class);
+    }
+
+    public int getLastId(){
+        Storage storage;
+        storages = getAll();
+        storage = storages.get(storages.size() - 1);
+        return storage.getId();
     }
 }
 

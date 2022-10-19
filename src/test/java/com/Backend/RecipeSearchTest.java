@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeSearchTest {
-    private RecipeSearch recipeSearch = new RecipeSearch();
+    private RecipeSearch recipeSearch = RecipeSearch.getInstance();
 
     @Test
     public void filterByIngredientTest() {
@@ -21,6 +21,16 @@ public class RecipeSearchTest {
         turkey.setName("turkey");
         List<Recipe> recipes = recipeSearch.filterByIngredient(turkey);
         assertTrue(recipes.size() > 0);
+    }
+    @Test
+    public void getAllRecipesTest(){
+        List<Recipe> recipes = recipeSearch.getAllRecipes();
+        assertTrue(recipes.size() > 0);
+    }
+    @Test
+    public void getAllIngredientsTest(){
+        List<Ingredient> ingredients = recipeSearch.getAllIngredients();
+        assertTrue(ingredients.size() > 0);
     }
 }
 //

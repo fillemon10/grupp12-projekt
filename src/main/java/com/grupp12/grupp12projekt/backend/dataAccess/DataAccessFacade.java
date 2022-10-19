@@ -4,10 +4,7 @@ import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.Storage;
 import com.grupp12.grupp12projekt.backend.User;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class DataAccessFacade {
     private static DataAccessFacade instance;
@@ -49,18 +46,12 @@ public class DataAccessFacade {
     public List<User> getAllUsers() {
         return userDataAccess.getAll();
     }
-
-    public Ingredient getIngredientById(int id) {
-        return ingredientDataAccess.getById(id);
-    }
-
     public List<Recipe> getAllRecipes() {
         return recipeDataAccess.getAll();
     }
     public List<Ingredient> getAllIngredients() {
         return ingredientDataAccess.getAll();
     }
-
     public Recipe getRecipeById(int id) {
         return recipeDataAccess.getById(id);
     }
@@ -70,6 +61,7 @@ public class DataAccessFacade {
         userToAdd.setUsername(username);
         userToAdd.setPassword(password);
         userToAdd.setId(userDataAccess.getLastId()+1);
+        userToAdd.setStorageID(storageDataAccess.getLastId()+1);
         userDataAccess.add(userToAdd);
     }
     public void addStorageToDatabase(Storage storage) {
@@ -85,6 +77,10 @@ public class DataAccessFacade {
 
     public void updateStorageInDatabase(Storage storage) {
         storageDataAccess.update(storage);
+    }
+
+    public void setStorageID(User user) {
+        userDataAccess.update(user);
     }
 
 }

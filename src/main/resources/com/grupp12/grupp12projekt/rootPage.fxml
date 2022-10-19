@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,18 +36,16 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="shoppingListButton" text="Shopping List">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
                            </children>
                         </HBox>
                      </children>
                   </AnchorPane>
                </top>
                <center>
-                  <ScrollPane fx:id="contentScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="780.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER" />
+                  <ScrollPane fx:id="contentScrollPane" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="780.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+                     </opaqueInsets></ScrollPane>
                </center>
             </BorderPane>
          </children>
