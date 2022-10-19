@@ -1,5 +1,6 @@
 # 2good2go 
-### Recipe finder that takes regards with that you have in your storage, made in Java
+### Recipe finder that takes regards with that you have in your storage
+#### Made in Java with JavaFX
 ## Installation
 Go to folder where you want to clone the repository
 ```sh
