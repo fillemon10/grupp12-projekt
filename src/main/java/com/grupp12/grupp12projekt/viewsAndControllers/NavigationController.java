@@ -35,7 +35,7 @@ public class NavigationController implements Initializable {
     @FXML
     private Label recipeSettingsButton;
     @FXML
-    private Button logoutButton;
+    private Label logoutButton;
     @FXML
     private AnchorPane lightBox;
     @FXML
@@ -107,6 +107,7 @@ public class NavigationController implements Initializable {
             e.printStackTrace();
         }
         logInPane.getChildren().setAll(pane);*/
+
         logInPane.setVisible(true);
         logInPane.toFront();
     }
