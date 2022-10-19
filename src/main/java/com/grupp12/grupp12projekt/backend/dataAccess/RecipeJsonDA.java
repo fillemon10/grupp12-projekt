@@ -1,7 +1,6 @@
 package com.grupp12.grupp12projekt.backend.dataAccess;
 
 import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.backend.User;
 import io.jsondb.JsonDBTemplate;
 
 import java.util.ArrayList;

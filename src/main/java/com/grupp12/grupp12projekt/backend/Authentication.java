@@ -12,13 +12,13 @@ public class Authentication {
         dataAccessFacade = DataAccessFacade.getInstance();
     }
 
-    public static Authentication getInstance() {
+    static Authentication getInstance() {
         if (instance == null)
             instance = new Authentication();
         return instance;
     }
 
-    public User loginUser(String username, String password) {
+    User loginUser(String username, String password) {
         for (User user : dataAccessFacade.getAllUsers()) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
@@ -27,7 +27,7 @@ public class Authentication {
         throw new IllegalArgumentException("Wrong username or password");
     }
 
-    public void registerUser(String username, String password) {
+    void registerUser(String username, String password) {
         boolean alreadyExists = false;
         for (User user : dataAccessFacade.getAllUsers()) {
             if (user.getUsername().equals(username)) {
@@ -43,7 +43,7 @@ public class Authentication {
         }
     }
 
-    public void setStorageID(User user){
+    void setStorageID(User user){
         dataAccessFacade.setStorageID(user);
     }
 }

@@ -1,6 +1,6 @@
 package com.Backend;
 
-import com.grupp12.grupp12projekt.Model;
+import com.grupp12.grupp12projekt.backend.Model;
 import com.grupp12.grupp12projekt.backend.Ingredient;
 import com.grupp12.grupp12projekt.backend.Storage;
 import org.junit.jupiter.api.Test;
@@ -10,10 +10,13 @@ import java.util.List;
 
 public class StorageTest {
     private Model model = Model.getInstance();
+
+
     @Test
     public void getStorageTest(){
         model.logInUser("username", "password");
         model.getStorage();
+
     }
 
     @Test
@@ -24,6 +27,31 @@ public class StorageTest {
         storage.setIngredients(ingredients);
 
         model.addNewStorageToDatabase();
+    }
+
+    @Test
+    public void getIdTest(){
+
+
+
+
+    }
+
+    @Test
+    public void setIdTest(){
+
+
+
+    }
+
+    @Test
+    public void containsIngredientTest(){
+
+        Ingredient turkey = new Ingredient();
+        turkey.setId(324);
+        turkey.setName("turkey");
+
+
     }
 
 
