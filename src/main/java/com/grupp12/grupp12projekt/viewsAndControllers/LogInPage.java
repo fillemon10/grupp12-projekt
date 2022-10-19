@@ -31,10 +31,6 @@ public class LogInPage extends AnchorPane implements Initializable {
     @FXML
     private Label errorLabel;
 
-    @FXML
-    private Label loggingInLabel;
-
-
     private static NavigationController navigationController;
     private static Model model;
     private static LogInPage instance;
