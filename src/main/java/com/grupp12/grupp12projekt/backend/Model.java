@@ -69,11 +69,11 @@ public class Model implements Observable {
     /**
      * method that is supplied with a list of recipes and returns a list of recipes with the 20 best matching recipes which is used in the find recipes class.
      * @param recipes supplied recipes
-     * @return returns the top 20 best recipe matches recipes based on the supplied recipes and storage
+     * @return returns a list containing the best recipe matches recipes based on the supplied recipes and storage
      */
 
     public List<Recipe> get20bestMatchingRecipes(List<Recipe> recipes) {
-        return recipeSearch.get20bestMatchingRecipes(this.storage, recipes);
+        return recipeSearch.getBestMatchingRecipes(this.storage, recipes, 20);
     }
 
 
