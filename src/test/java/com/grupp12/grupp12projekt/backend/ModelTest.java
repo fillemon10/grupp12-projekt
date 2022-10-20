@@ -1,4 +1,4 @@
-package com.Backend;
+package com.grupp12.grupp12projekt.backend;
 
 import com.grupp12.grupp12projekt.backend.Recipe;
 import com.grupp12.grupp12projekt.backend.Storage;
@@ -74,9 +74,95 @@ public class ModelTest {
     }
 
 
+    @Test
+    void getInstance() {
+    }
 
+    @Test
+    void setCurrentUserStorageId() {
+    }
 
+    @Test
+    void getStorage() {
+    }
 
+    @Test
+    void getStorageContent() {
+    }
 
+    @Test
+    void deleteStorageIngredient() {
+    }
 
+    @Test
+    void get20bestMatchingRecipes() {
+    }
+
+    @Test
+    void getMatchingIngredients() {
+    }
+
+    @Test
+    void getMatchingPercentage() {
+    }
+
+    @Test
+    void getAllRecipes() {
+    }
+
+    @Test
+    void getFilteredRecipes() {
+    }
+
+    @Test
+    void findIngredients() {
+    }
+
+    @Test
+    void filterByIngredient() {
+    }
+
+    @Test
+    void addObserver() {
+    }
+
+    @Test
+    void removeObserver() {
+    }
+
+    @Test
+    void clearObservers() {
+    }
+
+    @Test
+    void notifyObservers() {
+    }
+
+    @Test
+    void createNewUser() {
+    }
+
+    @Test
+    void logInUser() {
+    }
+
+    @Test
+    void getCurrentUser() {
+    }
+
+    @Test
+    void addIngredientToStorage() {
+    }
+
+    @Test
+    void getCurrentUsersStorageID() {
+    }
+
+    @Test
+    void getIngredientsNotInStorage() {
+    }
+
+    @Test
+    void logout() {
+    }
 }
