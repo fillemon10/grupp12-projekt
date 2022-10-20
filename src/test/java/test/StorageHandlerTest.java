@@ -1,24 +1,22 @@
-package com.grupp12.grupp12projekt.backend;
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AuthenticationTest {
+class StorageHandlerTest {
 
     @Test
     void getInstance() {
     }
 
     @Test
-    void loginUser() {
+    void getStorageFromDatabase() {
     }
 
     @Test
-    void registerUser() {
+    void addNewStorageToDatabase() {
     }
 
     @Test
-    void setStorageID() {
+    void updateStorageInDatabase() {
     }
 }
