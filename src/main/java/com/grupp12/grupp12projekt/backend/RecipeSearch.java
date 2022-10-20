@@ -72,7 +72,7 @@ public class RecipeSearch {
     }
 
     /**
-     * method that returns a list of the top 20 best matching recipes based on the supplied list of recipes and storage.
+     * method that returns a list containing the 20 best matching recipes based on the supplied list of recipes and storage.
      * @param storage supplied
      * @param recipes supplied
      * @return returns an ArrayList of the top 20 best matching recipes
