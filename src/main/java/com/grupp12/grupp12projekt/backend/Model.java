@@ -45,10 +45,20 @@ public class Model implements Observable {
         notifyObservers();
     }
 
+    /**
+     * method for getting the latest updated storage from the database
+     * @return returns this storage
+     */
+
     public Storage getStorage() {
         this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
         return this.storage;
     }
+
+    /**
+     * method for getting all the ingredients in a storage
+     * @return returns a list of all the ingredients in this storage
+     */
 
     public List<Ingredient> getStorageContent() {
         storage = getStorage();
@@ -166,13 +176,11 @@ public class Model implements Observable {
      * @param logInPword supplied password
      */
 
-
     public void logInUser(String logInUname, String logInPword) {
         User user = authentication.loginUser(logInUname, logInPword);
         this.currentUser = user;
         this.storage = storageHandler.getStorageFromDatabase(currentUser.getStorageID());
     }
-
 
 
     public User getCurrentUser() {
@@ -202,9 +210,18 @@ public class Model implements Observable {
         return currentUser.getStorageID();
     }
 
+    /**
+     * method that returns available ingredients that has not been added to this storage
+     * @return a list of available ingredients that can be added to this storage
+     */
+
     public List<Ingredient> getIngredientsNotInStorage() {
         return recipeSearch.getIngredientsNotInStorage(this.storage);
     }
+
+    /**
+     * method for logging out a user from the program
+     */
 
     public void logout(){
         this.currentUser = null;

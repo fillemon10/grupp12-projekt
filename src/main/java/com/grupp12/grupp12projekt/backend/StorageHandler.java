@@ -26,9 +26,19 @@ public class StorageHandler {
         throw new IllegalArgumentException("Storage does not exist.");
     }
 
+    /**
+     * method for adding a supplied storage to the database
+     * @param storage supplied storage
+     */
+
     void addNewStorageToDatabase(Storage storage) {
         dataAccessFacade.addStorageToDatabase(storage);
     }
+
+    /**
+     * method that updates the supplied storage in the database when changes to the storage is made.
+     * @param storage supplied storage
+     */
 
     void updateStorageInDatabase(Storage storage) {
         dataAccessFacade.updateStorageInDatabase(storage);

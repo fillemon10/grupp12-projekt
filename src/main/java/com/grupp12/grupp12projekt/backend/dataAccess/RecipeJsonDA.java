@@ -6,6 +6,9 @@ import io.jsondb.JsonDBTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation class of recipes data access
+ */
 public class RecipeJsonDA implements IDataAccess<Recipe> {
 
     private JsonDBTemplate connection = ConnectionJson.getConnection();

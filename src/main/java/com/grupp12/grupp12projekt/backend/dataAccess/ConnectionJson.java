@@ -1,13 +1,12 @@
 package com.grupp12.grupp12projekt.backend.dataAccess;
 
-import com.grupp12.grupp12projekt.backend.Ingredient;
-import com.grupp12.grupp12projekt.backend.Recipe;
-import com.grupp12.grupp12projekt.backend.Storage;
-import com.grupp12.grupp12projekt.backend.User;
 import io.jsondb.JsonDBTemplate;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+/**
+ * Class that handles the connection to then database instance och the java objects(recipe, ingredients storage and user)
+ */
 
 public class ConnectionJson {
     private static JsonDBTemplate con = null;
