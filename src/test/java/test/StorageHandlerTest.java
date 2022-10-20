@@ -1,22 +1,18 @@
+import com.grupp12.grupp12projekt.backend.Model;
+import com.grupp12.grupp12projekt.backend.Storage;
+import com.grupp12.grupp12projekt.backend.StorageHandler;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class StorageHandlerTest {
-
-    @Test
-    void getInstance() {
-    }
+    Model model = Model.getInstance();
 
     @Test
     void getStorageFromDatabase() {
+        Storage storage = new Storage();
+        //assertThrows(IllegalArgumentException.class, () -> storage.setId(55555));
+
     }
 
-    @Test
-    void addNewStorageToDatabase() {
-    }
-
-    @Test
-    void updateStorageInDatabase() {
-    }
 }

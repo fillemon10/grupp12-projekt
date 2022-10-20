@@ -10,14 +10,19 @@ import java.util.List;
 
 public class StorageHandler {
     private static StorageHandler instance;
-    private DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
+    private static DataAccessFacade dataAccessFacade;
+
+    private StorageHandler() {
+        dataAccessFacade = DataAccessFacade.getInstance();
+    }
+
     static StorageHandler getInstance() {
         if (instance == null)
             instance = new StorageHandler();
         return instance;
     }
 
-     Storage getStorageFromDatabase(int id) {
+    Storage getStorageFromDatabase(int id) {
         List<Storage> storages = dataAccessFacade.getAllStorages();
         for (Storage storage : storages) {
             if (storage.getId() == id)

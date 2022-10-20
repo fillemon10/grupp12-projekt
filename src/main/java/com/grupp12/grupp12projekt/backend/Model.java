@@ -150,10 +150,6 @@ public class Model implements Observable {
         this.observers.remove(o);
     }
 
-    public void clearObservers() {
-        this.observers.clear();
-    }
-
     public void notifyObservers() {
         this.observers.forEach(x -> x.onNotify());
     }
