@@ -72,16 +72,17 @@ public class RecipeSearch {
     }
 
     /**
-     * method that returns a list of the top 20 best matching recipes based on the supplied list of recipes and storage.
-     * @param storage supplied
-     * @param recipes supplied
-     * @return returns an ArrayList of the top 20 best matching recipes
+     * method that returns a list containing the 20 best matching recipes based on the supplied list of recipes and storage.
+     * @param storage supplied storage
+     * @param recipes supplied recipes
+     * @param numberOfRecipes supplied number of recipes
+     * @return returns an ArrayList of the best matching recipes
      */
 
-     List<Recipe> get20bestMatchingRecipes(Storage storage, List<Recipe> recipes) {
+     List<Recipe> getBestMatchingRecipes(Storage storage, List<Recipe> recipes, int numberOfRecipes) {
         List<Recipe> sortedRecipes = sortListOfRecipesBasedOnNumberOfIngredientsInStorage(storage, recipes);
         List<Recipe> bestMatchingRecipes = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < numberOfRecipes; i++) {
             try {
                 bestMatchingRecipes.add(sortedRecipes.get(i));
             } catch (IndexOutOfBoundsException e) {
@@ -131,7 +132,7 @@ public class RecipeSearch {
     }
 
     /**
-     * method that is supplied this storage and gets all the ingredients in this storage and returns the all the available ingredients are not added to this storage
+     * method that returns available ingredients that has not been added to the supplied storage
      * @param storage supplied storage
      * @return returns a list of all the available ingredients that has not been added in the storage
      */

@@ -6,6 +6,10 @@ import io.jsondb.JsonDBTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation class of ingredients data access
+ */
+
 public class IngredientJsonDA implements IDataAccess<Ingredient> {
     private JsonDBTemplate connection = ConnectionJson.getConnection();
     private List<Ingredient> ingredients = new ArrayList<>();

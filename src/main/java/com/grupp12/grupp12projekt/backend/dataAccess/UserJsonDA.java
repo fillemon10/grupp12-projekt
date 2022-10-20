@@ -6,6 +6,10 @@ import io.jsondb.JsonDBTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  Implementation class of users data access
+ */
+
 public class UserJsonDA implements IDataAccess<User> {
 
     private JsonDBTemplate connection = ConnectionJson.getConnection();

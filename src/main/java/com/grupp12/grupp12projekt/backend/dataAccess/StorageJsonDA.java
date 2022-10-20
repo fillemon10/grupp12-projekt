@@ -5,6 +5,9 @@ import io.jsondb.JsonDBTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation class of storages data access
+ */
 
 public class StorageJsonDA implements IDataAccess<Storage> {
 
