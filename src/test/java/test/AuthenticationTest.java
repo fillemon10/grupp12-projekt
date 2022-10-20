@@ -5,10 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class AuthenticationTest {
 
     @Test
-    void getInstance() {
-    }
-
-    @Test
     void loginUser() {
     }
 

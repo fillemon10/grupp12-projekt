@@ -22,12 +22,7 @@ public class ConnectionJson {
 
     static JsonDBTemplate getConnection() {
 
-        if(con == null) {
-            try{
-                con = new JsonDBTemplate(dbFilesLocation, baseScanPackage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if(con == null) con = new JsonDBTemplate(dbFilesLocation, baseScanPackage);
         }
         return con;
     }
