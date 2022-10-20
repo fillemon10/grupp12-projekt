@@ -5,6 +5,10 @@ import io.jsondb.annotation.Id;
 
 import java.util.List;
 
+/**
+ * Class for the storage instances
+ */
+
 @Document(collection = "storages", schemaVersion = "1.0")
 public class Storage {
     @Id
@@ -27,9 +31,19 @@ public class Storage {
         this.ingredients = ingredients;
     }
 
+    /**
+     * method for adding the supplied ingredient to this storage
+     * @param ingredient supplied ingredient
+     */
+
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
+
+    /**
+     * method for removing this ingredient from this storage
+     * @param ingredient
+     */
 
     public void removeIngredient(Ingredient ingredient) {
         ingredients.remove(ingredient);

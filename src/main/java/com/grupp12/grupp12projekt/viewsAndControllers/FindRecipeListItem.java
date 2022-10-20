@@ -17,6 +17,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Class that extends an Anchorpane for the creation of recipe list item that is shown in the find recipes page.
+ */
+
 public class FindRecipeListItem extends AnchorPane implements Initializable {
 
     private static Model model;
@@ -32,6 +36,12 @@ public class FindRecipeListItem extends AnchorPane implements Initializable {
     @FXML
     private ProgressBar percentageBar;
 
+    /**
+     * Constructor that creates instances of recipe list items and loads fxml files with the supplied recipe which
+     * used in the update() method in the find recipes page in order dynamically fill the page with recipe items.
+     * @param recipe supplied recipe
+     */
+
 
     public FindRecipeListItem(Recipe recipe) {
         this.recipe = recipe;
@@ -41,7 +51,6 @@ public class FindRecipeListItem extends AnchorPane implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(App2good2go.class.getResource("findRecipeListItem.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
-
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
