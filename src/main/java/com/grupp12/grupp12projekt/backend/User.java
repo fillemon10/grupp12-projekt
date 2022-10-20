@@ -6,7 +6,6 @@ import io.jsondb.annotation.Id;
 /**
  * Class for the user instances
  */
-
 @Document(collection = "users", schemaVersion = "1.0")
 public class User {
     @Id
